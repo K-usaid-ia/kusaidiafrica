@@ -154,7 +154,7 @@ export interface VerificationDocument {
 
 export interface Donation {
   id: string;
-  project_id: string;
+  project_id: number;
   donor_id: string;
   amount: number;
   transaction_hash?: string;

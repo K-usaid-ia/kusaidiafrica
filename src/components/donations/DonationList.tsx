@@ -1,17 +1,45 @@
 "use client";
-import { useState } from "react";
 import { Donation } from "@/types/schema";
-import { mockProjects } from "@/utils/mockData";
+import { projectsApi } from "@/utils/api";
+import { useEffect, useState } from "react";
+import { Project } from "@/types/schema";
 
 interface DonationListProps {
   donations: Donation[];
 }
 
+
 export default function DonationList({ donations }: DonationListProps) {
   const [filter, setFilter] = useState("all");
+   const [projects, setProjects] = useState<Project[]>([]);
+      const [loading, setLoading] = useState(true);
+  
+      useEffect(() => {
+        const fetchProjects = async () => {
+          try {
+            const projectsData = await projectsApi.getAll();
+            
+            if (projectsData && projectsData.results && Array.isArray(projectsData.results)) {
+              setProjects(projectsData.results);
+            } else if (Array.isArray(projectsData)) {
+              setProjects(projectsData);
+            } else {
+              console.error("Unexpected API response format:", projectsData);
+              setProjects([]);
+            }
+          } catch (error) {
+            console.error("Failed to fetch projects:", error);
+            setProjects([]);
+          } finally {
+            setLoading(false);
+          }
+        };
+    
+        fetchProjects();
+      }, []);
 
-  const getProjectTitle = (projectId: string) => {
-    const project = mockProjects.find((p) => p.id === projectId);
+  const getProjectTitle = (projectId: number) => {
+    const project = projects.find((p) => p.id === projectId);
     return project?.title || "Unknown Project";
   };
 

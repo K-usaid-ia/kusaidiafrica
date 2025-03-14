@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
-import { mockVendors } from "@/utils/mockData";
+import { useEffect, useState } from 'react';
+import { vendorsApi } from '@/utils/api';
 import { CheckIcon, StarIcon, ShieldCheckIcon } from "@heroicons/react/24/solid";
 import { UserCircleIcon } from "@heroicons/react/24/outline";
 
@@ -16,12 +16,65 @@ interface SelectedVendorsState {
   [vendorId: string]: boolean;
 }
 
+interface Vendor {
+  id: number;
+  business_name: string;
+  service_category: string;
+  profile_image: string;
+  description: string;
+  verified: boolean;
+  verified_by: string;
+  specialties: string[];
+  rating_count: number;
+  rating_total: number;
+  rating: number;
+  total_reviews: number;
+  completed_projects: number;
+  total_orders: number;
+  user: {
+    id: number;
+    username: string;
+    wallet_address: string;
+  };
+}
+
 export default function ProjectVendorSelection({
   existingData, // Provide a default value
   onBack,
   onSubmit,
   isSubmitting = false
 }: ProjectVendorSelectionProps) {
+
+  const [vendors, setVendors] = useState<Vendor[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+      const fetchVendors = async () => {
+        try {
+          const data = await vendorsApi.getAllVendors();
+          
+          // Handle the paginated response
+          if (data && data.results && Array.isArray(data.results)) {
+            // If it's a paginated response with results array
+            setVendors(data.results);
+          } else if (Array.isArray(data)) {
+            // If the API returns a direct array
+            setVendors(data);
+          } else {
+            console.error('Unexpected API response format:', data);
+            setVendors([]);
+          }
+        } catch (error) {
+          console.error('Failed to fetch vendors:', error);
+          setVendors([]);
+        } finally {
+          setLoading(false);
+        }
+      };
+  
+      fetchVendors();
+    }, []);
+  
   const [selectedVendors, setSelectedVendors] = useState<SelectedVendorsState>(
     existingData.selectedVendors || {}
   );
@@ -94,7 +147,7 @@ export default function ProjectVendorSelection({
 
       {/* Vendors List */}
       <div className="bg-white rounded-lg border border-gray-200 overflow-hidden shadow-sm divide-y divide-gray-200">
-        {mockVendors.map((vendor) => (
+        {vendors.map((vendor) => (
           <div
             key={vendor.id}
             className={`p-5 transition ${selectedVendors[vendor.id] ? 'bg-indigo-50' : 'hover:bg-gray-50'}`}

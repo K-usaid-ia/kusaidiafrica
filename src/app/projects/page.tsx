@@ -9,6 +9,7 @@ import { PlusIcon, MapPinIcon, CurrencyDollarIcon, TagIcon } from "@heroicons/re
 import RoleActionButton from '@/components/RoleActionButton';
 import { useRouter } from "next/navigation";
 
+
 // Define API response type
 interface ProjectsApiResponse {
   count: number;
@@ -41,6 +42,8 @@ export default function ProjectsPage() {
     const fetchProjects = async () => {
       try {
         const projectsData = await projectsApi.getAll();
+
+        console.error("Unexpected projectsData:", projectsData);
         
         if (projectsData && projectsData.results && Array.isArray(projectsData.results)) {
           setProjects(projectsData.results);

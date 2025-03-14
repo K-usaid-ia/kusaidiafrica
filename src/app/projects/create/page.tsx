@@ -147,24 +147,15 @@ export default function CreateProjectPage() {
                     }
                     
                     // Add website URL if available
-                    if (data.website_url) {
-                      formData.append('website_url', data.website_url);
-                    }
+                    formData.append('website_url', data.website_url);
                     
                     // Add social media links as JSON
-                    if (data.social_media_links) {
-                      formData.append('social_media_links', JSON.stringify(data.social_media_links));
-                    }
+                    formData.append('social_media_links', JSON.stringify(data.social_media_links));
                     
                     // Add external references as JSON
-                    if (data.external_references) {
-                      formData.append('external_references', JSON.stringify(data.external_references));
-                    }
+                    formData.append('external_references', JSON.stringify(data.external_references));
                     
-                    // Add success metrics as JSON
-                    if (data.success_metrics) {
-                      formData.append('success_metrics', JSON.stringify(data.success_metrics));
-                    }
+                    formData.append('success_metrics', JSON.stringify(data.success_metrics));
                     
                     // Add impact assessment method
                     formData.append('impact_assessment_method', data.impact_assessment_method);
