@@ -1,18 +1,20 @@
 "use client";
 import { useState } from "react";
-import { useForm } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
+import Select, { SingleValue, ActionMeta, OptionProps } from "react-select"; // Import proper types
+
+
+interface LocationOption {
+  value: string;
+  label: string;
+}
 
 interface ProjectFormData {
   title: string;
   description: string;
-  location: {
-    country: string;
-    city: string;
-    coordinates?: {
-      latitude: number;
-      longitude: number;
-    };
-  };
+  location: string;
+  city: string; 
+  country: string; 
   budget: number;
   timeline_start: string;
   timeline_end: string;
@@ -26,24 +28,70 @@ export default function ProjectBasicInfo({ onNext }: ProjectBasicInfoProps) {
   const {
     register,
     handleSubmit,
+    control,
     formState: { errors },
     watch,
-  } = useForm<ProjectFormData>({
-    defaultValues: {
-      location: {
-        country: "",
-        city: "",
-      },
-    },
-  });
+  } = useForm<ProjectFormData>();
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const timeline_start = watch("timeline_start");
 
+  // Properly typed country options
+  const countries: LocationOption[] = [
+    { value: "Kenya", label: "Kenya" },
+    { value: "Uganda", label: "Uganda" },
+    { value: "Tanzania", label: "Tanzania" },
+    { value: "Nigeria", label: "Nigeria" },
+    { value: "Ghana", label: "Ghana" },
+    // Add more countries as needed
+  ];
+
+  // Properly typed function to get cities
+  const getCitiesForCountry = (country: string): LocationOption[] => {
+    const cityMap: Record<string, LocationOption[]> = {
+      Kenya: [
+        { value: "Nairobi", label: "Nairobi" },
+        { value: "Mombasa", label: "Mombasa" },
+        { value: "Kisumu", label: "Kisumu" }
+      ],
+      Uganda: [
+        { value: "Kampala", label: "Kampala" },
+        { value: "Entebbe", label: "Entebbe" }
+      ],
+      // Add more countries and cities as needed
+    };
+    return cityMap[country] || [];
+  };
+
+  const [selectedCountry, setSelectedCountry] = useState<string | null>(null);
+  const [availableCities, setAvailableCities] = useState<LocationOption[]>([]);
+
+  // Update the handler to use proper types
+  const handleCountryChange = (selectedOption: SingleValue<LocationOption>) => {
+    if (selectedOption) {
+      setSelectedCountry(selectedOption.value);
+      setAvailableCities(getCitiesForCountry(selectedOption.value));
+    } else {
+      setSelectedCountry(null);
+      setAvailableCities([]);
+    }
+  };
+
   const onSubmit = async (data: ProjectFormData) => {
     setIsSubmitting(true);
     try {
-      // You could add validation or data transformation here
+       // Create a copy of the data to modify
+      const formattedData = { ...data };
+      
+      // Format location as a string with city and country
+      if (formattedData.city && formattedData.country) {
+        formattedData.location = `${formattedData.city}, ${formattedData.country}`;
+      } else if (formattedData.country) {
+        formattedData.location = formattedData.country;
+      } else if (formattedData.city) {
+        formattedData.location = formattedData.city;
+      }
+      
       await onNext(data);
     } catch (error) {
       console.error("Error submitting form:", error);
@@ -113,54 +161,56 @@ export default function ProjectBasicInfo({ onNext }: ProjectBasicInfoProps) {
           </div>
         </div>
 
-        {/* Location */}
-        <div className="grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-2">
+         {/* Updated location fields with proper typing */}
+        <div className="space-y-4">
+          <h3 className="text-lg font-medium">Project Location</h3>
+          
           <div>
-            <label
-              htmlFor="country"
-              className="block text-sm font-medium text-gray-700"
-            >
-              Country
-            </label>
-            <div className="mt-1">
-              <input
-                id="country"
-                type="text"
-                {...register("location.country", {
-                  required: "Country is required",
-                })}
-                className="block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-              />
-              {errors.location?.country && (
-                <p className="mt-1 text-sm text-red-600">
-                  {errors.location.country.message}
-                </p>
+            <label htmlFor="country" className="block text-sm font-medium text-gray-700">Country</label>
+            <Controller
+              name="country"
+              control={control}
+              rules={{ required: "Country is required" }}
+              render={({ field }) => (
+                <Select<LocationOption>
+                  options={countries}
+                  className="mt-1"
+                  placeholder="Select a country"
+                  onChange={(option: SingleValue<LocationOption>, actionMeta: ActionMeta<LocationOption>) => {
+                    field.onChange(option ? option.value : '');
+                    handleCountryChange(option);
+                  }}
+                  value={countries.find(option => option.value === field.value) || null}
+                />
               )}
-            </div>
+            />
+            {errors.country && (
+              <p className="mt-1 text-sm text-red-600">{errors.country.message}</p>
+            )}
           </div>
-
+          
           <div>
-            <label
-              htmlFor="city"
-              className="block text-sm font-medium text-gray-700"
-            >
-              City
-            </label>
-            <div className="mt-1">
-              <input
-                id="city"
-                type="text"
-                {...register("location.city", {
-                  required: "City is required",
-                })}
-                className="block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-              />
-              {errors.location?.city && (
-                <p className="mt-1 text-sm text-red-600">
-                  {errors.location.city.message}
-                </p>
+            <label htmlFor="city" className="block text-sm font-medium text-gray-700">City</label>
+            <Controller
+              name="city"
+              control={control}
+              rules={{ required: "City is required" }}
+              render={({ field }) => (
+                <Select<LocationOption>
+                  options={availableCities}
+                  className="mt-1"
+                  placeholder="Select a city"
+                  isDisabled={!selectedCountry}
+                  onChange={(option: SingleValue<LocationOption>) => {
+                    field.onChange(option ? option.value : '');
+                  }}
+                  value={availableCities.find(option => option.value === field.value) || null}
+                />
               )}
-            </div>
+            />
+            {errors.city && (
+              <p className="mt-1 text-sm text-red-600">{errors.city.message}</p>
+            )}
           </div>
         </div>
 

@@ -112,31 +112,34 @@ function ProjectProgress({
   percentage: number;
 }) {
   const { formatCurrency, formatDate, isMounted } = useClientSideFormatting();
+    // Convert all inputs to numbers to ensure proper handling
+    const safePercentage = typeof percentage === 'string' ? parseFloat(percentage) : (percentage || 0);
+    const safeCurrent = typeof current === 'string' ? parseFloat(current) : (current || 0);
+    const safeTotal = typeof total === 'string' ? parseFloat(total) : (total || 0);
+  
 
-  return (
-    <div className="mb-6">
-      <div className="flex justify-between items-center mb-2">
-        <span className="text-gray-700 font-medium">Funding Progress</span>
-        <span className="text-indigo-600 font-medium">
-          {percentage !== undefined && percentage !== null 
-            ? `${percentage.toFixed(1)}% Complete` 
-            : '0% Complete'}
-        </span>     
- </div>
-      <div className="w-full bg-gray-200 rounded-full h-2.5">
-        <div 
-          className="bg-indigo-600 h-2.5 rounded-full" 
-          style={{ width: `${Math.min(percentage, 100)}%` }}
-        ></div>
+    return (
+      <div className="mb-6">
+        <div className="flex justify-between items-center mb-2">
+          <span className="text-gray-700 font-medium">Funding Progress</span>
+          <span className="text-indigo-600 font-medium">
+            {!isNaN(safePercentage) ? `${safePercentage.toFixed(1)}% Complete` : '0% Complete'}
+          </span>
+        </div>
+        <div className="w-full bg-gray-200 rounded-full h-2.5">
+          <div 
+            className="bg-indigo-600 h-2.5 rounded-full" 
+            style={{ width: `${Math.min(safePercentage, 100)}%` }}
+          ></div>
+        </div>
+        <div className="flex justify-between text-sm mt-2">
+          <span className="text-gray-600">Raised: ${safeCurrent.toLocaleString()}</span>
+          <span className="text-gray-600">Goal: ${safeTotal.toLocaleString()}</span>
+        </div>
       </div>
-      <div className="flex justify-between text-sm mt-2">
-        <span className="text-gray-600">Raised: ${current}</span>
-        <span className="text-gray-600">Goal: ${total}</span>
-      </div>
-    </div>
-  );
-}
-
+    );
+  }
+  
 export default function ProjectDetailPage() {
   const { id } = useParams<{ id: string }>();
   const router = useRouter();
