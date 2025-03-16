@@ -184,8 +184,8 @@ export default function HomePage() {
                         Quick and Direct
                       </h3>
                       <p className="mt-5 text-base text-gray-500">
-                        Your support lands right with vendors who deliver—like supplies hitting a community in days, not months, with nothing lost along the way.
-                      </p>
+                      Your support goes straight to vendors, delivering fast—days, not months—with no waste.
+                     </p>
                     </div>
                   </div>
                 </div>
