@@ -63,6 +63,7 @@ api.interceptors.response.use(
   }
 );
 
+
 // Projects API
 export const projectsApi = {
   getAll: async (): Promise<ProjectsApiResponse> => {

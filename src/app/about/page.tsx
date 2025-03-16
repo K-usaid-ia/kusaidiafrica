@@ -2,26 +2,67 @@
 "use client";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { trackVisitor } from "@/utils/analytics";
+import { useAuth } from "@/features/auth/AuthContext";
+import { useRouter } from "next/navigation";
 
-// Simple analytics tracking
-const trackVisitor = () => {
-  const timestamp = new Date().toISOString();
-  const visitorData = { page: "about", timestamp };
-  console.log("Visitor tracked:", visitorData);
-  const visits = JSON.parse(localStorage.getItem("kusaidia_visits") || "[]");
-  visits.push(visitorData);
-  localStorage.setItem("kusaidia_visits", JSON.stringify(visits));
-};
+// Detailed milestones from the 8-month roadmap
+const milestones = [
+  {
+    title: "Validation & Listening",
+    period: "March - April 2025",
+    description:
+      "We’re starting by talking to real people—donors tired of opaque aid, small African NGOs needing faster funds, and local vendors eager to deliver. Using surveys, X chats, and interviews, we’ll confirm KUSAIDIA meets a true need before building a thing.",
+    highlight: "Goal: 50+ responses to shape our path.",
+  },
+  {
+    title: "Building the MVP",
+    period: "May - June 2025",
+    description:
+      "Next, we craft a lean platform: a simple way for donors to fund projects and vendors to get paid directly. We’ll test it locally—think a donor sending $10 to a mock project—ensuring it’s smooth and cost-effective with smart tech like caching.",
+    highlight: "Goal: A working prototype on a test network.",
+  },
+  {
+    title: "Testing with Real Users",
+    period: "July - August 2025",
+    description:
+      "We’ll put KUSAIDIA in the hands of 5 donors, 2 NGOs, and 3 vendors from our research. They’ll fund a pilot—like pads for a Kumasi school—using fake funds first, then real ones. Their feedback will sharpen it into something people trust and love.",
+    highlight: "Goal: A refined platform ready for the world.",
+  },
+  {
+    title: "Pitching & Partnering",
+    period: "September 2025",
+    description:
+      "With proof it works, we’ll pitch KUSAIDIA to partners—NGOs to test it, blockchain groups for support, and local vendor networks for scale. A polished deck will show our traction, aiming to lock in allies who’ll help us grow.",
+    highlight: "Goal: 1-2 handshake deals to boost credibility.",
+  },
+  {
+    title: "Launch & First Wins",
+    period: "October - November 2025",
+    description:
+      "We go live with real projects—small at first, like $50 water deliveries—on a public network. We’ll share it on X and forums, tracking every dollar moved and vendor paid. This is KUSAIDIA’s start, with data to fuel our next big steps.",
+    highlight: "Goal: 10 users and live impact by November.",
+  },
+];
 
 export default function AboutPage() {
   const [loaded, setLoaded] = useState(false);
+  const [visitorCount, setVisitorCount] = useState(0);
+  const { connectWallet, isAuthenticated } = useAuth();
+  const router = useRouter();
 
-  useEffect(() => {
-    if (!loaded) {
-      trackVisitor();
-      setLoaded(true);
-    }
-  }, [loaded]);
+
+    // Track visitors and update count on page load
+    useEffect(() => {
+      if (!loaded) {
+        const count = trackVisitor("home");
+        setVisitorCount(count);
+        setLoaded(true);
+      }
+      if (isAuthenticated) {
+        router.push("/projects");
+      }
+    }, [loaded, isAuthenticated, router]);
 
   return (
     <div className="min-h-screen bg-white">
@@ -86,7 +127,7 @@ export default function AboutPage() {
               <div className="mt-10 lg:mt-0">
                 <img
                   className="w-full rounded-lg shadow-md"
-                  src="/images/vendor-delivery.jpg" // Placeholder: Vendor handing supplies
+                  src="/images/vendor-delivery.jpg"
                   alt="Vendor delivering supplies to a community"
                 />
               </div>
@@ -144,19 +185,61 @@ export default function AboutPage() {
                 <p className="text-base text-gray-600">
                   We’re builders, dreamers, and doers—united by a belief that support shouldn’t get stuck. KUSAIDIA started with a simple idea: if a community needs something, let’s get it to them directly. Using smart tech, we cut the clutter and connect you to vendors who deliver. This is just the beginning—join us as we grow.
                 </p>
-                {/* Placeholder for team - uncomment and fill when ready */}
-                {/* <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2">
-                  <div>
-                    <img className="h-24 w-24 rounded-full mx-auto" src="/images/team-member1.jpg" alt="Team member" />
-                    <p className="mt-2 text-lg font-medium text-gray-900">[Your Name]</p>
-                    <p className="text-gray-500">Founder</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-8 text-center">
+          <p className="text-lg font-medium text-gray-700">
+            Join <span className="text-indigo-600">{visitorCount}</span> visitors learning about KUSAIDIA’s mission.
+          </p>
+        </div>
+
+        {/* Milestones Section */}
+        <div className="py-16 bg-gray-50">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center">
+              <h2 className="text-base font-semibold text-indigo-600 tracking-wide uppercase">
+                Our Journey
+              </h2>
+              <p className="mt-1 text-3xl font-extrabold text-gray-900 sm:text-4xl">
+                Milestones to Impact
+              </p>
+              <p className="mt-4 max-w-2xl mx-auto text-lg text-gray-500">
+                Here’s how we’re bringing KUSAIDIA to life—connecting your support to real change, step by step.
+              </p>
+            </div>
+            <div className="mt-12 relative">
+              {/* Timeline Line */}
+              <div className="absolute inset-0 flex justify-center">
+                <div className="w-1 bg-indigo-200 h-full"></div>
+              </div>
+              {/* Milestones */}
+              <div className="relative space-y-12">
+                {milestones.map((milestone, index) => (
+                  <div key={index} className="relative flex items-start">
+                    {/* Dot on Timeline */}
+                    <div className="flex-shrink-0 w-6 h-6 bg-indigo-600 rounded-full z-10 mt-2"></div>
+                    {/* Milestone Content */}
+                    <div className="ml-6 bg-white p-6 rounded-lg shadow-md w-full">
+                      <div className="flex justify-between items-center flex-wrap gap-2">
+                        <h3 className="text-lg font-medium text-gray-900">
+                          {milestone.title}
+                        </h3>
+                        <span className="text-sm text-indigo-600 font-semibold">
+                          {milestone.period}
+                        </span>
+                      </div>
+                      <p className="mt-2 text-base text-gray-500">
+                        {milestone.description}
+                      </p>
+                      <p className="mt-1 text-sm font-medium text-indigo-700">
+                        {milestone.highlight}
+                      </p>
+                    </div>
                   </div>
-                  <div>
-                    <img className="h-24 w-24 rounded-full mx-auto" src="/images/team-member2.jpg" alt="Team member" />
-                    <p className="mt-2 text-lg font-medium text-gray-900">[Co-Founder Name]</p>
-                    <p className="text-gray-500">Co-Founder</p>
-                  </div>
-                </div> */}
+                ))}
               </div>
             </div>
           </div>

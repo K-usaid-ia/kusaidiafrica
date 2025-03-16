@@ -4,28 +4,19 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/features/auth/AuthContext";
 import { useEffect, useState } from "react";
-
-// Simple analytics tracking (example)
-const trackVisitor = () => {
-  const timestamp = new Date().toISOString();
-  const visitorData = { page: "home", timestamp };
-  // In a real app, send this to an analytics service (e.g., Firebase, Mixpanel)
-  console.log("Visitor tracked:", visitorData);
-  // Optionally store in localStorage for basic persistence
-  const visits = JSON.parse(localStorage.getItem("kusaidia_visits") || "[]");
-  visits.push(visitorData);
-  localStorage.setItem("kusaidia_visits", JSON.stringify(visits));
-};
+import { trackVisitor } from "@/utils/analytics";
 
 export default function HomePage() {
   const router = useRouter();
   const { connectWallet, isAuthenticated } = useAuth();
   const [loaded, setLoaded] = useState(false);
+  const [visitorCount, setVisitorCount] = useState(0);
 
-  // Track visitors on page load
+  // Track visitors and update count on page load
   useEffect(() => {
     if (!loaded) {
-      trackVisitor();
+      const count = trackVisitor("home");
+      setVisitorCount(count);
       setLoaded(true);
     }
     if (isAuthenticated) {
@@ -38,7 +29,14 @@ export default function HomePage() {
   };
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white relative">
+      {/* Diagonal Ribbon */}
+      <div className="absolute w-32 h-8 bg-yellow-500 transform rotate-45 origin-bottom-left translate-x-8 -translate-y-2 shadow-md">
+  <p className="text-black text-sm font-medium text-center pt-1">
+    Idea Concept
+  </p>
+</div>
+
       {/* Navigation */}
       <nav className="bg-white border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -77,7 +75,7 @@ export default function HomePage() {
               <div className="absolute inset-0">
                 <img
                   className="h-full w-full object-cover opacity-80"
-                  src="/images/african-community.jpg" // Placeholder: Add a real image
+                  src="/images/african-community.jpg"
                   alt="African community smiling"
                 />
                 <div className="absolute inset-0 bg-gradient-to-r from-indigo-700 to-purple-600 mix-blend-multiply" />
@@ -160,7 +158,6 @@ export default function HomePage() {
                     </div>
                   </div>
                 </div>
-
                 <div className="pt-6">
                   <div className="flow-root bg-white rounded-lg px-6 pb-8 shadow-md">
                     <div className="-mt-6">
@@ -184,12 +181,11 @@ export default function HomePage() {
                         Quick and Direct
                       </h3>
                       <p className="mt-5 text-base text-gray-500">
-                      Your support goes straight to vendors, delivering fast—days, not months—with no waste.
-                     </p>
+                        Your support goes straight to vendors, delivering fast—days, not months—with no waste.
+                      </p>
                     </div>
                   </div>
                 </div>
-
                 <div className="pt-6">
                   <div className="flow-root bg-white rounded-lg px-6 pb-8 shadow-md">
                     <div className="-mt-6">
@@ -256,6 +252,9 @@ export default function HomePage() {
             </h2>
             <p className="mt-4 text-lg leading-6 text-indigo-100">
               Join us to empower Africa with support that’s fast, fair, and fully yours to track.
+            </p>
+            <p className="mt-4 text-xl font-bold text-white">
+              Join <span className="text-indigo-200">{visitorCount}</span> visitors making an impact with KUSAIDIA
             </p>
             <Link
               href="/projects"
