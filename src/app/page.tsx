@@ -32,10 +32,10 @@ export default function HomePage() {
     <div className="min-h-screen bg-white relative">
       {/* Diagonal Ribbon */}
       <div className="absolute w-32 h-8 bg-yellow-500 transform rotate-45 origin-bottom-left translate-x-8 -translate-y-2 shadow-md">
-  <p className="text-black text-sm font-medium text-center pt-1">
-    Idea Concept
-  </p>
-</div>
+      <p className="text-black text-sm font-medium text-center pt-1">
+        Proof of Concept
+      </p>
+    </div>
 
       {/* Navigation */}
       <nav className="bg-white border-b border-gray-200">
