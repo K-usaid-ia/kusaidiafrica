@@ -270,10 +270,10 @@ export default function HomePage() {
       <footer className="bg-white">
         <div className="max-w-7xl mx-auto py-12 px-4 overflow-hidden sm:px-6 lg:px-8">
           <div className="flex justify-center space-x-6">
-            <a href="https://twitter.com" className="text-gray-400 hover:text-indigo-600">
+            <a href="https://twitter.com/kusaidiaafrica" className="text-gray-400 hover:text-indigo-600">
               X
             </a>
-            <a href="mailto:info@kusaidia.org" className="text-gray-400 hover:text-indigo-600">
+            <a href="mailto:kusaidia75@gmail.com" className="text-gray-400 hover:text-indigo-600">
               Contact Us
             </a>
           </div>

@@ -6,42 +6,41 @@ import { trackVisitor } from "@/utils/analytics";
 import { useAuth } from "@/features/auth/AuthContext";
 import { useRouter } from "next/navigation";
 
-// Detailed milestones from the 8-month roadmap
 const milestones = [
   {
-    title: "Validation & Listening",
-    period: "March - April 2025",
+    title: "Validate Idea & Research",
+    period: "Month 1-2 (April - May 2025)",
     description:
-      "We’re starting by talking to real people—donors tired of opaque aid, small African NGOs needing faster funds, and local vendors eager to deliver. Using surveys, X chats, and interviews, we’ll confirm KUSAIDIA meets a true need before building a thing.",
-    highlight: "Goal: 50+ responses to shape our path.",
+      "We kick off by proving the concept—talking to donors, NGOs, and vendors to understand their needs. No heavy coding yet, just listening and learning to ensure KUSAIDIA solves a real problem.",
+    highlight: "Focus: Market insights, no dev rush.",
   },
   {
-    title: "Building the MVP",
-    period: "May - June 2025",
+    title: "Build MVP & Revenue Model",
+    period: "Month 3-4 (June - July 2025)",
     description:
-      "Next, we craft a lean platform: a simple way for donors to fund projects and vendors to get paid directly. We’ll test it locally—think a donor sending $10 to a mock project—ensuring it’s smooth and cost-effective with smart tech like caching.",
-    highlight: "Goal: A working prototype on a test network.",
+      "We build a lean minimum viable product—a simple platform linking donors to vendors. Alongside, we draft a revenue model to keep it sustainable, focusing on fast, efficient development.",
+    highlight: "Focus: Lean prototype, cost-effective.",
   },
   {
-    title: "Testing with Real Users",
-    period: "July - August 2025",
+    title: "Test with Users & Iterate",
+    period: "Month 5-6 (August - September 2025)",
     description:
-      "We’ll put KUSAIDIA in the hands of 5 donors, 2 NGOs, and 3 vendors from our research. They’ll fund a pilot—like pads for a Kumasi school—using fake funds first, then real ones. Their feedback will sharpen it into something people trust and love.",
-    highlight: "Goal: A refined platform ready for the world.",
+      "Real users—donors and vendors—test the MVP with small projects, like delivering supplies. We tweak based on their input and start drafting a proposal to show what works.",
+    highlight: "Focus: User feedback, proposal prep.",
   },
   {
-    title: "Pitching & Partnering",
-    period: "September 2025",
+    title: "Prep Pitch & Secure Partners",
+    period: "Month 7 (October 2025)",
     description:
-      "With proof it works, we’ll pitch KUSAIDIA to partners—NGOs to test it, blockchain groups for support, and local vendor networks for scale. A polished deck will show our traction, aiming to lock in allies who’ll help us grow.",
-    highlight: "Goal: 1-2 handshake deals to boost credibility.",
+      "With a tested platform, we polish our pitch for partners—NGOs, blockchain experts, and local networks. The goal is to lock in support to scale KUSAIDIA’s reach.",
+    highlight: "Focus: Partnerships, pitch ready.",
   },
   {
-    title: "Launch & First Wins",
-    period: "October - November 2025",
+    title: "Launch Small & Gather Data",
+    period: "Month 8 (November - December 2025)",
     description:
-      "We go live with real projects—small at first, like $50 water deliveries—on a public network. We’ll share it on X and forums, tracking every dollar moved and vendor paid. This is KUSAIDIA’s start, with data to fuel our next big steps.",
-    highlight: "Goal: 10 users and live impact by November.",
+      "We launch quietly with small, live projects—think $50 deliveries—tracking every step. Data from this fuels our next pitch for funding to grow bigger.",
+    highlight: "Focus: Live start, data for growth.",
   },
 ];
 
