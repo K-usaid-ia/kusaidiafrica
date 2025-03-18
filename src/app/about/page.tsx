@@ -43,7 +43,7 @@ const slides = [
           Direct, Transparent Aid Powered by Blockchain
         </p>
         <p className="text-xl font-medium text-gray-700 mb-10">
-          Presented by [Your Name/Team] | March 2025
+          Presented by Maku .P. Mazakpe | March 2025
         </p>
         <div className="mt-4 text-indigo-600 animate-bounce">
           <FaLightbulb size={80} />
@@ -408,8 +408,8 @@ const slides = [
               <FaUsers size={36} />
             </div>
             <div className="text-left">
-              <p className="text-2xl font-bold text-gray-800">[Your Name]</p>
-              <p className="text-xl text-indigo-600">Founder, Blockchain Expert</p>
+              <p className="text-2xl font-bold text-gray-800">Maku .P. Mazakpe</p>
+              <p className="text-xl text-indigo-600">Founder, StartUp Software Engineer</p>
             </div>
           </div>
           <div className="bg-white p-6 rounded-xl shadow-lg flex items-center gap-6">
@@ -417,7 +417,7 @@ const slides = [
               <FaRocket size={36} />
             </div>
             <div className="text-left">
-              <p className="text-2xl font-bold text-gray-800">[Team Member 1]</p>
+              <p className="text-2xl font-bold text-gray-800">Ceeka</p>
               <p className="text-xl text-indigo-600">Tech Lead</p>
             </div>
           </div>
@@ -520,7 +520,7 @@ const slides = [
             </p>
             <p className="font-medium flex items-center">
               <span className="w-3 h-3 bg-indigo-600 rounded-full mr-2"></span>
-              <span>@KUSAIDIA</span>
+              <span>@kusaidiaafrica</span>
             </p>
           </div>
         </div>
@@ -684,35 +684,35 @@ const PitchDeck = () => {
 const milestones = [
   {
     title: "Validate Idea & Research",
-    period: "Month 1-2 (March - April 2025)",
+    period: "Month 1-2 (April - May 2025)",
     description:
       "We kick off by proving the concept—talking to donors, NGOs, and vendors to understand their needs. No heavy coding yet, just listening and learning to ensure KUSAIDIA solves a real problem.",
     highlight: "Focus: Market insights, no dev rush.",
   },
   {
     title: "Build MVP & Revenue Model",
-    period: "Month 3-4 (May - June 2025)",
+    period: "Month 3-4 (June - July 2025)",
     description:
       "We build a lean minimum viable product—a simple platform linking donors to vendors. Alongside, we draft a revenue model to keep it sustainable, focusing on fast, efficient development.",
     highlight: "Focus: Lean prototype, cost-effective.",
   },
   {
     title: "Test with Users & Iterate",
-    period: "Month 5-6 (July - August 2025)",
+    period: "Month 5-6 (August - September 2025)",
     description:
       "Real users—donors and vendors—test the MVP with small projects, like delivering supplies. We tweak based on their input and start drafting a proposal to show what works.",
     highlight: "Focus: User feedback, proposal prep.",
   },
   {
     title: "Prep Pitch & Secure Partners",
-    period: "Month 7 (September 2025)",
+    period: "Month 7 (October 2025)",
     description:
       "With a tested platform, we polish our pitch for partners—NGOs, blockchain experts, and local networks. The goal is to lock in support to scale KUSAIDIA’s reach.",
     highlight: "Focus: Partnerships, pitch ready.",
   },
   {
     title: "Launch Small & Gather Data",
-    period: "Month 8 (October - November 2025)",
+    period: "Month 8 (November - December 2025)",
     description:
       "We launch quietly with small, live projects—think $50 deliveries—tracking every step. Data from this fuels our next pitch for funding to grow bigger.",
     highlight: "Focus: Live start, data for growth.",
@@ -958,13 +958,13 @@ export default function AboutPage() {
         <div className="max-w-7xl mx-auto py-12 px-4 overflow-hidden sm:px-6 lg:px-8">
           <div className="flex justify-center space-x-6">
             <a
-              href="https://twitter.com"
+              href="https://x.com/kusaidiaafrica"
               className="text-gray-400 hover:text-indigo-600"
             >
               X
             </a>
             <a
-              href="mailto:info@kusaidia.org"
+              href="mailto:kusaidia75@gmail.com"
               className="text-gray-400 hover:text-indigo-600"
             >
               Contact Us
