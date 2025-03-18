@@ -1,10 +1,128 @@
-// src/utils/api.ts
-import axios, { AxiosRequestConfig } from 'axios';
+import axios, { AxiosInstance, AxiosError } from 'axios';
+
+// Disable axios debug logging
 axios.defaults.headers.common['X-Axios-Debug'] = 'false';
 
-// Get the base URL from environment variables
+// Create a module-scoped variable for the API URL
+// This keeps it private within this module
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000/api';
 
+// Create the axios instance
+const api = axios.create({
+  baseURL: API_BASE_URL,
+  timeout: 10000,
+  headers: {
+    'Content-Type': 'application/json',
+  }
+});
+
+// Helper function to sanitize error objects before logging
+function sanitizeErrorForLogging(error: AxiosError): AxiosError {
+  // Create a copy of the error to avoid modifying the original
+  const sanitizedError = { ...error };
+  
+  // Hide the URL in the config
+  if (sanitizedError.config) {
+    sanitizedError.config = {
+      ...sanitizedError.config,
+      url: '[API_URL_HIDDEN]',
+      baseURL: '[API_BASE_URL_HIDDEN]'
+    };
+  }
+  
+  // Hide the URL in the request
+  if (sanitizedError.request) {
+    // Use type assertion since we can't modify the request directly
+    const sanitizedRequest = { ...sanitizedError.request };
+    if ('responseURL' in sanitizedRequest) {
+      (sanitizedRequest as any).responseURL = '[API_URL_HIDDEN]';
+    }
+    sanitizedError.request = sanitizedRequest;
+  }
+  
+  return sanitizedError;
+}
+
+// Override console.error to sanitize Axios errors
+if (typeof window !== 'undefined') {
+  const originalConsoleError = console.error;
+  console.error = function(...args: any[]) {
+    const sanitizedArgs = args.map(arg => {
+      // Check if this is an Axios error
+      if (arg instanceof Error && 'isAxiosError' in arg && arg.isAxiosError) {
+        return sanitizeErrorForLogging(arg as AxiosError);
+      }
+      return arg;
+    });
+    
+    originalConsoleError.apply(console, sanitizedArgs);
+  };
+}
+
+// Configure request interceptor
+api.interceptors.request.use(
+  (config) => {
+    const accessToken = typeof window !== 'undefined' ? localStorage.getItem('access_token') : null;
+    
+    if (accessToken) {
+      config.headers.Authorization = `Bearer ${accessToken}`;
+    }
+    
+    return config;
+  },
+  (error) => {
+    // Log sanitized version of error
+    console.error('Request error:', sanitizeErrorForLogging(error));
+    return Promise.reject(error);
+  }
+);
+
+// Configure response interceptor with better error handling
+api.interceptors.response.use(
+  (response) => response,
+  async (error) => {
+    // Sanitize error before any logging
+    const sanitizedError = sanitizeErrorForLogging(error);
+    
+    // Handle connection errors more gracefully
+    if (error.code === 'ECONNABORTED' || error.message.includes('Network Error')) {
+      // In development, you might want a more visible indication
+      if (process.env.NODE_ENV === 'development') {
+        console.warn('API connection failed. Check that your backend server is running.');
+      }
+    }
+
+    // Handle token refresh flow
+    if (
+      error.response &&
+      error.response.status === 401 &&
+      error.config &&
+      !error.config._retry &&
+      typeof window !== 'undefined'
+    ) {
+      error.config._retry = true;
+      
+      try {
+        const refreshToken = localStorage.getItem('refresh_token');
+        
+        if (refreshToken) {
+          localStorage.removeItem('access_token');
+          localStorage.removeItem('refresh_token');
+          window.location.href = '/';
+        }
+        
+        return Promise.reject(sanitizedError);
+      } catch (refreshError) {
+        console.error('Token refresh error:', refreshError);
+        return Promise.reject(sanitizedError);
+      }
+    }
+    
+    // Reject with the original error but log the sanitized version
+    console.error('API error:', sanitizedError);
+    return Promise.reject(error);
+  }
+);
 
 interface ProjectsApiResponse {
   count: number;
@@ -12,58 +130,6 @@ interface ProjectsApiResponse {
   previous: string | null;
   results: any[]; // You can replace 'any' with your project type
 }
-
-// Create an axios instance
-const api = axios.create({
-  baseURL: API_BASE_URL,
-});
-
-// Add request interceptor to include auth token
-api.interceptors.request.use((config) => {
-  // const accessToken = localStorage.getItem('access_token');
-  const accessToken = typeof window !== 'undefined' ? localStorage.getItem('access_token') : null;
-  
-  if (accessToken) {
-    config.headers.Authorization = `Bearer ${accessToken}`;
-  }
-  
-  return config;
-});
-
-// Add response interceptor to handle token refresh
-api.interceptors.response.use(
-  (response) => response,
-  async (error) => {
-    const originalRequest = error.config;
-
-    // If the error is 401 (Unauthorized) and we haven't already tried to refresh
-    if (
-      error.response &&
-      error.response.status === 401 &&
-      !originalRequest._retry
-    ) {
-      originalRequest._retry = true;
-      
-      try {
-        // TODO: Implement token refresh logic if needed
-        const refreshToken = localStorage.getItem('refresh_token');
-        
-        // For now, we'll just clear tokens and redirect to home
-        if (refreshToken) {
-          localStorage.removeItem('access_token');
-          localStorage.removeItem('refresh_token');
-          window.location.href = '/';
-        }
-        
-        return Promise.reject(error);
-      } catch (refreshError) {
-        return Promise.reject(refreshError);
-      }
-    }
-    
-    return Promise.reject(error);
-  }
-);
 
 
 // Projects API

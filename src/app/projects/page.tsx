@@ -41,27 +41,47 @@ export default function ProjectsPage() {
   useEffect(() => {
     const fetchProjects = async () => {
       try {
-        const projectsData = await projectsApi.getAll();
-
-        console.error("Unexpected projectsData:", projectsData);
+        // Start by setting loading state
+        setLoading(true);
         
+        // Fetch the projects data
+        const projectsData = await projectsApi.getAll();
+        
+        // Handle the response data appropriately
         if (projectsData && projectsData.results && Array.isArray(projectsData.results)) {
+          // Standard paginated API response with results property
           setProjects(projectsData.results);
         } else if (Array.isArray(projectsData)) {
+          // Direct array response
           setProjects(projectsData);
         } else {
+          // Log only when there's a genuine data format issue
           console.error("Unexpected API response format:", projectsData);
           setProjects([]);
         }
       } catch (error) {
+        // This will only run if there's an actual error during the fetch
         console.error("Failed to fetch projects:", error);
+        
+        // You might want to set an error state here too
         setProjects([]);
       } finally {
+        // Always set loading to false when done, regardless of outcome
         setLoading(false);
       }
     };
-
-    fetchProjects();
+  
+    // Don't forget to handle component unmounting
+    let isMounted = true;
+    fetchProjects().catch(e => {
+      if (isMounted) {
+        console.error("Unhandled error in fetchProjects:", e);
+      }
+    });
+  
+    return () => {
+      isMounted = false;
+    };
   }, []);
 
   // Determine if the current user can create projects (must be an organization)
