@@ -113,6 +113,77 @@ export default function HomePage() {
           </div>
         </div>
 
+        {/* How It Works Section */}
+      <section className="py-16 bg-gray-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl font-extrabold text-gray-900 text-center mb-12">
+            How It Works
+          </h2>
+          <p className="text-center text-lg text-gray-600 mb-10 max-w-2xl mx-auto">
+            Follow the journey of a Kusaidia project from idea to impact, powered by transparency and blockchain technology.
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+            {/* Step 1: Draft */}
+            <div className="bg-white rounded-lg shadow-md p-6 text-center transform transition hover:scale-105">
+              <div className="w-12 h-12 bg-indigo-600 text-white rounded-full flex items-center justify-center mx-auto mb-4">
+                1
+              </div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-2">Draft</h3>
+              <p className="text-gray-600">
+                An organization creates a project proposal with clear goals and needs.
+              </p>
+            </div>
+
+            {/* Step 2: Pending Review */}
+            <div className="bg-white rounded-lg shadow-md p-6 text-center transform transition hover:scale-105">
+              <div className="w-12 h-12 bg-indigo-600 text-white rounded-full flex items-center justify-center mx-auto mb-4">
+                2
+              </div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-2">Pending Review</h3>
+              <p className="text-gray-600">
+                Admins review the project for legitimacy and feasibility.
+              </p>
+            </div>
+
+            {/* Step 3: Approved */}
+            <div className="bg-white rounded-lg shadow-md p-6 text-center transform transition hover:scale-105">
+              <div className="w-12 h-12 bg-indigo-600 text-white rounded-full flex items-center justify-center mx-auto mb-4">
+                3
+              </div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-2">Approved</h3>
+              <p className="text-gray-600">
+                Project is validated, listed for funding, and added to the blockchain.
+              </p>
+            </div>
+
+            {/* Step 4: Active */}
+            <div className="bg-white rounded-lg shadow-md p-6 text-center transform transition hover:scale-105">
+              <div className="w-12 h-12 bg-indigo-600 text-white rounded-full flex items-center justify-center mx-auto mb-4">
+                4
+              </div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-2">Active</h3>
+              <p className="text-gray-600">
+                Fully funded, the project kicks off with funds sent to vendors.
+              </p>
+            </div>
+
+            {/* Step 5: Completed */}
+            <div className="bg-white rounded-lg shadow-md p-6 text-center transform transition hover:scale-105">
+              <div className="w-12 h-12 bg-indigo-600 text-white rounded-full flex items-center justify-center mx-auto mb-4">
+                5
+              </div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-2">Completed</h3>
+              <p className="text-gray-600">
+                Goals are met, impact is verified, and the project wraps up successfully.
+              </p>
+            </div>
+          </div>
+          <p className="text-center text-sm text-gray-500 mt-8">
+            *Projects may be cancelled if they fail review or funding stages.
+          </p>
+        </div>
+      </section>
+
         {/* Impact Highlights */}
         <div className="py-16 bg-gray-50 overflow-hidden">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

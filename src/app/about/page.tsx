@@ -3,7 +3,12 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { trackVisitor } from "@/utils/analytics";
-import { Carousel } from "react-responsive-carousel";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; 
 import {
   FaArrowRight,
@@ -719,6 +724,178 @@ const milestones = [
   },
 ];
 
+
+const AdminInstructions = () => {
+  return (
+    <div className="py-12 bg-gradient-to-b from-gray-50 to-gray-100">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <Accordion
+          type="single"
+          collapsible
+          className="w-full bg-white shadow-lg rounded-xl overflow-hidden border border-gray-200"
+        >
+          <AccordionItem value="admin-guide">
+            <AccordionTrigger
+              className="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-bold text-lg rounded-t-xl p-6 transition-all duration-300"
+            >
+              <span className="flex items-center">
+                <svg
+                  className="w-6 h-6 mr-2"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M12 6v6m0 0v6m0-6h6m-6 0H6"
+                  />
+                </svg>
+                Kusaidia Admin Guide
+              </span>
+            </AccordionTrigger>
+            <AccordionContent className="p-8 space-y-8 bg-gray-50">
+              {/* Project Verification Process */}
+              <div className="space-y-6">
+                <h3 className="text-2xl font-extrabold text-gray-900 tracking-tight">
+                  Project Verification Process
+                </h3>
+                <div className="space-y-6">
+                  <div className="bg-white p-5 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200">
+                    <h4 className="text-lg font-semibold text-indigo-700">1. Initial Review</h4>
+                    <p className="text-gray-700 mt-2">When a project enters "pending_review" status, carefully examine:</p>
+                    <ul className="list-disc pl-6 mt-3 space-y-2 text-gray-600">
+                      <li>Project description and goals for clarity and feasibility</li>
+                      <li>Organization credentials and history</li>
+                      <li>Location and beneficiary information for accuracy</li>
+                      <li>Contact information for completeness</li>
+                    </ul>
+                  </div>
+                  <div className="bg-white p-5 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200">
+                    <h4 className="text-lg font-semibold text-indigo-700">2. Success Metrics Validation</h4>
+                    <p className="text-gray-700 mt-2">Strong success metrics should be:</p>
+                    <ul className="list-disc pl-6 mt-3 space-y-2 text-gray-600">
+                      <li>Specific and measurable (e.g., "500 students will have access to clean water")</li>
+                      <li>Relevant to the project goals</li>
+                      <li>Achievable within the project scope and timeline</li>
+                      <li>Time-bound with clear deadlines</li>
+                    </ul>
+                    <p className="mt-3 text-amber-700 font-medium italic">Edit vague metrics to be concrete before approval.</p>
+                  </div>
+                  <div className="bg-white p-5 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200">
+                    <h4 className="text-lg font-semibold text-indigo-700">3. Impact Assessment Review</h4>
+                    <p className="text-gray-700 mt-2">Effective impact assessment methods should describe:</p>
+                    <ul className="list-disc pl-6 mt-3 space-y-2 text-gray-600">
+                      <li>Data collection techniques (surveys, interviews, observations)</li>
+                      <li>Frequency of measurement (e.g., baseline, midpoint, completion)</li>
+                      <li>Who will be conducting the assessment</li>
+                      <li>How results will be reported and verified</li>
+                    </ul>
+                  </div>
+                  <div className="bg-white p-5 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200">
+                    <h4 className="text-lg font-semibold text-indigo-700">4. Milestone Evaluation</h4>
+                    <p className="text-gray-700 mt-2">Check that each milestone:</p>
+                    <ul className="list-disc pl-6 mt-3 space-y-2 text-gray-600">
+                      <li>Has a clear deliverable</li>
+                      <li>Includes a reasonable budget allocation</li>
+                      <li>Has a feasible timeline</li>
+                      <li>Together, milestones cover the full project scope</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              {/* Setting Fees */}
+              <div className="space-y-6">
+                <h3 className="text-2xl font-extrabold text-gray-900 tracking-tight">Setting Fees</h3>
+                <div className="space-y-6">
+                  <div className="bg-white p-5 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200">
+                    <h4 className="text-lg font-semibold text-indigo-700">Vetting Fee Guidelines</h4>
+                    <p className="text-gray-700 mt-2">When setting vetting fees, consider:</p>
+                    <ul className="list-disc pl-6 mt-3 space-y-2 text-gray-600">
+                      <li>Project complexity (more complex = more vetting)</li>
+                      <li>Typical range: 1-3% of total project budget</li>
+                      <li>Higher risk projects may warrant higher fees</li>
+                      <li>First-time organizations may need deeper checks</li>
+                    </ul>
+                    <p className="mt-3 text-blue-700 font-medium italic">Higher fees may extend fundraising timelines.</p>
+                  </div>
+                  <div className="bg-white p-5 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200">
+                    <h4 className="text-lg font-semibold text-indigo-700">Insurance Fee Guidelines</h4>
+                    <p className="text-gray-700 mt-2">Apply insurance fees when:</p>
+                    <ul className="list-disc pl-6 mt-3 space-y-2 text-gray-600">
+                      <li>Projects involve construction or infrastructure</li>
+                      <li>Activities have safety risks</li>
+                      <li>Vulnerable populations are involved</li>
+                      <li>Timeline exceeds one year</li>
+                    </ul>
+                    <p className="mt-3 text-gray-700">Typical rates:</p>
+                    <ul className="list-disc pl-6 mt-2 space-y-2 text-gray-600">
+                      <li>Low-risk: 1-2% of budget</li>
+                      <li>Medium-risk: 3-5% of budget</li>
+                      <li>High-risk: 6-10% of budget</li>
+                    </ul>
+                  </div>
+                  <div className="bg-amber-100 p-5 rounded-lg shadow-sm border border-amber-300">
+                    <h4 className="text-lg font-semibold text-amber-800">Important Note on Fee Changes</h4>
+                    <p className="mt-2 text-amber-800">Fee changes impact:</p>
+                    <ul className="list-disc pl-6 mt-3 space-y-2 text-amber-700">
+                      <li>Funding percentage</li>
+                      <li>Status transitions (e.g., delays to "active")</li>
+                      <li>Donor perceptions</li>
+                      <li>Implementation funds vs. admin costs</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              {/* Blockchain Management */}
+              <div className="space-y-6">
+                <h3 className="text-2xl font-extrabold text-gray-900 tracking-tight">Blockchain Management</h3>
+                <div className="space-y-6">
+                  <div className="bg-white p-5 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200">
+                    <h4 className="text-lg font-semibold text-indigo-700">Registration Process</h4>
+                    <p className="text-gray-700 mt-2">Post-approval, projects auto-register on the blockchain:</p>
+                    <ul className="list-disc pl-6 mt-3 space-y-2 text-gray-600">
+                      <li><code className="text-indigo-700 bg-indigo-50 rounded-md px-1 py-0.5">register_project_on_blockchain</code> creates the record</li>
+                      <li><code className="text-indigo-700 bg-indigo-50 rounded-md px-1 py-0.5">blockchain_tx_hash</code> is populated on success</li>
+                      <li><code className="text-indigo-700 bg-indigo-50 rounded-md px-1 py-0.5">contract_address</code> follows after confirmation</li>
+                    </ul>
+                  </div>
+                  <div className="bg-white p-5 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200">
+                    <h4 className="text-lg font-semibold text-indigo-700">Troubleshooting Registration Issues</h4>
+                    <p className="text-gray-700 mt-2">If registration fails:</p>
+                    <ul className="list-disc pl-6 mt-3 space-y-2 text-gray-600">
+                      <li>Verify organization’s <code className="text-indigo-700 bg-indigo-50 rounded-md px-1 py-0.5">wallet_address</code></li>
+                      <li>Check blockchain network connectivity</li>
+                      <li>Ensure contract registry is deployed</li>
+                      <li>Inspect transaction status on the explorer</li>
+                    </ul>
+                    <p className="mt-3 text-blue-700 font-medium italic">Manually trigger via "Register on Blockchain" button.</p>
+                  </div>
+                  <div className="bg-white p-5 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200">
+                    <h4 className="text-lg font-semibold text-indigo-700">Milestone Registration</h4>
+                    <p className="text-gray-700 mt-2">Milestones register post-project setup:</p>
+                    <ul className="list-disc pl-6 mt-3 space-y-2 text-gray-600">
+                      <li>Vendors need valid wallet addresses</li>
+                      <li><code className="text-indigo-700 bg-indigo-50 rounded-md px-1 py-0.5">register_project_milestones</code> handles this</li>
+                      <li>Purchase orders are generated</li>
+                      <li><code className="text-indigo-700 bg-indigo-50 rounded-md px-1 py-0.5">blockchain_tx_hash</code> populates on success</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </AccordionContent>
+          </AccordionItem>
+        </Accordion>
+      </div>
+    </div>
+  );
+};
+
+
 export default function AboutPage() {
   const [loaded, setLoaded] = useState(false);
   const [visitorCount, setVisitorCount] = useState(0);
@@ -931,6 +1108,9 @@ export default function AboutPage() {
             </div>
           </div>
         </div>
+
+        {/* Admin Instructions Section */}
+        <AdminInstructions />
 
         {/* CTA Section */}
         <div className="bg-indigo-700">
