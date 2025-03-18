@@ -1,8 +1,10 @@
 // src/utils/api.ts
 import axios, { AxiosRequestConfig } from 'axios';
+axios.defaults.headers.common['X-Axios-Debug'] = 'false';
 
 // Get the base URL from environment variables
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000/api';
+
 
 interface ProjectsApiResponse {
   count: number;

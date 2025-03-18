@@ -11,550 +11,711 @@ import {
 } from "@/components/ui/accordion";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; 
 import {
-  FaArrowRight,
-  FaArrowLeft,
-  FaChartPie,
-  FaHandshake,
-  FaMoneyBillWave,
-  FaUsers,
-  FaLightbulb,
-  FaRocket,
-  FaLock,
+  FaHandshake, FaUsers, FaGlobe, FaChartLine, FaRegLightbulb, FaRegComments,
+  FaPhone, FaEnvelope, FaMapMarkerAlt, FaUserShield, FaProjectDiagram, FaServer,
+  FaDatabase, FaCheckCircle, FaTimesCircle, FaShieldAlt, FaClock, FaDollarSign,
+  FaRocket, FaMoneyBillWave, FaLightbulb, FaChartPie, FaWater, FaLock, FaStar,
   FaChevronRight,
   FaChevronLeft,
   FaCompressAlt,
-  FaExpandAlt,
-  FaCheckCircle,
-  FaWater,
-  FaChartLine,
-  FaShieldAlt,
-  FaClock,
-  FaDollarSign,
-} from "react-icons/fa"; 
+  FaExpandAlt
+} from 'react-icons/fa'; 
 
-// Define slides data
-const slides = [
-  // Slide 1: Title
-  {
-    title: "KUSAIDIA: Help That Hits Home",
-    content: (
-      <div className="flex flex-col items-center justify-center h-full w-full text-center">
-        <div className="bg-gradient-to-r from-indigo-800 to-indigo-600 p-2 rounded-xl inline-block mb-8 shadow-xl">
-          <h3 className="text-7xl font-black bg-clip-text text-transparent bg-gradient-to-r from-white to-indigo-100 px-8 py-4">
-            KUSAIDIA
-          </h3>
-        </div>
-        <p className="text-3xl font-bold text-gray-800 mb-6 w-full">
-          Direct, Transparent Aid Powered by Blockchain
-        </p>
-        <p className="text-xl font-medium text-gray-700 mb-10">
-          Presented by Maku .P. Mazakpe | March 2025
-        </p>
-        <div className="mt-4 text-indigo-600 animate-bounce">
-          <FaLightbulb size={80} />
-        </div>
-      </div>
-    ),
-    bgColor: "bg-gradient-to-br from-indigo-100 via-white to-indigo-50",
-  },
-  
-  // Slide 2: Problem Statement
-  {
-    title: "The Broken Aid Pipeline",
-    content: (
-      <div className="flex flex-col items-center justify-center h-full w-full text-center">
-        <h3 className="text-5xl font-extrabold text-gray-900 mb-10">Why Aid <span className="text-red-600">Fails</span></h3>
-        <div className="grid grid-cols-1 gap-8 text-xl w-full max-w-3xl mx-auto">
-          <div className="bg-gradient-to-r from-red-500 to-red-600 p-1 rounded-xl shadow-lg">
-            <div className="bg-white p-6 rounded-xl flex items-center">
-              <div className="text-red-600 mr-6">
-                <FaShieldAlt size={40} />
-              </div>
-              <div className="text-left">
-                <span className="text-red-600 font-bold text-2xl block mb-1">Opaque</span>
-                <span className="text-gray-700 text-xl font-medium">Donors can't see where their money goes.</span>
-              </div>
+
+
+  const slides = [
+    // Slide 1: Title
+    {
+      id: 'title',
+      title: 'KUSAIDIA: Help That Hits Home',
+      content: (
+        <div className="flex flex-col items-center justify-center h-full w-full text-center px-4">
+          <div className="mb-8 relative">
+            <div className="absolute inset-0 bg-blue-600 rounded-xl blur-md opacity-30 transform -rotate-3"></div>
+            <div className="relative bg-gradient-to-r from-blue-600 to-blue-800 px-8 py-6 rounded-xl shadow-2xl">
+              <h1 className="text-5xl md:text-6xl font-black text-white tracking-tight">KUSAIDIA</h1>
             </div>
           </div>
-          <div className="bg-gradient-to-r from-red-500 to-red-600 p-1 rounded-xl shadow-lg">
-            <div className="bg-white p-6 rounded-xl flex items-center">
-              <div className="text-red-600 mr-6">
-                <FaClock size={40} />
-              </div>
-              <div className="text-left">
-                <span className="text-red-600 font-bold text-2xl block mb-1">Slow</span>
-                <span className="text-gray-700 text-xl font-medium">Months to reach communities in need.</span>
-              </div>
-            </div>
-          </div>
-          <div className="bg-gradient-to-r from-red-500 to-red-600 p-1 rounded-xl shadow-lg">
-            <div className="bg-white p-6 rounded-xl flex items-center">
-              <div className="text-red-600 mr-6">
-                <FaDollarSign size={40} />
-              </div>
-              <div className="text-left">
-                <span className="text-red-600 font-bold text-2xl block mb-1">Costly</span>
-                <span className="text-gray-700 text-xl font-medium">Up to 30% lost to fees and overhead.</span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="mt-12 text-red-500 animate-pulse">
-          <FaChartPie size={70} />
-        </div>
-      </div>
-    ),
-    bgColor: "bg-white",
-  },
-  
-  // Slide 3: Solution
-  {
-    title: "KUSAIDIA – Direct Impact",
-    content: (
-      <div className="flex flex-col items-center justify-center h-full w-full text-center">
-        <h3 className="text-5xl font-extrabold text-indigo-600 mb-10">Our Solution</h3>
-        <div className="flex flex-col md:flex-row items-stretch justify-center gap-8 w-full max-w-4xl mx-auto">
-          <div className="bg-white p-8 rounded-xl shadow-lg flex-1 border-l-8 border-indigo-600">
-            <h4 className="text-2xl font-bold text-indigo-800 mb-6">How We Do It</h4>
-            <div className="text-xl text-gray-700 flex flex-col space-y-6">
-              <div className="flex items-center">
-                <span className="w-4 h-4 bg-indigo-600 rounded-full mr-4"></span>
-                <p className="font-bold">Blockchain Tracking</p>
-              </div>
-              <div className="flex items-center">
-                <span className="w-4 h-4 bg-indigo-600 rounded-full mr-4"></span>
-                <p className="font-bold">No Middlemen</p>
-              </div>
-              <div className="flex items-center">
-                <span className="w-4 h-4 bg-indigo-600 rounded-full mr-4"></span>
-                <p className="font-bold">Fast Delivery</p>
-              </div>
-            </div>
-          </div>
-          <div className="bg-gradient-to-br from-indigo-500 to-indigo-700 p-8 rounded-xl shadow-lg flex-1 flex flex-col items-center justify-center text-white">
-            <div className="text-white mb-6 relative">
-              <FaWater size={70} />
-              <div className="absolute -right-4 -top-4 bg-green-500 rounded-full p-2">
-                <FaCheckCircle size={24} />
-              </div>
-            </div>
-            <p className="text-4xl font-bold mb-4">
-              $50
-            </p>
-            <p className="text-xl">
-              delivers water in days—verified & tracked
-            </p>
-          </div>
-        </div>
-        <div className="mt-12 text-indigo-600">
-          <FaRocket size={70} className="animate-pulse" />
-        </div>
-      </div>
-    ),
-    bgColor: "bg-gradient-to-br from-indigo-50 to-white",
-  },
-  
-  // Slide 4: Market Opportunity
-  {
-    title: "A $300B Opportunity",
-    content: (
-      <div className="flex flex-col items-center justify-center h-full w-full text-center">
-        <h3 className="text-5xl font-extrabold text-gray-900 mb-10">The <span className="text-indigo-600">Market</span></h3>
-        <div className="flex flex-col md:flex-row items-center justify-center gap-12 w-full max-w-4xl mx-auto">
-          <div className="bg-white p-8 rounded-xl shadow-lg flex-1">
-            <div className="text-2xl font-bold text-gray-700 flex flex-col space-y-8">
-              <p className="flex items-center justify-between">
-                <span className="flex items-center">
-                  <span className="inline-block w-5 h-5 bg-indigo-600 rounded-full mr-4"></span>
-                  Africa Aid:
-                </span>
-                <span className="text-indigo-600 text-3xl">$50B</span>
-              </p>
-              <p className="flex items-center justify-between">
-                <span className="flex items-center">
-                  <span className="inline-block w-5 h-5 bg-indigo-600 rounded-full mr-4"></span>
-                  Want Transparency:
-                </span>
-                <span className="text-indigo-600 text-3xl">70%</span>
-              </p>
-              <p className="flex items-center justify-between">
-                <span className="flex items-center">
-                  <span className="inline-block w-5 h-5 bg-indigo-600 rounded-full mr-4"></span>
-                  Total Market:
-                </span>
-                <span className="text-indigo-600 text-3xl">$300B</span>
-              </p>
-            </div>
-          </div>
-          <div className="relative w-64 h-64">
-            <svg viewBox="0 0 36 36" className="w-full h-full drop-shadow-xl">
-              {/* Background circle */}
-              <circle cx="18" cy="18" r="15.9155" fill="#EBF4FF" />
-              
-              {/* Light track */}
-              <path
-                d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
-                fill="none"
-                stroke="#E0E7FF"
-                strokeWidth="2"
-              />
-              
-              {/* Percentage arc - 70% */}
-              <path
-                d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
-                fill="none"
-                stroke="#4F46E5"
-                strokeWidth="4"
-                strokeDasharray="100"
-                strokeDashoffset="30"
-                strokeLinecap="round"
-                transform="rotate(-90 18 18)"
-              />
-              
-              {/* Add inner shadow */}
-              <circle cx="18" cy="18" r="12" fill="#FFFFFF" />
-            </svg>
-            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center">
-              <p className="text-indigo-600 font-black text-5xl">70%</p>
-              <p className="text-lg font-bold text-indigo-800">Want Better Aid</p>
-            </div>
-          </div>
-        </div>
-        <p className="text-gray-700 mt-10 bg-indigo-50 px-8 py-3 rounded-full shadow-md inline-block text-xl font-bold border-2 border-indigo-100">
-          Targeting small donors + NGOs
-        </p>
-      </div>
-    ),
-    bgColor: "bg-white",
-  },
-  
-  // Slide 5: Competitor Analysis
-  {
-    title: "We're Different",
-    content: (
-      <div className="flex flex-col items-center justify-center h-full w-full text-center">
-        <h3 className="text-5xl font-extrabold text-indigo-600 mb-10">
-          Standing Out
-        </h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 w-full max-w-4xl mx-auto">
-          <div className="bg-white p-8 rounded-xl shadow-lg border-t-8 border-gray-400">
-            <p className="font-bold text-2xl text-gray-800 mb-6 pb-2 border-b-2 border-gray-200">OTHERS:</p>
-            <div className="text-xl text-gray-600 flex flex-col space-y-6">
-              <p className="flex items-center">
-                <span className="w-3 h-3 bg-red-500 rounded-full mr-3"></span>
-                <span className="font-semibold text-red-500">Slow</span>
-                <span className="ml-2">(UNICEF)</span>
-              </p>
-              <p className="flex items-center">
-                <span className="w-3 h-3 bg-red-500 rounded-full mr-3"></span>
-                <span className="font-semibold text-red-500">Expensive</span>
-                <span className="ml-2">(GoFundMe)</span>
-              </p>
-              <p className="flex items-center">
-                <span className="w-3 h-3 bg-red-500 rounded-full mr-3"></span>
-                <span className="font-semibold text-red-500">Complex</span>
-                <span className="ml-2">(Crypto)</span>
-              </p>
-            </div>
-          </div>
-          <div className="bg-indigo-600 p-8 rounded-xl shadow-lg text-white border-t-8 border-indigo-800">
-            <p className="font-bold text-2xl mb-6 pb-2 border-b-2 border-indigo-300">KUSAIDIA:</p>
-            <div className="text-xl flex flex-col space-y-6">
-              <p className="flex items-center">
-                <span className="w-3 h-3 bg-white rounded-full mr-3"></span>
-                <span className="font-bold">Fast</span>
-                <span className="ml-2 text-indigo-200">(Days, not months)</span>
-              </p>
-              <p className="flex items-center">
-                <span className="w-3 h-3 bg-white rounded-full mr-3"></span>
-                <span className="font-bold">Low-cost</span>
-                <span className="ml-2 text-indigo-200">(2-5% fee)</span>
-              </p>
-              <p className="flex items-center">
-                <span className="w-3 h-3 bg-white rounded-full mr-3"></span>
-                <span className="font-bold">Simple</span>
-                <span className="ml-2 text-indigo-200">(User-friendly)</span>
-              </p>
-            </div>
-          </div>
-        </div>
-        <div className="mt-10 text-indigo-600">
-          <FaUsers size={70} />
-        </div>
-      </div>
-    ),
-    bgColor: "bg-gradient-to-br from-indigo-50 to-white",
-  },
-  
-  // Slide 6: Business Model
-  {
-    title: "How We Work & Win",
-    content: (
-      <div className="flex flex-col items-center justify-center h-full w-full text-center">
-        <h3 className="text-5xl font-extrabold text-gray-900 mb-10">Our Model</h3>
-        <div className="flex flex-col md:flex-row items-center justify-center gap-10 w-full max-w-4xl mx-auto">
-          <div className="bg-gradient-to-br from-indigo-500 to-indigo-700 p-8 rounded-xl shadow-lg flex-1 text-white">
-            <h4 className="text-2xl font-bold mb-6 pb-2 border-b border-indigo-300">Revenue Streams</h4>
-            <div className="text-xl flex flex-col space-y-6">
-              <p className="flex items-center">
-                <span className="inline-block mr-4 text-indigo-200">
-                  <FaChartLine size={24} />
-                </span>
-                <span className="font-bold">2-5% platform fee</span>
-              </p>
-              <p className="flex items-center">
-                <span className="inline-block mr-4 text-indigo-200">
-                  <FaChartPie size={24} />
-                </span>
-                <span className="font-bold">Premium analytics</span>
-              </p>
-              <p className="flex items-center">
-                <span className="inline-block mr-4 text-indigo-200">
-                  <FaUsers size={24} />
-                </span>
-                <span className="font-bold">Enterprise solutions</span>
-              </p>
-            </div>
-          </div>
-          <div className="flex-1 flex flex-col items-center gap-6">
-            <div className="bg-white w-48 h-48 rounded-full flex items-center justify-center shadow-xl overflow-hidden border-8 border-indigo-100">
-              <img
-                src="/api/placeholder/180/180"
-                alt="Vendor delivering aid"
-                className="w-full h-full object-cover"
-              />
-            </div>
-            <p className="text-2xl font-bold text-indigo-600 bg-white px-6 py-3 rounded-full shadow-md border-2 border-indigo-100">
-              Lean + Transparent
-            </p>
-          </div>
-        </div>
-        <div className="mt-8 text-indigo-600">
-          <FaMoneyBillWave size={60} />
-        </div>
-      </div>
-    ),
-    bgColor: "bg-white",
-  },
-  
-  // Slide 7: Traction & Roadmap
-  {
-    title: "From Vision to Victory",
-    content: (
-      <div className="flex flex-col items-center justify-center h-full w-full text-center">
-        <h3 className="text-5xl font-extrabold text-indigo-600 mb-10">Our Path</h3>
-        <div className="mb-10 flex justify-center">
-          <p className="text-2xl font-bold text-gray-700 bg-white px-6 py-3 rounded-full shadow-md border-2 border-indigo-200">
-            Traction: <span className="text-indigo-600">20+</span> interviews with NGOs & donors
+          <p className="text-2xl md:text-3xl font-bold text-gray-800 mb-6">
+            Direct, Transparent Aid Powered by Blockchain
+          </p>
+          <p className="text-lg md:text-xl font-medium text-gray-600 mb-10">
+            Presented by Maku P. Mazakpe | March 2025
           </p>
         </div>
-        <div className="w-full max-w-4xl mx-auto bg-white rounded-xl shadow-lg p-8">
-          <div className="flex flex-col sm:flex-row justify-between relative">
-            {/* Connection line */}
-            <div className="absolute top-1/2 left-0 right-0 h-1 bg-indigo-200 -translate-y-1/2 hidden sm:block"></div>
-            
-            {/* Timeline points */}
-            <div className="flex flex-col items-center mb-6 sm:mb-0 relative z-10">
-              <div className="w-12 h-12 bg-indigo-100 rounded-full flex items-center justify-center mb-3 border-4 border-white">
-                <span className="text-indigo-600 font-bold">1-2</span>
+      ),
+      bgColor: "bg-gradient-to-br from-blue-50 via-white to-blue-50",
+    },
+
+    // Slide 2: Problem Statement
+    {
+      id: 'problem',
+      title: 'The Broken Aid Pipeline',
+      content: (
+        <div className="flex flex-col items-center justify-center h-full w-full text-center px-4">
+          <h3 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-10">
+            Why Aid <span className="text-red-600">Fails</span>
+          </h3>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-4xl mx-auto">
+            {[
+              { title: 'Opaque', desc: '30% of aid lost to inefficiencies & corruption', icon: <FaShieldAlt size={50} /> },
+              { title: 'Slow', desc: '9-12 months delay in resource allocation', icon: <FaClock size={50} /> },
+              { title: 'Misallocated', desc: '60% of projects misallocated', icon: <FaDollarSign size={50} /> }
+            ].map((item, idx) => (
+              <div key={idx} className="bg-white rounded-xl shadow-lg overflow-hidden transform transition hover:scale-105">
+                <div className="bg-red-600 h-2 w-full"></div>
+                <div className="p-6">
+                  <div className="flex justify-center mb-4 text-red-600">{item.icon}</div>
+                  <h4 className="text-xl md:text-2xl font-bold text-gray-800 mb-2">{item.title}</h4>
+                  <p className="text-gray-600 text-sm md:text-base">{item.desc}</p>
+                </div>
               </div>
-              <p className="text-xl font-bold text-gray-700">Research</p>
+            ))}
+          </div>
+          <div className="mt-8 text-sm text-gray-500">Source: OECD</div>
+          <div className="mt-6">
+            <img src="/api/placeholder/500/200" alt="Aid distribution chart" className="rounded-lg shadow-md" />
+          </div>
+        </div>
+      ),
+      bgColor: "bg-white",
+    },
+
+    // Slide 3: Solution
+    {
+      id: 'solution',
+      title: 'KUSAIDIA – Direct Impact',
+      content: (
+        <div className="flex flex-col items-center justify-center h-full w-full text-center px-4">
+          <h3 className="text-4xl md:text-5xl font-extrabold text-blue-600 mb-10">Our Solution</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-5xl mx-auto">
+            <div className="bg-white p-6 md:p-8 rounded-xl shadow-lg">
+              <h4 className="text-xl md:text-2xl font-bold text-gray-800 mb-6">How It Works</h4>
+              <div className="space-y-6">
+                {[
+                  { title: 'Smart Contract Automation', desc: 'Eliminates intermediaries & corruption' },
+                  { title: 'Real-time Tracking', desc: 'Full transparency & accountability' },
+                  { title: 'Direct-to-vendor Model', desc: 'Fast, cost-effective, secure distribution' }
+                ].map((item, idx) => (
+                  <div key={idx} className="flex items-start">
+                    <div className="flex-shrink-0 bg-blue-100 rounded-full p-3 mr-4">
+                      <FaCheckCircle size={24} className="text-blue-600" />
+                    </div>
+                    <div className="text-left">
+                      <p className="font-bold text-gray-800 text-lg">{item.title}</p>
+                      <p className="text-gray-600 text-sm md:text-base">{item.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
-            
-            <div className="flex flex-col items-center mb-6 sm:mb-0 relative z-10">
-              <div className="w-12 h-12 bg-indigo-100 rounded-full flex items-center justify-center mb-3 border-4 border-white">
-                <span className="text-indigo-600 font-bold">3-4</span>
+            <div className="relative flex flex-col items-center justify-center">
+              <div className="w-full relative mb-8">
+                <img src="/api/placeholder/400/300" alt="Direct impact" className="rounded-xl shadow-lg mx-auto" />
+                <div className="absolute -bottom-4 -right-4 bg-blue-600 text-white p-4 rounded-lg shadow-md">
+                  <p className="font-bold text-lg md:text-xl">Days not months</p>
+                </div>
               </div>
-              <p className="text-xl font-bold text-gray-700">MVP</p>
-            </div>
-            
-            <div className="flex flex-col items-center mb-6 sm:mb-0 relative z-10">
-              <div className="w-12 h-12 bg-indigo-600 rounded-full flex items-center justify-center mb-3 border-4 border-white">
-                <span className="text-white font-bold">5-6</span>
+              <div className="bg-gradient-to-br from-blue-600 to-blue-800 p-6 rounded-xl shadow-xl text-white text-center w-full max-w-xs">
+                <FaWater size={40} className="mb-3 mx-auto" />
+                <p className="text-3xl md:text-4xl font-bold mb-2">$50</p>
+                <p className="text-lg md:text-xl">delivers water in days—verified & tracked</p>
               </div>
-              <p className="text-xl font-bold text-indigo-600">Test</p>
-              <div className="absolute -bottom-4 left-1/2 transform -translate-x-1/2">
-                <div className="w-3 h-3 bg-indigo-600 rotate-45"></div>
-              </div>
-            </div>
-            
-            <div className="flex flex-col items-center mb-6 sm:mb-0 relative z-10">
-              <div className="w-12 h-12 bg-indigo-100 rounded-full flex items-center justify-center mb-3 border-4 border-white">
-                <span className="text-indigo-600 font-bold">7</span>
-              </div>
-              <p className="text-xl font-bold text-gray-700">Partners</p>
-            </div>
-            
-            <div className="flex flex-col items-center relative z-10">
-              <div className="w-12 h-12 bg-indigo-100 rounded-full flex items-center justify-center mb-3 border-4 border-white">
-                <span className="text-indigo-600 font-bold">8</span>
-              </div>
-              <p className="text-xl font-bold text-gray-700">Launch</p>
             </div>
           </div>
         </div>
-        <div className="mt-10 text-indigo-600">
-          <FaRocket size={60} />
-        </div>
-      </div>
-    ),
-    bgColor: "bg-gradient-to-br from-indigo-50 to-white",
-  },
-  
-  // Slide 8: Team
-  {
-    title: "The Minds Behind It",
-    content: (
-      <div className="flex flex-col items-center justify-center h-full w-full text-center">
-        <h3 className="text-5xl font-extrabold text-gray-900 mb-10">Our Team</h3>
-        <div className="grid grid-cols-1 gap-6 w-full max-w-2xl mx-auto">
-          <div className="bg-white p-6 rounded-xl shadow-lg flex items-center gap-6">
-            <div className="w-20 h-20 bg-indigo-600 rounded-full flex items-center justify-center text-white flex-shrink-0">
-              <FaUsers size={36} />
-            </div>
-            <div className="text-left">
-              <p className="text-2xl font-bold text-gray-800">Maku .P. Mazakpe</p>
-              <p className="text-xl text-indigo-600">Founder, StartUp Software Engineer</p>
-            </div>
-          </div>
-          <div className="bg-white p-6 rounded-xl shadow-lg flex items-center gap-6">
-            <div className="w-20 h-20 bg-indigo-600 rounded-full flex items-center justify-center text-white flex-shrink-0">
-              <FaRocket size={36} />
-            </div>
-            <div className="text-left">
-              <p className="text-2xl font-bold text-gray-800">Ceeka</p>
-              <p className="text-xl text-indigo-600">Tech Lead</p>
-            </div>
-          </div>
-          <div className="bg-white p-6 rounded-xl shadow-lg flex items-center gap-6">
-            <div className="w-20 h-20 bg-indigo-600 rounded-full flex items-center justify-center text-white flex-shrink-0">
-              <FaHandshake size={36} />
-            </div>
-            <div className="text-left">
-              <p className="text-2xl font-bold text-gray-800">[Team Member 2]</p>
-              <p className="text-xl text-indigo-600">Partnerships</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    ),
-    bgColor: "bg-white",
-  },
-  
-  // Slide 9: Financials & Funding Ask
-  {
-    title: "The Numbers",
-    content: (
-      <div className="flex flex-col items-center justify-center h-full w-full text-center">
-        <h3 className="text-5xl font-extrabold text-indigo-600 mb-10">Funding</h3>
-        <div className="flex flex-col md:flex-row items-center justify-center gap-12 w-full max-w-4xl mx-auto">
-          <div className="bg-white p-8 rounded-xl shadow-lg flex-1">
-            <div className="text-2xl text-gray-700 flex flex-col space-y-6">
-              <div className="flex justify-between items-center p-3 border-b border-gray-200">
-                <span className="font-bold">MVP Development:</span>
-                <span className="text-indigo-600 font-black text-3xl">$50K</span>
+      ),
+      bgColor: "bg-gradient-to-br from-blue-50 to-white",
+    },
+
+    // Slide 4: Market Opportunity
+    {
+      id: 'market',
+      title: 'A $300B Opportunity',
+      content: (
+        <div className="flex flex-col items-center justify-center h-full w-full text-center px-4">
+          <h3 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-10">
+            The <span className="text-blue-600">Market</span>
+          </h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 w-full max-w-5xl mx-auto">
+            <div className="bg-white p-6 md:p-8 rounded-xl shadow-lg">
+              <div className="space-y-6">
+                {[
+                  { label: 'Africa Aid Volume', value: '$50B', icon: <FaChartLine /> },
+                  { label: 'Global Aid Market', value: '$300B', icon: <FaChartPie /> },
+                  { label: 'Transparency Demand', value: '70%', icon: <FaUsers /> }
+                ].map((item, idx) => (
+                  <div key={idx} className="flex items-center justify-between">
+                    <span className="text-lg md:text-xl font-bold text-gray-800">{item.label}</span>
+                    <div className="text-blue-600 text-2xl md:text-3xl font-bold flex items-center">
+                      <span>{item.value}</span>
+                      <span className="ml-2">{item.icon}</span>
+                    </div>
+                  </div>
+                ))}
               </div>
-              <div className="flex justify-between items-center p-3 border-b border-gray-200">
-                <span className="font-bold">Operations:</span>
-                <span className="text-indigo-600 font-black text-3xl">$100K</span>
+            </div>
+            <div className="flex flex-col items-center justify-center">
+              <div className="relative w-56 md:w-64 h-56 md:h-64 mb-8">
+                <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-xl">
+                  <circle cx="50" cy="50" r="45" fill="#EBF4FF" />
+                  <circle cx="50" cy="50" r="40" fill="none" stroke="#E0E7FF" strokeWidth="10" />
+                  <circle cx="50" cy="50" r="40" fill="none" stroke="#3B82F6" strokeWidth="10" strokeDasharray="251" strokeDashoffset="75" transform="rotate(-90 50 50)" />
+                  <circle cx="50" cy="50" r="30" fill="#FFFFFF" />
+                </svg>
+                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center w-full">
+                  <p className="text-blue-600 font-black text-4xl md:text-5xl">70%</p>
+                  <p className="text-lg font-bold text-blue-800">Want Better Aid</p>
+                </div>
               </div>
-              <div className="flex justify-between items-center p-5 mt-2 bg-indigo-50 rounded-xl">
-                <span className="font-bold text-gray-800 text-2xl">Total Ask:</span>
-                <div className="text-right">
-                  <span className="text-indigo-600 font-black text-4xl block">$150K</span>
-                  <span className="text-indigo-600 font-bold">(10% equity)</span>
+              <div className="bg-blue-100 px-6 py-4 rounded-xl shadow-md border-2 border-blue-200">
+                <p className="text-lg md:text-xl font-bold text-gray-800">Targeting small donors + NGOs</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      ),
+      bgColor: "bg-white",
+    },
+
+    // Slide 5: Competitor Analysis
+    {
+      id: 'competition',
+      title: "We're Different",
+      content: (
+        <div className="flex flex-col items-center justify-center h-full w-full text-center px-4">
+          <h3 className="text-4xl md:text-5xl font-extrabold text-blue-600 mb-10">Standing Out</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-4xl mx-auto">
+            <div className="bg-white p-6 md:p-8 rounded-xl shadow-lg relative overflow-hidden">
+              <div className="absolute top-0 left-0 w-full h-2 bg-gray-400"></div>
+              <h4 className="font-bold text-xl md:text-2xl text-gray-800 mb-6 pb-2 border-b-2 border-gray-200">OTHERS:</h4>
+              <div className="space-y-6">
+                {[
+                  { title: 'Slow', desc: 'UNICEF: Months of bureaucracy', icon: <FaClock /> },
+                  { title: 'Expensive', desc: 'GoFundMe: High processing fees', icon: <FaDollarSign /> },
+                  { title: 'Complex', desc: 'Crypto: Technical barriers', icon: <FaShieldAlt /> }
+                ].map((item, idx) => (
+                  <div key={idx} className="flex items-center">
+                    <div className="w-10 h-10 bg-red-100 rounded-full flex items-center justify-center mr-4">
+                      <span className="text-red-500">{item.icon}</span>
+                    </div>
+                    <div className="text-left">
+                      <p className="font-semibold text-red-500 text-lg">{item.title}</p>
+                      <p className="text-gray-600 text-sm md:text-base">{item.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="bg-blue-600 p-6 md:p-8 rounded-xl shadow-lg text-white relative overflow-hidden">
+              <div className="absolute top-0 left-0 w-full h-2 bg-blue-800"></div>
+              <h4 className="font-bold text-xl md:text-2xl mb-6 pb-2 border-b-2 border-blue-300">KUSAIDIA:</h4>
+              <div className="space-y-6">
+                {[
+                  { title: 'Fast', desc: 'Days, not months', icon: <FaRocket /> },
+                  { title: 'Low-cost', desc: 'Only 2-5% platform fee', icon: <FaMoneyBillWave /> },
+                  { title: 'Simple', desc: 'User-friendly interface', icon: <FaLightbulb /> }
+                ].map((item, idx) => (
+                  <div key={idx} className="flex items-center">
+                    <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center mr-4">
+                      <span className="text-blue-600">{item.icon}</span>
+                    </div>
+                    <div className="text-left">
+                      <p className="font-bold text-lg">{item.title}</p>
+                      <p className="text-blue-100 text-sm md:text-base">{item.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+          <div className="mt-8">
+            <img src="/api/placeholder/600/150" alt="Competitive landscape" className="rounded-lg shadow-md" />
+          </div>
+        </div>
+      ),
+      bgColor: "bg-gradient-to-br from-blue-50 to-white",
+    },
+
+    // Slide 6: Business Model
+    {
+      id: 'business-model',
+      title: "How We Work & Win",
+      content: (
+        <div className="flex flex-col items-center justify-center h-full w-full text-center px-4">
+          <h3 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-10">Our Business Model</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 w-full max-w-4xl mx-auto">
+            <div className="bg-gradient-to-br from-blue-600 to-blue-700 p-6 md:p-8 rounded-xl shadow-lg text-white">
+              <h4 className="text-xl md:text-2xl font-bold mb-6 pb-2 border-b border-blue-300">Revenue Streams</h4>
+              <div className="space-y-6 text-left">
+                {[
+                  { title: '2-5% platform fee', desc: 'Sustainable revenue from transactions', icon: <FaChartLine /> },
+                  { title: 'Premium analytics', desc: 'For partner organizations', icon: <FaChartPie /> },
+                  { title: 'Enterprise solutions', desc: 'For larger NGOs & governments', icon: <FaUsers /> }
+                ].map((item, idx) => (
+                  <div key={idx} className="flex items-center">
+                    <div className="bg-white/20 p-3 rounded-full mr-4">
+                      <span className="text-white">{item.icon}</span>
+                    </div>
+                    <div>
+                      <p className="font-bold text-lg md:text-xl">{item.title}</p>
+                      <p className="text-blue-100 text-sm md:text-base">{item.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="flex flex-col justify-center">
+              <div className="relative mb-8">
+                <div className="absolute inset-0 bg-blue-200 rounded-full blur-sm"></div>
+                <div className="relative flex items-center justify-center w-56 h-56 mx-auto rounded-full border-8 border-white shadow-xl overflow-hidden">
+                  <img src="/api/placeholder/200/200" alt="Vendor delivering aid" className="w-full h-full object-cover" />
+                </div>
+              </div>
+              <div className="flex flex-col space-y-4">
+                <div className="bg-blue-100 px-6 py-4 rounded-full shadow-md border-2 border-blue-200 mx-auto">
+                  <div className="flex items-center">
+                    <FaLock className="text-blue-600 mr-2" />
+                    <p className="text-lg md:text-xl font-bold text-gray-800">Lean + Transparent</p>
+                  </div>
+                </div>
+                <div className="bg-white px-6 py-4 rounded-xl shadow-md mx-auto">
+                  <p className="text-blue-600 font-bold text-sm md:text-base">Unlike traditional NGOs, we're tech-first</p>
                 </div>
               </div>
             </div>
           </div>
-          <div className="relative w-48 h-48">
-            <svg viewBox="0 0 36 36" className="w-full h-full drop-shadow-xl">
-              {/* Background circle */}
-              <circle cx="18" cy="18" r="16" fill="#EBF4FF" />
-              
-              {/* First segment - 33% */}
-              <path
-                d="M18 2 A 16 16 0 0 1 33.8 21.2 L 18 18 Z"
-                fill="#4F46E5"
-              />
-              
-              {/* Second segment - 67% */}
-              <path
-                d="M18 2 A 16 16 0 0 0 33.8 21.2 L 18 18 Z"
-                fill="#A5B4FC"
-                transform="rotate(180 18 18)"
-              />
-              
-              {/* Inner circle for donut effect */}
-              <circle cx="18" cy="18" r="8" fill="white" />
-              
-              {/* Center text container */}
-              <circle cx="18" cy="18" r="7.5" fill="white" stroke="#4F46E5" strokeWidth="0.5" />
-            </svg>
-            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center w-full">
-              <p className="text-indigo-600 font-black text-2xl">$150K</p>
-              <p className="text-sm font-bold text-indigo-800">Investment</p>
-            </div>
-          </div>
         </div>
-        <div className="mt-10 bg-indigo-600 text-white px-8 py-4 rounded-xl shadow-lg inline-block">
-          <div className="flex items-center gap-4">
-            <FaMoneyBillWave size={40} />
-            <p className="text-2xl font-bold">Strategic seed round to scale impact</p>
-          </div>
-        </div>
-      </div>
-    ),
-    bgColor: "bg-gradient-to-br from-indigo-50 to-white",
-  },
-  
-  // Slide 10: Closing
-  {
-    title: "Let's Build Change",
-    content: (
-      <div className="flex flex-col items-center justify-center h-full w-full text-center">
-        <h3 className="text-6xl font-black text-indigo-600 mb-8">Join Us</h3>
-        <div className="bg-white p-8 rounded-xl shadow-xl max-w-2xl mx-auto mb-8 border-8 border-indigo-50">
-          <p className="text-3xl font-bold text-gray-700 mb-6">
-            Real Help, Real Time, Real Trust
-          </p>
-          <div className="flex flex-col md:flex-row items-center justify-center gap-6 text-xl text-gray-600">
-            <p className="font-medium flex items-center">
-              <span className="w-3 h-3 bg-indigo-600 rounded-full mr-2"></span>
-              <span>[Your Email]</span>
-            </p>
-            <p className="font-medium flex items-center">
-              <span className="w-3 h-3 bg-indigo-600 rounded-full mr-2"></span>
-              <span>@kusaidiaafrica</span>
-            </p>
-          </div>
-        </div>
-        <div className="relative">
-          <div className="absolute -top-6 -left-6">
-            <div className="text-indigo-200">
-              <FaHandshake size={50} />
-            </div>
-          </div>
-          <div className="text-indigo-600 animate-pulse">
-            <FaHandshake size={80} />
-          </div>
-          <div className="absolute -bottom-6 -right-6">
-            <div className="text-indigo-200">
-              <FaHandshake size={50} />
-            </div>
-          </div>
-        </div>
-      </div>
-    ),
-    bgColor: "bg-gradient-to-br from-white to-indigo-50",
-  },
-];
+      ),
+      bgColor: "bg-white",
+    },
 
+    // Slide 7: Traction & Roadmap
+    {
+      id: 'roadmap',
+      title: "From Vision to Victory",
+      content: (
+        <div className="flex flex-col items-center justify-center h-full w-full text-center px-4">
+          <h3 className="text-4xl md:text-5xl font-extrabold text-blue-600 mb-10">Our Path Forward</h3>
+          <div className="mb-8">
+            <div className="bg-white px-6 md:px-8 py-4 rounded-xl shadow-lg inline-block">
+              <div className="flex items-center">
+                <FaUsers className="text-blue-600 mr-3" size={24} />
+                <p className="text-xl md:text-2xl font-bold text-gray-700">
+                  Traction: <span className="text-blue-600">20+</span> interviews with NGOs & donors
+                </p>
+              </div>
+            </div>
+          </div>
+          <div className="w-full max-w-4xl mx-auto bg-white rounded-xl shadow-lg p-6 md:p-8 mb-8">
+            <div className="relative">
+              <div className="absolute top-24 left-0 right-0 h-1 bg-gray-200 hidden md:block"></div>
+              <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
+                {[
+                  { num: 1, title: 'Research', desc: 'Market validation', active: false },
+                  { num: 2, title: 'MVP', desc: 'Core functionality', active: false },
+                  { num: 3, title: 'Testing', desc: 'Initial pilot projects', active: true },
+                  { num: 4, title: 'Partners', desc: 'NGO partnerships', active: false },
+                  { num: 5, title: 'Launch', desc: 'Full market release', active: false }
+                ].map((item, idx) => (
+                  <div key={idx} className="flex flex-col items-center relative">
+                    <div className={`w-16 h-16 ${item.active ? 'bg-blue-600' : 'bg-blue-100'} rounded-full flex items-center justify-center mb-4 border-4 border-white shadow-md z-10`}>
+                      <span className={item.active ? 'text-white' : 'text-blue-600'}>{item.num}</span>
+                    </div>
+                    <div className={`${item.active ? 'bg-blue-600 text-white' : 'bg-blue-50 text-gray-800'} p-4 rounded-lg shadow-sm w-full`}>
+                      <p className="font-bold">{item.title}</p>
+                      <p className={`${item.active ? 'text-blue-100' : 'text-gray-600'} text-sm`}>{item.desc}</p>
+                    </div>
+                    {item.active && <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-4 h-4 bg-blue-600 rotate-45 hidden md:block"></div>}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+          <div className="flex justify-center">
+            <img src="/api/placeholder/500/150" alt="Growth projection" className="rounded-lg shadow-md" />
+          </div>
+        </div>
+      ),
+      bgColor: "bg-gradient-to-br from-blue-50 to-white",
+    },
+
+    // Slide 8: How It Works
+    {
+      id: 'how-it-works',
+      title: "How It Works",
+      content: (
+        <div className="flex flex-col items-center justify-center h-full w-full text-center px-4">
+          <h3 className="text-4xl md:text-5xl font-extrabold text-blue-600 mb-10">The Process</h3>
+          <div className="w-full max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-6">
+            <div className="flex-1 relative">
+              <img src="/api/placeholder/400/300" alt="Blockchain aid distribution" className="rounded-xl shadow-lg mx-auto" />
+            </div>
+            <div className="flex-1">
+              <div className="space-y-6">
+                {[
+                  { step: 1, title: 'Donor funds a project', desc: 'Select a specific project to support' },
+                  { step: 2, title: 'Smart contract generates a purchase order', desc: 'Automatically prepared for local vendors' },
+                  { step: 3, title: 'Verified vendor delivers resources', desc: 'Local vendors provide supplies or services' },
+                  { step: 4, title: 'Payment released upon delivery verification', desc: 'Funds automatically released with proof of delivery' }
+                ].map((item, idx) => (
+                  <div key={idx} className="bg-white p-5 rounded-xl shadow-md flex items-start">
+                    <div className="bg-blue-600 text-white rounded-full w-10 h-10 flex items-center justify-center flex-shrink-0 mr-4">
+                      {item.step}
+                    </div>
+                    <div className="text-left">
+                      <h4 className="font-bold text-lg text-gray-800">{item.title}</h4>
+                      <p className="text-gray-600 text-sm md:text-base">{item.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      ),
+      bgColor: "bg-white",
+    },
+
+    // Slide 9: Tech Stack
+    {
+      id: 'tech-stack',
+      title: "Our Technology",
+      content: (
+        <div className="flex flex-col items-center justify-center h-full w-full text-center px-4">
+          <h3 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-10">Tech Stack</h3>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-5xl mx-auto">
+            {[
+              { title: 'Frontend', icon: <FaLightbulb />, items: [
+                { name: 'React.js', desc: 'Sleek & user-friendly' },
+                { name: 'Responsive Design', desc: 'Mobile & desktop optimized' }
+              ]},
+              { title: 'Backend', icon: <FaShieldAlt />, items: [
+                { name: 'Django', desc: 'Robust API & contract interactions' },
+                { name: 'PostgreSQL', desc: 'Scalable & efficient database' },
+                { name: 'Docker', desc: 'Seamless deployment' }
+              ]},
+              { title: 'Blockchain', icon: <FaLock />, items: [
+                { name: 'Celo', desc: 'Secure & low-cost transactions' },
+                { name: 'Smart Contracts', desc: 'Automated, secure payments' }
+              ]}
+            ].map((section, idx) => (
+              <div key={idx} className="bg-white p-6 rounded-xl shadow-lg">
+                <div className="bg-blue-100 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <span className="text-blue-600">{section.icon}</span>
+                </div>
+                <h4 className="text-xl md:text-2xl font-bold text-gray-800 mb-4">{section.title}</h4>
+                <div className="space-y-3">
+                  {section.items.map((item, i) => (
+                    <div key={i} className="bg-blue-50 px-4 py-2 rounded-lg">
+                      <p className="font-medium text-gray-700">{item.name}</p>
+                      <p className="text-sm text-gray-500">{item.desc}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="mt-10">
+            <img src="/api/placeholder/700/150" alt="System architecture diagram" className="rounded-lg shadow-lg" />
+          </div>
+        </div>
+      ),
+      bgColor: "bg-gradient-to-br from-blue-50 to-white",
+    },
+
+    // Slide 10: Team
+    {
+      id: 'team',
+      title: "The Minds Behind It",
+      content: (
+        <div className="flex flex-col items-center justify-center h-full w-full text-center px-4">
+          <h3 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-10">Our Team</h3>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-5xl mx-auto">
+            {[
+              { name: 'Maku P. Mazakpe', role: 'Founder, Software Engineer', icon: <FaRocket /> },
+              { name: 'Ceeka', role: 'Tech Lead', icon: <FaLightbulb /> },
+              { name: '[Team Member]', role: 'Partnerships', icon: <FaHandshake /> }
+            ].map((member, idx) => (
+              <div key={idx} className="bg-white rounded-xl shadow-lg overflow-hidden group transform transition hover:scale-105">
+                <div className="h-48 overflow-hidden">
+                  <img src="/api/placeholder/300/200" alt={member.name} className="w-full h-full object-cover transition group-hover:scale-110" />
+                </div>
+                <div className="p-6">
+                  <h4 className="text-xl md:text-2xl font-bold text-gray-800">{member.name}</h4>
+                  <p className="text-blue-600 font-semibold mb-4 text-sm md:text-base">{member.role}</p>
+                  <div className="flex justify-center">
+                    <div className="bg-blue-100 p-3 rounded-full">
+                      <span className="text-blue-600">{member.icon}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="mt-12">
+            <h4 className="text-2xl md:text-3xl font-bold text-blue-600 mb-8">Supporting Team</h4>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 w-full max-w-5xl mx-auto">
+              {[
+                { name: 'Sarah Kamau', role: 'UX Designer', icons: [<FaRegLightbulb />, <FaUsers />] },
+                { name: 'Michael Omondi', role: 'Backend Developer', icons: [<FaServer />, <FaDatabase />] },
+                { name: 'Lucy Njeri', role: 'Community Manager', icons: [<FaRegComments />, <FaGlobe />] },
+                { name: 'David Mwangi', role: 'Blockchain Expert', icons: [<FaUserShield />, <FaProjectDiagram />] }
+              ].map((member, idx) => (
+                <div key={idx} className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition">
+                  <div className="w-20 h-20 rounded-full overflow-hidden mb-4">
+                    <img src="/api/placeholder/80/80" alt={member.name} className="w-full h-full object-cover" />
+                  </div>
+                  <h4 className="text-lg font-bold text-gray-800">{member.name}</h4>
+                  <p className="text-blue-600 text-sm">{member.role}</p>
+                  <div className="mt-3 flex space-x-2">
+                    {member.icons.map((icon, i) => (
+                      <div key={i} className="bg-blue-100 p-2 rounded-full">
+                        <span className="text-blue-600">{icon}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      ),
+      bgColor: "bg-white",
+    },
+
+    // Slide 11: Competitive Analysis
+    {
+      id: 'competitive-analysis',
+      title: "Competitive Landscape",
+      content: (
+        <div className="flex flex-col items-center justify-center h-full w-full text-center px-4">
+          <h3 className="text-4xl md:text-5xl font-extrabold text-blue-600 mb-10">Competitive Landscape</h3>
+          <div className="w-full max-w-6xl mx-auto overflow-x-auto">
+            <table className="min-w-full bg-white rounded-xl shadow-lg overflow-hidden">
+              <thead>
+                <tr className="bg-blue-600 text-white text-left">
+                  <th className="py-4 px-6">Features</th>
+                  <th className="py-4 px-6">KUSAIDIA</th>
+                  <th className="py-4 px-6">Traditional NGOs</th>
+                  <th className="py-4 px-6">GoFundMe</th>
+                  <th className="py-4 px-6">Crypto Solutions</th>
+                </tr>
+              </thead>
+              <tbody>
+                {[
+                  { feature: 'Transparency', kusaidia: 'Full blockchain tracking', ngo: 'Limited reporting', gofundme: 'Basic', crypto: 'Full but complex' },
+                  { feature: 'Speed of Delivery', kusaidia: '1-3 days', ngo: 'Months', gofundme: '1-2 weeks', crypto: 'Minutes (but limited)' },
+                  { feature: 'Fees', kusaidia: '2-5%', ngo: '20-30%', gofundme: '7.9% + $0.30', crypto: 'Variable gas fees' },
+                  { feature: 'Ease of Use', kusaidia: 'Simple interface', ngo: 'Straightforward', gofundme: 'User-friendly', crypto: 'Technical barriers' },
+                  { feature: 'Impact Verification', kusaidia: 'Real-time verification', ngo: 'Annual reports only', gofundme: 'Self-reported', crypto: 'On-chain but complex' }
+                ].map((row, idx) => (
+                  <tr key={idx} className={`border-b border-gray-200 ${idx % 2 === 0 ? '' : 'bg-gray-50'}`}>
+                    <td className="py-4 px-6 font-medium">{row.feature}</td>
+                    <td className="py-4 px-6"><div className="flex items-center"><FaCheckCircle className="text-green-500 mr-2" /><span>{row.kusaidia}</span></div></td>
+                    <td className="py-4 px-6"><div className="flex items-center">{row.ngo.includes('Limited') || row.ngo.includes('Months') ? <FaTimesCircle className="text-red-500 mr-2" /> : <FaCheckCircle className="text-green-500 mr-2" />}<span>{row.ngo}</span></div></td>
+                    <td className="py-4 px-6"><div className="flex items-center">{row.gofundme.includes('Basic') || row.gofundme.includes('weeks') ? <FaCheckCircle className="text-green-500 mr-2" /> : <FaTimesCircle className="text-red-500 mr-2" />}<span>{row.gofundme}</span></div></td>
+                    <td className="py-4 px-6"><div className="flex items-center">{row.crypto.includes('complex') || row.crypto.includes('barriers') ? <FaTimesCircle className="text-red-500 mr-2" /> : <FaCheckCircle className="text-green-500 mr-2" />}<span>{row.crypto}</span></div></td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      ),
+      bgColor: "bg-gradient-to-br from-blue-50 to-white",
+    },
+
+    // Slide 12: Case Study
+    {
+      id: 'case-study',
+      title: "Case Study: Water Project",
+      content: (
+        <div className="flex flex-col items-center justify-center h-full w-full text-center px-4">
+          <h3 className="text-4xl md:text-5xl font-extrabold text-blue-600 mb-10">Case Study: Water Project</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 w-full max-w-6xl mx-auto">
+            <div className="bg-white rounded-xl shadow-lg overflow-hidden">
+              <div className="h-48 relative overflow-hidden">
+                <img src="/api/placeholder/500/250" alt="Traditional Aid" className="w-full h-full object-cover" />
+                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-red-600 to-transparent p-4">
+                  <p className="text-white font-bold text-xl">Traditional Approach</p>
+                </div>
+              </div>
+              <div className="p-6">
+                <div className="space-y-4">
+                  {[
+                    { title: '9 months delivery time', desc: 'From donation to water access' },
+                    { title: '27% overhead costs', desc: 'Lost to administrative expenses' },
+                    { title: 'No transparency', desc: 'Donors receive only general updates' },
+                    { title: 'Risk of misappropriation', desc: 'Multiple intermediaries handling funds' }
+                  ].map((item, idx) => (
+                    <div key={idx} className="flex items-start">
+                      <div className="bg-red-100 p-2 rounded-full mr-3 mt-1">
+                        <FaTimesCircle className="text-red-600" size={16} />
+                      </div>
+                      <div>
+                        <p className="font-bold text-gray-800">{item.title}</p>
+                        <p className="text-gray-600 text-sm">{item.desc}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                <div className="mt-6 pt-4 border-t border-gray-200">
+                  <div className="flex items-center justify-between">
+                    <p className="font-bold text-gray-800">Effective Impact:</p>
+                    <p className="text-red-600 font-bold text-xl">$73 per person</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="bg-white rounded-xl shadow-lg overflow-hidden">
+              <div className="h-48 relative overflow-hidden">
+                <img src="/api/placeholder/500/250" alt="KUSAIDIA Approach" className="w-full h-full object-cover" />
+                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-blue-600 to-transparent p-4">
+                  <p className="text-white font-bold text-xl">KUSAIDIA Approach</p>
+                </div>
+              </div>
+              <div className="p-6">
+                <div className="space-y-4">
+                  {[
+                    { title: '3 days delivery time', desc: 'From donation to water access' },
+                    { title: 'Only 5% platform fee', desc: '95% reaches the community' },
+                    { title: 'Full transparency', desc: 'Real-time tracking on blockchain' },
+                    { title: 'Direct vendor payments', desc: 'No intermediary handling of funds' }
+                  ].map((item, idx) => (
+                    <div key={idx} className="flex items-start">
+                      <div className="bg-blue-100 p-2 rounded-full mr-3 mt-1">
+                        <FaCheckCircle className="text-blue-600" size={16} />
+                      </div>
+                      <div>
+                        <p className="font-bold text-gray-800">{item.title}</p>
+                        <p className="text-gray-600 text-sm">{item.desc}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                <div className="mt-6 pt-4 border-t border-gray-200">
+                  <div className="flex items-center justify-between">
+                    <p className="font-bold text-gray-800">Effective Impact:</p>
+                    <p className="text-blue-600 font-bold text-xl">$47 per person</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="mt-8 bg-blue-50 p-6 rounded-xl shadow-md w-full max-w-4xl">
+            <div className="flex items-center">
+              <div className="bg-blue-600 text-white p-3 rounded-full mr-4">
+                <FaChartLine size={24} />
+              </div>
+              <div>
+                <h4 className="text-xl font-bold text-gray-800">Results Comparison</h4>
+                <p className="text-gray-600">KUSAIDIA delivers 35% more impact per dollar with 97% faster delivery</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      ),
+      bgColor: "bg-white",
+    },
+
+    // Slide 13: Contact
+    {
+      id: 'contact',
+      title: "Get In Touch",
+      content: (
+        <div className="flex flex-col items-center justify-center h-full w-full text-center px-4">
+          <h3 className="text-4xl md:text-5xl font-extrabold text-blue-600 mb-10">Get In Touch</h3>
+          <div className="w-full max-w-6xl mx-auto bg-white rounded-xl shadow-lg overflow-hidden">
+            <div className="grid grid-cols-1 md:grid-cols-2">
+              <div className="p-8 bg-blue-600 text-white">
+                <h4 className="text-xl md:text-2xl font-bold mb-6">Contact Information</h4>
+                <div className="space-y-6">
+                  {[
+                    { icon: <FaMapMarkerAlt />, title: 'Location', details: ['Nairobi, Kenya', 'Kilimani Business Center, 3rd Floor'] },
+                    { icon: <FaPhone />, title: 'Phone', details: ['+254 700 000 000'] },
+                    { icon: <FaEnvelope />, title: 'Email', details: ['contact@kusaidia.africa'] }
+                  ].map((item, idx) => (
+                    <div key={idx} className="flex items-start">
+                      <div className="p-2 rounded-full bg-blue-500 mr-4">
+                        <span>{item.icon}</span>
+                      </div>
+                      <div>
+                        <p className="font-bold">{item.title}</p>
+                        {item.details.map((detail, i) => <p key={i}>{detail}</p>)}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                <div className="mt-12">
+                  <h5 className="font-bold text-xl mb-4">Follow Us</h5>
+                  <div className="flex space-x-4">
+                    {['X', 'Li', 'Fb', 'Ig'].map((social, idx) => (
+                      <div key={idx} className="w-10 h-10 rounded-full bg-blue-500 flex items-center justify-center hover:bg-blue-700 transition">
+                        <span className="font-bold">{social}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+              <div className="p-8">
+                <h4 className="text-xl md:text-2xl font-bold text-gray-800 mb-6">Send a Message</h4>
+                <div className="space-y-4">
+                  {[
+                    { label: 'Your Name', type: 'text', placeholder: 'John Doe' },
+                    { label: 'Your Email', type: 'email', placeholder: 'john@example.com' },
+                    { label: 'Subject', type: 'text', placeholder: 'Partnerships Inquiry' }
+                  ].map((field, idx) => (
+                    <div key={idx}>
+                      <label className="block text-gray-700 mb-2">{field.label}</label>
+                      <input
+                        type={field.type}
+                        className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        placeholder={field.placeholder}
+                      />
+                    </div>
+                  ))}
+                  <div>
+                    <label className="block text-gray-700 mb-2">Message</label>
+                    <textarea
+                      className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 h-32"
+                      placeholder="Your message here..."
+                    ></textarea>
+                  </div>
+                  <div className="pt-4">
+                    <button className="bg-blue-600 text-white px-6 py-2 rounded-lg font-bold hover:bg-blue-700 transition">
+                      Send Message
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      ),
+      bgColor: "bg-gradient-to-br from-blue-50 to-white",
+    }
+  ];
+
+  // return (
+  //   <div>
+  //     {slides.map((slide) => (
+  //       <section key={slide.id} className={`${slide.bgColor} min-h-screen flex items-center justify-center py-12`}>
+  //         <div className="w-full max-w-7xl mx-auto">
+  //           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 text-center mb-8">{slide.title}</h2>
+  //           {slide.content}
+  //         </div>
+  //       </section>
+  //     ))}
+  //   </div>
+  // );
+
+
+// PitchDeck Component (unchanged, abbreviated for brevity)
 const PitchDeck = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isFullScreen, setIsFullScreen] = useState(false);
 
-  // Arrow key navigation
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "ArrowRight" && currentSlide < slides.length - 1) {
@@ -565,116 +726,47 @@ const PitchDeck = () => {
         setIsFullScreen(false);
       }
     };
-    
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [currentSlide, isFullScreen]);
 
-  // Toggle fullscreen
   const toggleFullScreen = () => {
     setIsFullScreen(!isFullScreen);
   };
 
   return (
-    <div className={`transition-all duration-300 ease-in-out ${
-      isFullScreen ? "fixed inset-0 z-50 bg-gray-900 flex items-center justify-center" : "py-16 bg-gray-50"
-    }`}>
-      <div className={`relative mx-auto px-4 sm:px-6 transition-all duration-300 ${
-        isFullScreen ? "w-full h-full max-w-none p-8" : "max-w-4xl lg:px-8"
-      }`}>
-        {/* Header with title and fullscreen toggle */}
+    <div className={`transition-all duration-300 ease-in-out ${isFullScreen ? "fixed inset-0 z-50 bg-gray-900 flex items-center justify-center" : "py-16 bg-gray-50"}`}>
+      <div className={`relative mx-auto px-4 sm:px-6 transition-all duration-300 ${isFullScreen ? "w-full h-full max-w-none p-8" : "max-w-4xl lg:px-8"}`}>
         <div className="flex justify-between items-center mb-8">
-          <h2 className={`font-extrabold text-indigo-600 ${
-            isFullScreen ? "text-4xl" : "text-3xl"
-          }`}>
-            KUSAIDIA Pitch Deck
-          </h2>
-          <button
-            onClick={toggleFullScreen}
-            className="p-2 bg-indigo-100 text-indigo-600 rounded-full hover:bg-indigo-200 transition-colors"
-            aria-label={isFullScreen ? "Exit fullscreen" : "Enter fullscreen"}
-          >
+          <h2 className={`font-extrabold text-indigo-600 ${isFullScreen ? "text-4xl" : "text-3xl"}`}>KUSAIDIA Pitch Deck</h2>
+          <button onClick={toggleFullScreen} className="p-2 bg-indigo-100 text-indigo-600 rounded-full hover:bg-indigo-200 transition-colors">
             {isFullScreen ? <FaCompressAlt size={20} /> : <FaExpandAlt size={20} />}
           </button>
         </div>
-
-        {/* Progress bar */}
         <div className="h-1 bg-gray-200 rounded-full mb-6">
-          <div 
-            className="h-1 bg-indigo-600 rounded-full transition-all duration-300 ease-out"
-            style={{ width: `${((currentSlide + 1) / slides.length) * 100}%` }}
-          ></div>
+          <div className="h-1 bg-indigo-600 rounded-full transition-all duration-300 ease-out" style={{ width: `${((currentSlide + 1) / slides.length) * 100}%` }}></div>
         </div>
-
         <div className="relative">
-          {/* Current slide number */}
-          {/* <div className="absolute -top-8 right-0 text-sm text-gray-500 font-medium">
-            {currentSlide + 1} / {slides.length}
-          </div> */}
-
-          {/* Slide Content */}
-          <div
-            className={`rounded-xl shadow-xl overflow-hidden transition-all duration-500 flex flex-col ${
-              isFullScreen ? "h-[calc(100vh-200px)]" : "h-[500px]"
-            } ${slides[currentSlide].bgColor}`}
-          >
-            <div className="p-6 md:p-10 flex-grow overflow-auto">
-              {slides[currentSlide].content}
-            </div>
+          <div className={`rounded-xl shadow-xl overflow-hidden transition-all duration-500 flex flex-col ${isFullScreen ? "h-[calc(100vh-200px)]" : "h-[500px]"} ${slides[currentSlide].bgColor}`}>
+            <div className="p-6 md:p-10 flex-grow overflow-auto">{slides[currentSlide].content}</div>
           </div>
-
-          {/* Navigation Arrows */}
           <div className="absolute top-1/2 left-0 right-0 transform -translate-y-1/2 flex justify-between pointer-events-none px-4">
-            <button
-              onClick={() => currentSlide > 0 && setCurrentSlide((prev) => prev - 1)}
-              className={`p-3 rounded-full shadow-lg pointer-events-auto transition-all ${
-                currentSlide > 0 
-                  ? "bg-white text-indigo-600 opacity-80 hover:opacity-100 hover:bg-indigo-50" 
-                  : "opacity-0 cursor-default"
-              }`}
-              disabled={currentSlide === 0}
-              aria-label="Previous slide"
-            >
+            <button onClick={() => currentSlide > 0 && setCurrentSlide((prev) => prev - 1)} className={`p-3 rounded-full shadow-lg pointer-events-auto transition-all ${currentSlide > 0 ? "bg-white text-indigo-600 opacity-80 hover:opacity-100 hover:bg-indigo-50" : "opacity-0 cursor-default"}`}>
               <FaChevronLeft size={24} />
             </button>
-            <button
-              onClick={() => currentSlide < slides.length - 1 && setCurrentSlide((prev) => prev + 1)}
-              className={`p-3 rounded-full shadow-lg pointer-events-auto transition-all ${
-                currentSlide < slides.length - 1 
-                  ? "bg-white text-indigo-600 opacity-80 hover:opacity-100 hover:bg-indigo-50" 
-                  : "opacity-0 cursor-default"
-              }`}
-              disabled={currentSlide === slides.length - 1}
-              aria-label="Next slide"
-            >
+            <button onClick={() => currentSlide < slides.length - 1 && setCurrentSlide((prev) => prev + 1)} className={`p-3 rounded-full shadow-lg pointer-events-auto transition-all ${currentSlide < slides.length - 1 ? "bg-white text-indigo-600 opacity-80 hover:opacity-100 hover:bg-indigo-50" : "opacity-0 cursor-default"}`}>
               <FaChevronRight size={24} />
             </button>
           </div>
-
-          {/* Dots Navigation */}
           <div className="flex justify-center mt-6 space-x-2 flex-wrap">
             {slides.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => setCurrentSlide(index)}
-                className={`w-2 h-2 rounded-full transition-all ${
-                  index === currentSlide 
-                    ? "bg-indigo-600 w-4" 
-                    : "bg-gray-300 hover:bg-indigo-400"
-                }`}
-                aria-label={`Go to slide ${index + 1}`}
-                aria-current={index === currentSlide ? "true" : "false"}
-              />
+              <button key={index} onClick={() => setCurrentSlide(index)} className={`w-2 h-2 rounded-full transition-all ${index === currentSlide ? "bg-indigo-600 w-4" : "bg-gray-300 hover:bg-indigo-400"}`}></button>
             ))}
           </div>
         </div>
-
-        {/* Slide title */}
         <div className="mt-6 text-center">
           <h3 className="text-xl font-semibold text-gray-700">{slides[currentSlide].title}</h3>
         </div>
-
-        {/* Fullscreen instructions */}
         {isFullScreen && (
           <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 text-gray-400 text-sm">
             Press <kbd className="px-2 py-1 bg-gray-100 rounded text-gray-700">Esc</kbd> to exit fullscreen

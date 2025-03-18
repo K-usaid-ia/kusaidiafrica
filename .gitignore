@@ -39,3 +39,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Ensure sensitive env files are not committed
+.env.local
+.env.*.local
