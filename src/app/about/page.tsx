@@ -545,7 +545,6 @@ const slides = [
   },
 ];
 
-
 const PitchDeck = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isFullScreen, setIsFullScreen] = useState(false);
@@ -604,9 +603,9 @@ const PitchDeck = () => {
 
         <div className="relative">
           {/* Current slide number */}
-          <div className="absolute -top-8 right-0 text-sm text-gray-500 font-medium">
+          {/* <div className="absolute -top-8 right-0 text-sm text-gray-500 font-medium">
             {currentSlide + 1} / {slides.length}
-          </div>
+          </div> */}
 
           {/* Slide Content */}
           <div
@@ -783,212 +782,6 @@ export default function AboutPage() {
 
         {/* Pitch Deck */}
         <PitchDeck />
-
-        {/* Pitch Deck */}
-        <div className="py-16 bg-white">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-3xl font-extrabold text-gray-900 text-center mb-8">
-              KUSAIDIA Pitch Deck
-            </h2>
-            <Carousel
-              showArrows={true}
-              showThumbs={false}
-              infiniteLoop={true}
-              autoPlay={false}
-              showStatus={false}
-              renderArrowPrev={(onClickHandler, hasPrev, label) =>
-                hasPrev && (
-                  <button
-                    type="button"
-                    onClick={onClickHandler}
-                    title={label}
-                    className="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 bg-indigo-600 text-white p-2 rounded-full hover:bg-indigo-700"
-                  >
-                    <FaArrowLeft size={24} />
-                  </button>
-                )
-              }
-              renderArrowNext={(onClickHandler, hasNext, label) =>
-                hasNext && (
-                  <button
-                    type="button"
-                    onClick={onClickHandler}
-                    title={label}
-                    className="absolute right-0 top-1/2 transform -translate-y-1/2 z-10 bg-indigo-600 text-white p-2 rounded-full hover:bg-indigo-700"
-                  >
-                    <FaArrowRight size={24} />
-                  </button>
-                )
-              }
-              className="relative"
-            >
-              {/* Slide 1: Title */}
-              <div className="bg-indigo-50 p-8 rounded-lg shadow-lg h-96 flex flex-col items-center justify-center text-center">
-                <h3 className="text-4xl font-bold text-indigo-600 mb-4">
-                  KUSAIDIA: Help That Hits Home
-                </h3>
-                <p className="text-xl text-gray-700 mb-4">
-                  Direct, Transparent Aid Delivery Powered by Blockchain
-                </p>
-                <p className="text-lg text-gray-500">
-                  Presented by [Your Name/Team] | March 2025
-                </p>
-                <FaLightbulb className="text-indigo-600 mt-4" size={40} />
-              </div>
-
-              {/* Slide 2: Problem Statement */}
-              <div className="bg-white p-8 rounded-lg shadow-lg h-96 flex flex-col items-center justify-center text-center">
-                <h3 className="text-3xl font-bold text-gray-900 mb-4">
-                  The Broken Aid Pipeline
-                </h3>
-                <ul className="text-lg text-gray-600 space-y-2">
-                  <li>
-                    <span className="text-red-500">Opaque Systems:</span> Donors
-                    can’t track funds.
-                  </li>
-                  <li>
-                    <span className="text-red-500">Middlemen Delays:</span>{" "}
-                    Months to reach communities.
-                  </li>
-                  <li>
-                    <span className="text-red-500">High Costs:</span> 30% lost
-                    to fees.
-                  </li>
-                </ul>
-                <FaChartPie className="text-red-500 mt-6" size={40} />
-              </div>
-
-              {/* Slide 3: Solution */}
-              <div className="bg-indigo-50 p-8 rounded-lg shadow-lg h-96 flex flex-col items-center justify-center text-center">
-                <h3 className="text-3xl font-bold text-indigo-600 mb-4">
-                  KUSAIDIA – Direct Impact
-                </h3>
-                <ul className="text-lg text-gray-700 space-y-2">
-                  <li>Blockchain: Every dollar tracked.</li>
-                  <li>No Middlemen: Straight to vendors.</li>
-                  <li>Fast: Days, not months.</li>
-                </ul>
-                <p className="text-gray-500 mt-4">
-                  $50 funds water—delivered, tracked, done.
-                </p>
-                <FaRocket className="text-indigo-600 mt-4" size={40} />
-              </div>
-
-              {/* Slide 4: Market Opportunity */}
-              <div className="bg-white p-8 rounded-lg shadow-lg h-96 flex flex-col items-center justify-center text-center">
-                <h3 className="text-3xl font-bold text-gray-900 mb-4">
-                  A $300B Opportunity
-                </h3>
-                <p className="text-lg text-gray-600">
-                  $50B to Africa yearly, billions wasted.
-                </p>
-                <p className="text-lg text-gray-600 mt-2">
-                  70% of donors demand transparency.
-                </p>
-                <p className="text-gray-500 mt-4">
-                  Target: Small donors + NGOs.
-                </p>
-                <FaChartPie className="text-indigo-600 mt-4" size={40} />
-              </div>
-
-              {/* Slide 5: Competitor Analysis */}
-              <div className="bg-indigo-50 p-8 rounded-lg shadow-lg h-96 flex flex-col items-center justify-center text-center">
-                <h3 className="text-3xl font-bold text-indigo-600 mb-4">
-                  We’re Different
-                </h3>
-                <ul className="text-lg text-gray-700 space-y-2">
-                  <li>UNICEF: Slow, opaque.</li>
-                  <li>GoFundMe: No aid focus, high fees.</li>
-                  <li>Blockchain Startups: Too complex.</li>
-                </ul>
-                <p className="text-gray-500 mt-4">
-                  KUSAIDIA: Simple, direct, trusted.
-                </p>
-                <FaUsers className="text-indigo-600 mt-4" size={40} />
-              </div>
-
-              {/* Slide 6: Business Model */}
-              <div className="bg-white p-8 rounded-lg shadow-lg h-96 flex flex-col items-center justify-center text-center">
-                <h3 className="text-3xl font-bold text-gray-900 mb-4">
-                  How We Work & Win
-                </h3>
-                <p className="text-lg text-gray-600">
-                  Revenue: 2-5% fee + premium analytics.
-                </p>
-                <p className="text-lg text-gray-600 mt-2">
-                  Lean platform + blockchain transparency.
-                </p>
-                <FaMoneyBillWave className="text-indigo-600 mt-6" size={40} />
-              </div>
-
-              {/* Slide 7: Traction & Roadmap */}
-              <div className="bg-indigo-50 p-8 rounded-lg shadow-lg h-96 flex flex-col items-center justify-center text-center">
-                <h3 className="text-3xl font-bold text-indigo-600 mb-4">
-                  From Vision to Victory
-                </h3>
-                <p className="text-lg text-gray-700">
-                  Traction: 20+ interviews done.
-                </p>
-                <ul className="text-sm text-gray-600 mt-2 space-y-1">
-                  <li>M1-2: Research market.</li>
-                  <li>M3-4: Build MVP.</li>
-                  <li>M5-6: Test, iterate.</li>
-                  <li>M7: Secure partners.</li>
-                  <li>M8: Launch small.</li>
-                </ul>
-                <FaRocket className="text-indigo-600 mt-4" size={40} />
-              </div>
-
-              {/* Slide 8: Team */}
-              <div className="bg-white p-8 rounded-lg shadow-lg h-96 flex flex-col items-center justify-center text-center">
-                <h3 className="text-3xl font-bold text-gray-900 mb-4">
-                  The Minds Behind It
-                </h3>
-                <ul className="text-lg text-gray-600 space-y-2">
-                  <li>[Your Name]: Founder, Blockchain Expert.</li>
-                  <li>[Team Member 1]: Tech Lead.</li>
-                  <li>[Team Member 2]: Partnerships.</li>
-                </ul>
-                <FaUsers className="text-indigo-600 mt-6" size={40} />
-              </div>
-
-              {/* Slide 9: Financials & Funding Ask */}
-              <div className="bg-indigo-50 p-8 rounded-lg shadow-lg h-96 flex flex-col items-center justify-center text-center">
-                <h3 className="text-3xl font-bold text-indigo-600 mb-4">
-                  The Numbers
-                </h3>
-                <p className="text-lg text-gray-700">
-                  MVP: $50K | Yr 1 Ops: $100K.
-                </p>
-                <p className="text-lg text-gray-700 mt-2">
-                  Revenue Yr 1: $20K.
-                </p>
-                <p className="text-gray-500 mt-4">Ask: $150K for 10% equity.</p>
-                <FaMoneyBillWave className="text-indigo-600 mt-4" size={40} />
-              </div>
-
-              {/* Slide 10: Closing */}
-              <div className="bg-white p-8 rounded-lg shadow-lg h-96 flex flex-col items-center justify-center text-center">
-                <h3 className="text-3xl font-bold text-gray-900 mb-4">
-                  Let’s Build Change
-                </h3>
-                <p className="text-lg text-gray-600">
-                  Real help, real time, real trust.
-                </p>
-                <p className="text-lg text-gray-600 mt-2">
-                  [Your Email] | @KUSAIDIA
-                </p>
-                <Link
-                  href="/projects"
-                  className="mt-4 text-indigo-600 hover:underline"
-                >
-                  Get Involved
-                </Link>
-                <FaHandshake className="text-indigo-600 mt-4" size={40} />
-              </div>
-            </Carousel>
-          </div>
-        </div>
 
         {/* Mission Section */}
         <div className="py-16 bg-white">
