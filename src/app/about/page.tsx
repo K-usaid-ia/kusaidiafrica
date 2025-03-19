@@ -9,681 +9,1153 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import "react-responsive-carousel/lib/styles/carousel.min.css"; 
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 import {
-  FaHandshake, FaUsers, FaGlobe, FaChartLine, FaRegLightbulb, FaRegComments,
-  FaPhone, FaEnvelope, FaMapMarkerAlt, FaUserShield, FaProjectDiagram, FaServer,
-  FaDatabase, FaCheckCircle, FaTimesCircle, FaShieldAlt, FaClock, FaDollarSign,
-  FaRocket, FaMoneyBillWave, FaLightbulb, FaChartPie, FaWater, FaLock, FaStar,
+  FaHandshake,
+  FaUsers,
+  FaGlobe,
+  FaChartLine,
+  FaRegLightbulb,
+  FaRegComments,
+  FaPhone,
+  FaEnvelope,
+  FaMapMarkerAlt,
+  FaUserShield,
+  FaProjectDiagram,
+  FaServer,
+  FaDatabase,
+  FaCheckCircle,
+  FaTimesCircle,
+  FaShieldAlt,
+  FaClock,
+  FaDollarSign,
+  FaRocket,
+  FaMoneyBillWave,
+  FaLightbulb,
+  FaChartPie,
+  FaWater,
+  FaLock,
+  FaStar,
   FaChevronRight,
   FaChevronLeft,
   FaCompressAlt,
-  FaExpandAlt
-} from 'react-icons/fa'; 
+  FaExpandAlt,
+  FaLeaf,
+  FaUserPlus,
+  FaTruck,
+  FaBuilding,
+  FaAd,
+  FaChartArea,
+  FaInstagram,
+  FaFacebook,
+  FaLinkedin,
+  FaTwitter,
+  FaShareAlt,
+  FaPaperPlane,
+  FaInfoCircle,
+} from "react-icons/fa";
 
-
-
-  const slides = [
-    // Slide 1: Title
-    {
-      id: 'title',
-      title: 'KUSAIDIA: Help That Hits Home',
-      content: (
-        <div className="flex flex-col items-center justify-center h-full w-full text-center px-4">
-          <div className="mb-8 relative">
-            <div className="absolute inset-0 bg-blue-600 rounded-xl blur-md opacity-30 transform -rotate-3"></div>
-            <div className="relative bg-gradient-to-r from-blue-600 to-blue-800 px-8 py-6 rounded-xl shadow-2xl">
-              <h1 className="text-5xl md:text-6xl font-black text-white tracking-tight">KUSAIDIA</h1>
-            </div>
-          </div>
-          <p className="text-2xl md:text-3xl font-bold text-gray-800 mb-6">
-            Direct, Transparent Aid Powered by Blockchain
-          </p>
-          <p className="text-lg md:text-xl font-medium text-gray-600 mb-10">
-            Presented by Maku P. Mazakpe | March 2025
-          </p>
-        </div>
-      ),
-      bgColor: "bg-gradient-to-br from-blue-50 via-white to-blue-50",
-    },
-
-    // Slide 2: Problem Statement
-    {
-      id: 'problem',
-      title: 'The Broken Aid Pipeline',
-      content: (
-        <div className="flex flex-col items-center justify-center h-full w-full text-center px-4">
-          <h3 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-10">
-            Why Aid <span className="text-red-600">Fails</span>
-          </h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-4xl mx-auto">
-            {[
-              { title: 'Opaque', desc: '30% of aid lost to inefficiencies & corruption', icon: <FaShieldAlt size={50} /> },
-              { title: 'Slow', desc: '9-12 months delay in resource allocation', icon: <FaClock size={50} /> },
-              { title: 'Misallocated', desc: '60% of projects misallocated', icon: <FaDollarSign size={50} /> }
-            ].map((item, idx) => (
-              <div key={idx} className="bg-white rounded-xl shadow-lg overflow-hidden transform transition hover:scale-105">
-                <div className="bg-red-600 h-2 w-full"></div>
-                <div className="p-6">
-                  <div className="flex justify-center mb-4 text-red-600">{item.icon}</div>
-                  <h4 className="text-xl md:text-2xl font-bold text-gray-800 mb-2">{item.title}</h4>
-                  <p className="text-gray-600 text-sm md:text-base">{item.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-          <div className="mt-8 text-sm text-gray-500">Source: OECD</div>
-          <div className="mt-6">
-            <img src="/api/placeholder/500/200" alt="Aid distribution chart" className="rounded-lg shadow-md" />
+const slides = [
+  // Slide 1: Title
+  {
+    id: "title",
+    title: "KUSAIDIA: Help That Hits Home",
+    content: (
+      <div className="flex flex-col items-center justify-center h-full w-full text-center px-4">
+        <div className="mb-8 relative">
+          <div className="absolute inset-0 bg-blue-600 rounded-xl blur-md opacity-30 transform -rotate-3"></div>
+          <div className="relative bg-gradient-to-r from-blue-600 to-blue-800 px-8 py-6 rounded-xl shadow-2xl">
+            <h1 className="text-5xl md:text-6xl font-black text-white tracking-tight">
+              KUSAIDIA
+            </h1>
           </div>
         </div>
-      ),
-      bgColor: "bg-white",
-    },
+        <p className="text-2xl md:text-3xl font-bold text-gray-800 mb-6">
+          Direct, Transparent Aid Powered by Blockchain
+        </p>
+        <p className="text-lg md:text-xl font-medium text-gray-600 mb-10">
+          Presented by Maku P. Mazakpe | March 2025
+        </p>
+      </div>
+    ),
+    bgColor: "bg-gradient-to-br from-blue-50 via-white to-blue-50",
+  },
 
-    // Slide 3: Solution
-    {
-      id: 'solution',
-      title: 'KUSAIDIA – Direct Impact',
-      content: (
-        <div className="flex flex-col items-center justify-center h-full w-full text-center px-4">
-          <h3 className="text-4xl md:text-5xl font-extrabold text-blue-600 mb-10">Our Solution</h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-5xl mx-auto">
-            <div className="bg-white p-6 md:p-8 rounded-xl shadow-lg">
-              <h4 className="text-xl md:text-2xl font-bold text-gray-800 mb-6">How It Works</h4>
-              <div className="space-y-6">
-                {[
-                  { title: 'Smart Contract Automation', desc: 'Eliminates intermediaries & corruption' },
-                  { title: 'Real-time Tracking', desc: 'Full transparency & accountability' },
-                  { title: 'Direct-to-vendor Model', desc: 'Fast, cost-effective, secure distribution' }
-                ].map((item, idx) => (
-                  <div key={idx} className="flex items-start">
-                    <div className="flex-shrink-0 bg-blue-100 rounded-full p-3 mr-4">
-                      <FaCheckCircle size={24} className="text-blue-600" />
-                    </div>
-                    <div className="text-left">
-                      <p className="font-bold text-gray-800 text-lg">{item.title}</p>
-                      <p className="text-gray-600 text-sm md:text-base">{item.desc}</p>
-                    </div>
-                  </div>
-                ))}
+  // Slide 2: Problem Statement
+  {
+    id: "problem",
+    title: "The Broken Aid Pipeline",
+    content: (
+      <div className="flex flex-col items-center justify-center h-full w-full text-center px-4 py-12 bg-gradient-to-br from-gray-50 to-blue-50">
+        {/* Header */}
+        <h3 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-12">
+          Aid’s <span className="text-red-600">Trust Crisis</span>
+        </h3>
+
+        {/* Problem Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-5xl mx-auto">
+          {[
+            {
+              title: "Untrusted",
+              desc: "80% of donors doubt impact delivery",
+              icon: <FaUsers className="text-red-600 text-5xl" />,
+            },
+            {
+              title: "Inefficient",
+              desc: "30% lost to delays & fraud",
+              icon: <FaChartArea className="text-red-600 text-5xl" />,
+            },
+            {
+              title: "Slow",
+              desc: "Months to deliver essentials",
+              icon: <FaClock className="text-red-600 text-5xl" />,
+            },
+          ].map((item, idx) => (
+            <div
+              key={idx}
+              className="bg-white rounded-2xl shadow-xl overflow-hidden transform transition-all hover:scale-105 hover:shadow-2xl duration-300 border border-gray-100"
+            >
+              <div className="bg-gradient-to-r from-red-500 to-red-700 h-2 w-full"></div>
+              <div className="p-6">
+                <div className="flex justify-center mb-4">{item.icon}</div>
+                <h4 className="text-xl md:text-2xl font-bold text-gray-800 mb-2">
+                  {item.title}
+                </h4>
+                <p className="text-gray-600 text-sm md:text-base leading-tight">
+                  {item.desc}
+                </p>
               </div>
             </div>
-            <div className="relative flex flex-col items-center justify-center">
-              <div className="w-full relative mb-8">
-                <img src="/api/placeholder/400/300" alt="Direct impact" className="rounded-xl shadow-lg mx-auto" />
-                <div className="absolute -bottom-4 -right-4 bg-blue-600 text-white p-4 rounded-lg shadow-md">
-                  <p className="font-bold text-lg md:text-xl">Days not months</p>
-                </div>
-              </div>
-              <div className="bg-gradient-to-br from-blue-600 to-blue-800 p-6 rounded-xl shadow-xl text-white text-center w-full max-w-xs">
-                <FaWater size={40} className="mb-3 mx-auto" />
-                <p className="text-3xl md:text-4xl font-bold mb-2">$50</p>
-                <p className="text-lg md:text-xl">delivers water in days—verified & tracked</p>
-              </div>
-            </div>
-          </div>
+          ))}
         </div>
-      ),
-      bgColor: "bg-gradient-to-br from-blue-50 to-white",
-    },
 
-    // Slide 4: Market Opportunity
-    {
-      id: 'market',
-      title: 'A $300B Opportunity',
-      content: (
-        <div className="flex flex-col items-center justify-center h-full w-full text-center px-4">
-          <h3 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-10">
-            The <span className="text-blue-600">Market</span>
-          </h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 w-full max-w-5xl mx-auto">
-            <div className="bg-white p-6 md:p-8 rounded-xl shadow-lg">
-              <div className="space-y-6">
-                {[
-                  { label: 'Africa Aid Volume', value: '$50B', icon: <FaChartLine /> },
-                  { label: 'Global Aid Market', value: '$300B', icon: <FaChartPie /> },
-                  { label: 'Transparency Demand', value: '70%', icon: <FaUsers /> }
-                ].map((item, idx) => (
-                  <div key={idx} className="flex items-center justify-between">
-                    <span className="text-lg md:text-xl font-bold text-gray-800">{item.label}</span>
-                    <div className="text-blue-600 text-2xl md:text-3xl font-bold flex items-center">
-                      <span>{item.value}</span>
-                      <span className="ml-2">{item.icon}</span>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-            <div className="flex flex-col items-center justify-center">
-              <div className="relative w-56 md:w-64 h-56 md:h-64 mb-8">
-                <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-xl">
-                  <circle cx="50" cy="50" r="45" fill="#EBF4FF" />
-                  <circle cx="50" cy="50" r="40" fill="none" stroke="#E0E7FF" strokeWidth="10" />
-                  <circle cx="50" cy="50" r="40" fill="none" stroke="#3B82F6" strokeWidth="10" strokeDasharray="251" strokeDashoffset="75" transform="rotate(-90 50 50)" />
-                  <circle cx="50" cy="50" r="30" fill="#FFFFFF" />
-                </svg>
-                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center w-full">
-                  <p className="text-blue-600 font-black text-4xl md:text-5xl">70%</p>
-                  <p className="text-lg font-bold text-blue-800">Want Better Aid</p>
-                </div>
-              </div>
-              <div className="bg-blue-100 px-6 py-4 rounded-xl shadow-md border-2 border-blue-200">
-                <p className="text-lg md:text-xl font-bold text-gray-800">Targeting small donors + NGOs</p>
-              </div>
-            </div>
-          </div>
+        {/* Footer Note */}
+        <div className="mt-8 text-sm text-gray-500">
+          Sources: CAF 2023, OECD 2023 | $50B Africa aid, $200B+ global in 2025
         </div>
-      ),
-      bgColor: "bg-white",
-    },
+      </div>
+    ),
+    bgColor: "bg-gradient-to-br from-gray-50 to-blue-50",
+  },
 
-    // Slide 5: Competitor Analysis
-    {
-      id: 'competition',
-      title: "We're Different",
-      content: (
-        <div className="flex flex-col items-center justify-center h-full w-full text-center px-4">
-          <h3 className="text-4xl md:text-5xl font-extrabold text-blue-600 mb-10">Standing Out</h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-4xl mx-auto">
-            <div className="bg-white p-6 md:p-8 rounded-xl shadow-lg relative overflow-hidden">
-              <div className="absolute top-0 left-0 w-full h-2 bg-gray-400"></div>
-              <h4 className="font-bold text-xl md:text-2xl text-gray-800 mb-6 pb-2 border-b-2 border-gray-200">OTHERS:</h4>
-              <div className="space-y-6">
-                {[
-                  { title: 'Slow', desc: 'UNICEF: Months of bureaucracy', icon: <FaClock /> },
-                  { title: 'Expensive', desc: 'GoFundMe: High processing fees', icon: <FaDollarSign /> },
-                  { title: 'Complex', desc: 'Crypto: Technical barriers', icon: <FaShieldAlt /> }
-                ].map((item, idx) => (
-                  <div key={idx} className="flex items-center">
-                    <div className="w-10 h-10 bg-red-100 rounded-full flex items-center justify-center mr-4">
-                      <span className="text-red-500">{item.icon}</span>
-                    </div>
-                    <div className="text-left">
-                      <p className="font-semibold text-red-500 text-lg">{item.title}</p>
-                      <p className="text-gray-600 text-sm md:text-base">{item.desc}</p>
-                    </div>
+  // Slide 3: Solution
+  {
+    id: "solution",
+    title: "KUSAIDIA – Direct Impact",
+    content: (
+      <div className="flex flex-col items-center justify-center h-full w-full text-center px-4">
+        <h3 className="text-4xl md:text-5xl font-extrabold text-blue-600 mb-10">
+          Our Solution
+        </h3>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-5xl mx-auto">
+          <div className="bg-white p-6 md:p-8 rounded-xl shadow-lg">
+            <h4 className="text-xl md:text-2xl font-bold text-gray-800 mb-6">
+              How It Works
+            </h4>
+            <div className="space-y-6">
+              {[
+                {
+                  title: "Smart Contract Automation",
+                  desc: "Eliminates intermediaries & corruption",
+                },
+                {
+                  title: "Real-time Tracking",
+                  desc: "Full transparency & accountability",
+                },
+                {
+                  title: "Direct-to-vendor Model",
+                  desc: "Fast, cost-effective, secure distribution",
+                },
+              ].map((item, idx) => (
+                <div key={idx} className="flex items-start">
+                  <div className="flex-shrink-0 bg-blue-100 rounded-full p-3 mr-4">
+                    <FaCheckCircle size={24} className="text-blue-600" />
                   </div>
-                ))}
-              </div>
-            </div>
-            <div className="bg-blue-600 p-6 md:p-8 rounded-xl shadow-lg text-white relative overflow-hidden">
-              <div className="absolute top-0 left-0 w-full h-2 bg-blue-800"></div>
-              <h4 className="font-bold text-xl md:text-2xl mb-6 pb-2 border-b-2 border-blue-300">KUSAIDIA:</h4>
-              <div className="space-y-6">
-                {[
-                  { title: 'Fast', desc: 'Days, not months', icon: <FaRocket /> },
-                  { title: 'Low-cost', desc: 'Only 2-5% platform fee', icon: <FaMoneyBillWave /> },
-                  { title: 'Simple', desc: 'User-friendly interface', icon: <FaLightbulb /> }
-                ].map((item, idx) => (
-                  <div key={idx} className="flex items-center">
-                    <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center mr-4">
-                      <span className="text-blue-600">{item.icon}</span>
-                    </div>
-                    <div className="text-left">
-                      <p className="font-bold text-lg">{item.title}</p>
-                      <p className="text-blue-100 text-sm md:text-base">{item.desc}</p>
-                    </div>
+                  <div className="text-left">
+                    <p className="font-bold text-gray-800 text-lg">
+                      {item.title}
+                    </p>
+                    <p className="text-gray-600 text-sm md:text-base">
+                      {item.desc}
+                    </p>
                   </div>
-                ))}
-              </div>
+                </div>
+              ))}
             </div>
           </div>
-          <div className="mt-8">
-            <img src="/api/placeholder/600/150" alt="Competitive landscape" className="rounded-lg shadow-md" />
-          </div>
-        </div>
-      ),
-      bgColor: "bg-gradient-to-br from-blue-50 to-white",
-    },
-
-    // Slide 6: Business Model
-    {
-      id: 'business-model',
-      title: "How We Work & Win",
-      content: (
-        <div className="flex flex-col items-center justify-center h-full w-full text-center px-4">
-          <h3 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-10">Our Business Model</h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 w-full max-w-4xl mx-auto">
-            <div className="bg-gradient-to-br from-blue-600 to-blue-700 p-6 md:p-8 rounded-xl shadow-lg text-white">
-              <h4 className="text-xl md:text-2xl font-bold mb-6 pb-2 border-b border-blue-300">Revenue Streams</h4>
-              <div className="space-y-6 text-left">
-                {[
-                  { title: '2-5% platform fee', desc: 'Sustainable revenue from transactions', icon: <FaChartLine /> },
-                  { title: 'Premium analytics', desc: 'For partner organizations', icon: <FaChartPie /> },
-                  { title: 'Enterprise solutions', desc: 'For larger NGOs & governments', icon: <FaUsers /> }
-                ].map((item, idx) => (
-                  <div key={idx} className="flex items-center">
-                    <div className="bg-white/20 p-3 rounded-full mr-4">
-                      <span className="text-white">{item.icon}</span>
-                    </div>
-                    <div>
-                      <p className="font-bold text-lg md:text-xl">{item.title}</p>
-                      <p className="text-blue-100 text-sm md:text-base">{item.desc}</p>
-                    </div>
-                  </div>
-                ))}
+          <div className="relative flex flex-col items-center justify-center">
+            <div className="w-full relative mb-8">
+              {/* <img src="/api/placeholder/400/300" alt="Direct impact" className="rounded-xl shadow-lg mx-auto" /> */}
+              <div className="absolute -bottom-4 -right-4 bg-blue-600 text-white p-4 rounded-lg shadow-md">
+                <p className="font-bold text-lg md:text-xl">Days not months</p>
               </div>
             </div>
-            <div className="flex flex-col justify-center">
-              <div className="relative mb-8">
-                <div className="absolute inset-0 bg-blue-200 rounded-full blur-sm"></div>
-                <div className="relative flex items-center justify-center w-56 h-56 mx-auto rounded-full border-8 border-white shadow-xl overflow-hidden">
-                  <img src="/api/placeholder/200/200" alt="Vendor delivering aid" className="w-full h-full object-cover" />
-                </div>
-              </div>
-              <div className="flex flex-col space-y-4">
-                <div className="bg-blue-100 px-6 py-4 rounded-full shadow-md border-2 border-blue-200 mx-auto">
-                  <div className="flex items-center">
-                    <FaLock className="text-blue-600 mr-2" />
-                    <p className="text-lg md:text-xl font-bold text-gray-800">Lean + Transparent</p>
-                  </div>
-                </div>
-                <div className="bg-white px-6 py-4 rounded-xl shadow-md mx-auto">
-                  <p className="text-blue-600 font-bold text-sm md:text-base">Unlike traditional NGOs, we're tech-first</p>
-                </div>
-              </div>
+            <div className="bg-gradient-to-br from-blue-600 to-blue-800 p-6 rounded-xl shadow-xl text-white text-center w-full max-w-xs">
+              <FaWater size={40} className="mb-3 mx-auto" />
+              <p className="text-3xl md:text-4xl font-bold mb-2">$50</p>
+              <p className="text-lg md:text-xl">
+                delivers water in days—verified & tracked
+              </p>
             </div>
           </div>
         </div>
-      ),
-      bgColor: "bg-white",
-    },
+      </div>
+    ),
+    bgColor: "bg-gradient-to-br from-blue-50 to-white",
+  },
 
-    // Slide 7: Traction & Roadmap
-    {
-      id: 'roadmap',
-      title: "From Vision to Victory",
-      content: (
-        <div className="flex flex-col items-center justify-center h-full w-full text-center px-4">
-          <h3 className="text-4xl md:text-5xl font-extrabold text-blue-600 mb-10">Our Path Forward</h3>
-          <div className="mb-8">
-            <div className="bg-white px-6 md:px-8 py-4 rounded-xl shadow-lg inline-block">
-              <div className="flex items-center">
-                <FaUsers className="text-blue-600 mr-3" size={24} />
-                <p className="text-xl md:text-2xl font-bold text-gray-700">
-                  Traction: <span className="text-blue-600">20+</span> interviews with NGOs & donors
+  // Slide 4: Market Opportunity
+  {
+    id: "market",
+    title: "A $300B Frontier",
+    content: (
+      <div className="flex flex-col items-center justify-center h-full w-full text-center px-4">
+        <h3 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-10">
+          The <span className="text-blue-600">Market</span>
+        </h3>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 w-full max-w-5xl mx-auto">
+          <div className="bg-white p-6 md:p-8 rounded-xl shadow-lg">
+            <div className="space-y-6">
+              {[
+                {
+                  label: "Africa Aid Inflow",
+                  value: "$50B",
+                  icon: <FaChartLine />,
+                  note: "Annual, OECD 2023",
+                },
+                {
+                  label: "Global Aid Market",
+                  value: "$300B",
+                  icon: <FaChartPie />,
+                  note: "UN OCHA 2024",
+                },
+                {
+                  label: "Donor Trust Gap",
+                  value: "80%",
+                  icon: <FaUsers />,
+                  note: "CAF 2023",
+                },
+              ].map((item, idx) => (
+                <div key={idx} className="flex items-center justify-between">
+                  <span className="text-lg md:text-xl font-bold text-gray-800">
+                    {item.label}
+                  </span>
+                  <div className="text-blue-600 text-2xl md:text-3xl font-bold flex items-center">
+                    <span>{item.value}</span>
+                    <span className="ml-2">{item.icon}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="flex flex-col items-center justify-center">
+            <div className="relative w-56 md:w-64 h-56 md:h-64 mb-8">
+              <svg
+                viewBox="0 0 100 100"
+                className="w-full h-full drop-shadow-xl"
+              >
+                <circle cx="50" cy="50" r="45" fill="#EBF4FF" />
+                <circle
+                  cx="50"
+                  cy="50"
+                  r="40"
+                  fill="none"
+                  stroke="#E0E7FF"
+                  strokeWidth="10"
+                />
+                <circle
+                  cx="50"
+                  cy="50"
+                  r="40"
+                  fill="none"
+                  stroke="#3B82F6"
+                  strokeWidth="10"
+                  strokeDasharray="251"
+                  strokeDashoffset="50"
+                  transform="rotate(-90 50 50)"
+                />
+                <circle cx="50" cy="50" r="30" fill="#FFFFFF" />
+              </svg>
+              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center w-full">
+                <p className="text-blue-600 font-black text-4xl md:text-5xl">
+                  80%
+                </p>
+                <p className="text-lg font-bold text-blue-800">
+                  Doubt Aid Impact
+                </p>
+              </div>
+            </div>
+            <div className="bg-blue-100 px-6 py-4 rounded-xl shadow-md border-2 border-blue-200">
+              <p className="text-lg md:text-xl font-bold text-gray-800">
+                Targeting small donors + NGOs with blockchain trust
+              </p>
+            </div>
+          </div>
+        </div>
+        <div className="mt-4 text-sm text-gray-600">
+          Sources: OECD (2023), UN OCHA (2024), Charities Aid Foundation (CAF)
+          2023 Report
+        </div>
+      </div>
+    ),
+    bgColor: "bg-white",
+  },
+
+  // Slide 5: Competitor Analysis
+  {
+    id: "competition",
+    title: "We're Different",
+    content: (
+      <div className="flex flex-col items-center justify-center h-full w-full text-center px-4 py-12 bg-gradient-to-br from-blue-50 to-gray-100">
+        {/* Header */}
+        <h3 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-12">
+          We <span className="text-blue-600">Stand Out</span>
+        </h3>
+
+        {/* Comparison Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-5xl mx-auto">
+          {/* Others Card */}
+          <div className="bg-white p-6 md:p-8 rounded-2xl shadow-xl relative border border-gray-200 hover:shadow-2xl transition-shadow duration-300">
+            <div className="absolute top-0 left-0 w-full h-3 bg-gradient-to-r from-gray-400 to-gray-600 rounded-t-2xl"></div>
+            <h4 className="font-bold text-2xl md:text-3xl text-gray-800 mb-6 pt-4">
+              OTHERS
+            </h4>
+            <div className="space-y-6">
+              {[
+                {
+                  title: "Slow",
+                  desc: "UNICEF: Months of bureaucracy",
+                  icon: <FaClock className="text-red-600 text-2xl" />,
+                },
+                {
+                  title: "Expensive",
+                  desc: "GoFundMe: 7.9% + $0.30 fees",
+                  icon: <FaDollarSign className="text-red-600 text-2xl" />,
+                },
+                {
+                  title: "Complex",
+                  desc: "BitGive: Technical barriers",
+                  icon: <FaShieldAlt className="text-red-600 text-2xl" />,
+                },
+              ].map((item, idx) => (
+                <div key={idx} className="flex items-center group">
+                  <div className="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center mr-4 group-hover:scale-110 transition-transform duration-200">
+                    {item.icon}
+                  </div>
+                  <div className="text-left">
+                    <p className="font-semibold text-red-600 text-lg md:text-xl">
+                      {item.title}
+                    </p>
+                    <p className="text-gray-600 text-sm md:text-base">
+                      {item.desc}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Kusaidia Card */}
+          <div className="bg-gradient-to-br from-blue-600 to-blue-800 p-6 md:p-8 rounded-2xl shadow-xl text-white relative hover:shadow-2xl transition-shadow duration-300">
+            <div className="absolute top-0 left-0 w-full h-3 bg-blue-900 rounded-t-2xl"></div>
+            <h4 className="font-bold text-2xl md:text-3xl mb-6 pt-4">
+              KUSAIDIA
+            </h4>
+            <div className="space-y-6">
+              {[
+                {
+                  title: "Fast",
+                  desc: "1-3 days delivery",
+                  icon: <FaRocket className="text-blue-100 text-2xl" />,
+                },
+                {
+                  title: "Low-Cost",
+                  desc: "2-5% platform fee",
+                  icon: <FaMoneyBillWave className="text-blue-100 text-2xl" />,
+                },
+                {
+                  title: "Simple",
+                  desc: "User-friendly platform",
+                  icon: <FaLightbulb className="text-blue-100 text-2xl" />,
+                },
+              ].map((item, idx) => (
+                <div key={idx} className="flex items-center group">
+                  <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center mr-4 group-hover:scale-110 transition-transform duration-200">
+                    {item.icon}
+                  </div>
+                  <div className="text-left">
+                    <p className="font-bold text-lg md:text-xl">{item.title}</p>
+                    <p className="text-blue-100 text-sm md:text-base">
+                      {item.desc}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    ),
+    bgColor: "bg-gradient-to-br from-blue-50 to-gray-100",
+  },
+
+  // Slide 6: Business Model
+  {
+    id: "business-model",
+    title: "How We Work & Win",
+    content: (
+      <div className="flex flex-col items-center justify-center h-full w-full text-center px-4">
+        <h3 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-10">
+          Our Business Model
+        </h3>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 w-full max-w-4xl mx-auto">
+          <div className="bg-gradient-to-br from-blue-600 to-blue-700 p-6 md:p-8 rounded-xl shadow-lg text-white">
+            <h4 className="text-xl md:text-2xl font-bold mb-6 pb-2 border-b border-blue-300">
+              Revenue Streams
+            </h4>
+            <div className="space-y-6 text-left">
+              {[
+                {
+                  title: "2-5% Platform Fee",
+                  desc: "Covers vetting, tracking, delivery",
+                  icon: <FaChartLine />,
+                },
+                {
+                  title: "Insurance Commissions",
+                  desc: "10-20% from risk coverage partners",
+                  icon: <FaShieldAlt />,
+                },
+                {
+                  title: "Premium Analytics",
+                  desc: "Subscriptions for NGOs & donors",
+                  icon: <FaChartPie />,
+                },
+              ].map((item, idx) => (
+                <div key={idx} className="flex items-center">
+                  <div className="bg-white/20 p-3 rounded-full mr-4">
+                    <span className="text-white">{item.icon}</span>
+                  </div>
+                  <div>
+                    <p className="font-bold text-lg md:text-xl">{item.title}</p>
+                    <p className="text-blue-100 text-sm md:text-base">
+                      {item.desc}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="flex flex-col justify-center">
+            <div className="relative mb-8">
+              <div className="absolute inset-0 bg-blue-200 rounded-full blur-sm"></div>
+              <div className="relative flex items-center justify-center w-56 h-56 mx-auto rounded-full border-8 border-white shadow-xl overflow-hidden">
+                {/* <img src="/api/placeholder/200/200" alt="Blockchain aid delivery" className="w-full h-full object-cover" /> */}
+              </div>
+            </div>
+            <div className="flex flex-col space-y-4">
+              <div className="bg-blue-100 px-6 py-4 rounded-full shadow-md border-2 border-blue-200 mx-auto">
+                <div className="flex items-center">
+                  <FaLock className="text-blue-600 mr-2" />
+                  <p className="text-lg md:text-xl font-bold text-gray-800">
+                    Lean + Locked on Blockchain
+                  </p>
+                </div>
+              </div>
+              <div className="bg-white px-6 py-4 rounded-xl shadow-md mx-auto">
+                <p className="text-blue-600 font-bold text-sm md:text-base">
+                  Milestone payments, zero waste
                 </p>
               </div>
             </div>
           </div>
-          <div className="w-full max-w-4xl mx-auto bg-white rounded-xl shadow-lg p-6 md:p-8 mb-8">
-            <div className="relative">
-              <div className="absolute top-24 left-0 right-0 h-1 bg-gray-200 hidden md:block"></div>
-              <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
-                {[
-                  { num: 1, title: 'Research', desc: 'Market validation', active: false },
-                  { num: 2, title: 'MVP', desc: 'Core functionality', active: false },
-                  { num: 3, title: 'Testing', desc: 'Initial pilot projects', active: true },
-                  { num: 4, title: 'Partners', desc: 'NGO partnerships', active: false },
-                  { num: 5, title: 'Launch', desc: 'Full market release', active: false }
-                ].map((item, idx) => (
-                  <div key={idx} className="flex flex-col items-center relative">
-                    <div className={`w-16 h-16 ${item.active ? 'bg-blue-600' : 'bg-blue-100'} rounded-full flex items-center justify-center mb-4 border-4 border-white shadow-md z-10`}>
-                      <span className={item.active ? 'text-white' : 'text-blue-600'}>{item.num}</span>
-                    </div>
-                    <div className={`${item.active ? 'bg-blue-600 text-white' : 'bg-blue-50 text-gray-800'} p-4 rounded-lg shadow-sm w-full`}>
-                      <p className="font-bold">{item.title}</p>
-                      <p className={`${item.active ? 'text-blue-100' : 'text-gray-600'} text-sm`}>{item.desc}</p>
-                    </div>
-                    {item.active && <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-4 h-4 bg-blue-600 rotate-45 hidden md:block"></div>}
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-          <div className="flex justify-center">
-            <img src="/api/placeholder/500/150" alt="Growth projection" className="rounded-lg shadow-md" />
-          </div>
         </div>
-      ),
-      bgColor: "bg-gradient-to-br from-blue-50 to-white",
-    },
+      </div>
+    ),
+    bgColor: "bg-white",
+  },
 
-    // Slide 8: How It Works
-    {
-      id: 'how-it-works',
-      title: "How It Works",
-      content: (
-        <div className="flex flex-col items-center justify-center h-full w-full text-center px-4">
-          <h3 className="text-4xl md:text-5xl font-extrabold text-blue-600 mb-10">The Process</h3>
-          <div className="w-full max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-6">
-            <div className="flex-1 relative">
-              <img src="/api/placeholder/400/300" alt="Blockchain aid distribution" className="rounded-xl shadow-lg mx-auto" />
+  // Revenue Streams UI Component
+  {
+    id: "revenue-streams",
+    title: "How Kusaidia Makes Money",
+    content: (
+      <div className="flex flex-col items-center justify-center h-full w-full text-center px-4 py-12 bg-gray-50">
+        {/* Header */}
+        <h3 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-12">
+          <span className="text-blue-600">Revenue</span> Streams
+        </h3>
+
+        {/* Grid of Revenue Cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 w-full max-w-6xl mx-auto">
+          {[
+            {
+              title: "Platform Service Fees",
+              subtitle: "2-5% per project",
+              desc: "Covers vetting, tracking, and delivery. $500K aid at 5% = $25K.",
+              icon: <FaChartLine className="text-blue-600 text-3xl" />,
+              why: "Donors pay for transparency—beats 10-30% aid waste.",
+            },
+            {
+              title: "Insurance Commissions",
+              subtitle: "10-20% of premiums",
+              desc: "Partner for risk coverage. $10K premiums at 15% = $1.5K/project.",
+              icon: <FaShieldAlt className="text-blue-600 text-3xl" />,
+              why: "Boosts trust, recurring cash, no fee hikes.",
+            },
+            {
+              title: "Premium Analytics",
+              subtitle: "$500/month subscriptions",
+              desc: "Data for NGOs. 10 subscribers = $5K/month.",
+              icon: <FaChartPie className="text-blue-600 text-3xl" />,
+              why: "Leverages blockchain data for partners.",
+            },
+            {
+              title: "Enterprise Solutions",
+              subtitle: "Licensing fees",
+              desc: "$50K setup + $10K/month per client.",
+              icon: <FaBuilding className="text-blue-600 text-3xl" />,
+              why: "Scales tech to big players affordably.",
+            },
+            {
+              title: "Vendor Partnership Fees",
+              subtitle: "$1K/year per vendor",
+              desc: "50 vendors = $50K/year for contract access.",
+              icon: <FaTruck className="text-blue-600 text-3xl" />,
+              why: "Monetizes our supply chain network.",
+            },
+            {
+              title: "Donor Memberships",
+              subtitle: "$10/month tier",
+              desc: "1,000 donors = $120K/year for perks.",
+              icon: <FaUserPlus className="text-blue-600 text-3xl" />,
+              why: "Turns donors into loyal supporters.",
+            },
+            {
+              title: "Carbon/ESG Credits",
+              subtitle: "10% of credit sales",
+              desc: "$100K credits = $10K/project.",
+              icon: <FaLeaf className="text-blue-600 text-3xl" />,
+              why: "Taps corporate sustainability trends.",
+            },
+            {
+              title: "Sponsorships",
+              subtitle: "$5K per campaign",
+              desc: "5 projects = $25K from ethical brands.",
+              icon: <FaAd className="text-blue-600 text-3xl" />,
+              why: "Non-intrusive audience leverage.",
+            },
+          ].map((stream, idx) => (
+            <div
+              key={idx}
+              className="bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300 border border-gray-100 flex flex-col items-center"
+            >
+              {/* Icon */}
+              <div className="mb-4">{stream.icon}</div>
+              {/* Title & Subtitle */}
+              <h4 className="text-xl font-bold text-gray-800">
+                {stream.title}
+              </h4>
+              <p className="text-sm text-blue-600 font-semibold mb-2">
+                {stream.subtitle}
+              </p>
+              {/* Description */}
+              <p className="text-gray-600 text-sm mb-4">{stream.desc}</p>
+              {/* Why It Works */}
+              <p className="text-gray-500 text-xs italic">“{stream.why}”</p>
             </div>
-            <div className="flex-1">
-              <div className="space-y-6">
-                {[
-                  { step: 1, title: 'Donor funds a project', desc: 'Select a specific project to support' },
-                  { step: 2, title: 'Smart contract generates a purchase order', desc: 'Automatically prepared for local vendors' },
-                  { step: 3, title: 'Verified vendor delivers resources', desc: 'Local vendors provide supplies or services' },
-                  { step: 4, title: 'Payment released upon delivery verification', desc: 'Funds automatically released with proof of delivery' }
-                ].map((item, idx) => (
-                  <div key={idx} className="bg-white p-5 rounded-xl shadow-md flex items-start">
-                    <div className="bg-blue-600 text-white rounded-full w-10 h-10 flex items-center justify-center flex-shrink-0 mr-4">
-                      {item.step}
-                    </div>
-                    <div className="text-left">
-                      <h4 className="font-bold text-lg text-gray-800">{item.title}</h4>
-                      <p className="text-gray-600 text-sm md:text-base">{item.desc}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
+          ))}
         </div>
-      ),
-      bgColor: "bg-white",
-    },
 
-    // Slide 9: Tech Stack
-    {
-      id: 'tech-stack',
-      title: "Our Technology",
-      content: (
-        <div className="flex flex-col items-center justify-center h-full w-full text-center px-4">
-          <h3 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-10">Tech Stack</h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-5xl mx-auto">
-            {[
-              { title: 'Frontend', icon: <FaLightbulb />, items: [
-                { name: 'React.js', desc: 'Sleek & user-friendly' },
-                { name: 'Responsive Design', desc: 'Mobile & desktop optimized' }
-              ]},
-              { title: 'Backend', icon: <FaShieldAlt />, items: [
-                { name: 'Django', desc: 'Robust API & contract interactions' },
-                { name: 'PostgreSQL', desc: 'Scalable & efficient database' },
-                { name: 'Docker', desc: 'Seamless deployment' }
-              ]},
-              { title: 'Blockchain', icon: <FaLock />, items: [
-                { name: 'Celo', desc: 'Secure & low-cost transactions' },
-                { name: 'Smart Contracts', desc: 'Automated, secure payments' }
-              ]}
-            ].map((section, idx) => (
-              <div key={idx} className="bg-white p-6 rounded-xl shadow-lg">
-                <div className="bg-blue-100 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-blue-600">{section.icon}</span>
-                </div>
-                <h4 className="text-xl md:text-2xl font-bold text-gray-800 mb-4">{section.title}</h4>
-                <div className="space-y-3">
-                  {section.items.map((item, i) => (
-                    <div key={i} className="bg-blue-50 px-4 py-2 rounded-lg">
-                      <p className="font-medium text-gray-700">{item.name}</p>
-                      <p className="text-sm text-gray-500">{item.desc}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-          <div className="mt-10">
-            <img src="/api/placeholder/700/150" alt="System architecture diagram" className="rounded-lg shadow-lg" />
-          </div>
+        {/* Footer Note */}
+        <div className="mt-8 text-sm text-gray-500">
+          Built lean, powered by blockchain—revenue scales with impact.
         </div>
-      ),
-      bgColor: "bg-gradient-to-br from-blue-50 to-white",
-    },
+      </div>
+    ),
+    bgColor: "bg-gray-50",
+  },
 
-    // Slide 10: Team
-    {
-      id: 'team',
-      title: "The Minds Behind It",
-      content: (
-        <div className="flex flex-col items-center justify-center h-full w-full text-center px-4">
-          <h3 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-10">Our Team</h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-5xl mx-auto">
-            {[
-              { name: 'Maku P. Mazakpe', role: 'Tech Lead', icon: <FaRocket /> },
-              { name: 'Nana Abokoma Sika Antwi', role: 'Communication Lead', icon: <FaLightbulb /> },
-              { name: '[Team Member]', role: 'Partnerships', icon: <FaHandshake /> }
-            ].map((member, idx) => (
-              <div key={idx} className="bg-white rounded-xl shadow-lg overflow-hidden group transform transition hover:scale-105">
-                <div className="h-48 overflow-hidden">
-                  <img src="/api/placeholder/300/200" alt={member.name} className="w-full h-full object-cover transition group-hover:scale-110" />
-                </div>
-                <div className="p-6">
-                  <h4 className="text-xl md:text-2xl font-bold text-gray-800">{member.name}</h4>
-                  <p className="text-blue-600 font-semibold mb-4 text-sm md:text-base">{member.role}</p>
-                  <div className="flex justify-center">
-                    <div className="bg-blue-100 p-3 rounded-full">
-                      <span className="text-blue-600">{member.icon}</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      ),
-      bgColor: "bg-white",
-    },
-
-    // Slide 11: Competitive Analysis
-    {
-      id: 'competitive-analysis',
-      title: "Competitive Landscape",
-      content: (
-        <div className="flex flex-col items-center justify-center h-full w-full text-center px-4">
-          <h3 className="text-4xl md:text-5xl font-extrabold text-blue-600 mb-10">Competitive Landscape</h3>
-          <div className="w-full max-w-6xl mx-auto overflow-x-auto">
-            <table className="min-w-full bg-white rounded-xl shadow-lg overflow-hidden">
-              <thead>
-                <tr className="bg-blue-600 text-white text-left">
-                  <th className="py-4 px-6">Features</th>
-                  <th className="py-4 px-6">KUSAIDIA</th>
-                  <th className="py-4 px-6">Traditional NGOs</th>
-                  <th className="py-4 px-6">GoFundMe</th>
-                  <th className="py-4 px-6">Crypto Solutions</th>
-                </tr>
-              </thead>
-              <tbody>
-                {[
-                  { feature: 'Transparency', kusaidia: 'Full blockchain tracking', ngo: 'Limited reporting', gofundme: 'Basic', crypto: 'Full but complex' },
-                  { feature: 'Speed of Delivery', kusaidia: '1-3 days', ngo: 'Months', gofundme: '1-2 weeks', crypto: 'Minutes (but limited)' },
-                  { feature: 'Fees', kusaidia: '2-5%', ngo: '20-30%', gofundme: '7.9% + $0.30', crypto: 'Variable gas fees' },
-                  { feature: 'Ease of Use', kusaidia: 'Simple interface', ngo: 'Straightforward', gofundme: 'User-friendly', crypto: 'Technical barriers' },
-                  { feature: 'Impact Verification', kusaidia: 'Real-time verification', ngo: 'Annual reports only', gofundme: 'Self-reported', crypto: 'On-chain but complex' }
-                ].map((row, idx) => (
-                  <tr key={idx} className={`border-b border-gray-200 ${idx % 2 === 0 ? '' : 'bg-gray-50'}`}>
-                    <td className="py-4 px-6 font-medium">{row.feature}</td>
-                    <td className="py-4 px-6"><div className="flex items-center"><FaCheckCircle className="text-green-500 mr-2" /><span>{row.kusaidia}</span></div></td>
-                    <td className="py-4 px-6"><div className="flex items-center">{row.ngo.includes('Limited') || row.ngo.includes('Months') ? <FaTimesCircle className="text-red-500 mr-2" /> : <FaCheckCircle className="text-green-500 mr-2" />}<span>{row.ngo}</span></div></td>
-                    <td className="py-4 px-6"><div className="flex items-center">{row.gofundme.includes('Basic') || row.gofundme.includes('weeks') ? <FaCheckCircle className="text-green-500 mr-2" /> : <FaTimesCircle className="text-red-500 mr-2" />}<span>{row.gofundme}</span></div></td>
-                    <td className="py-4 px-6"><div className="flex items-center">{row.crypto.includes('complex') || row.crypto.includes('barriers') ? <FaTimesCircle className="text-red-500 mr-2" /> : <FaCheckCircle className="text-green-500 mr-2" />}<span>{row.crypto}</span></div></td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </div>
-      ),
-      bgColor: "bg-gradient-to-br from-blue-50 to-white",
-    },
-
-    // Slide 12: Case Study
-    {
-      id: 'case-study',
-      title: "Case Study: Water Project",
-      content: (
-        <div className="flex flex-col items-center justify-center h-full w-full text-center px-4">
-          <h3 className="text-4xl md:text-5xl font-extrabold text-blue-600 mb-10">Case Study: Water Project</h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 w-full max-w-6xl mx-auto">
-            <div className="bg-white rounded-xl shadow-lg overflow-hidden">
-              <div className="h-48 relative overflow-hidden">
-                <img src="/api/placeholder/500/250" alt="Traditional Aid" className="w-full h-full object-cover" />
-                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-red-600 to-transparent p-4">
-                  <p className="text-white font-bold text-xl">Traditional Approach</p>
-                </div>
-              </div>
-              <div className="p-6">
-                <div className="space-y-4">
-                  {[
-                    { title: '9 months delivery time', desc: 'From donation to water access' },
-                    { title: '27% overhead costs', desc: 'Lost to administrative expenses' },
-                    { title: 'No transparency', desc: 'Donors receive only general updates' },
-                    { title: 'Risk of misappropriation', desc: 'Multiple intermediaries handling funds' }
-                  ].map((item, idx) => (
-                    <div key={idx} className="flex items-start">
-                      <div className="bg-red-100 p-2 rounded-full mr-3 mt-1">
-                        <FaTimesCircle className="text-red-600" size={16} />
-                      </div>
-                      <div>
-                        <p className="font-bold text-gray-800">{item.title}</p>
-                        <p className="text-gray-600 text-sm">{item.desc}</p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-                <div className="mt-6 pt-4 border-t border-gray-200">
-                  <div className="flex items-center justify-between">
-                    <p className="font-bold text-gray-800">Effective Impact:</p>
-                    <p className="text-red-600 font-bold text-xl">$73 per person</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="bg-white rounded-xl shadow-lg overflow-hidden">
-              <div className="h-48 relative overflow-hidden">
-                <img src="/api/placeholder/500/250" alt="KUSAIDIA Approach" className="w-full h-full object-cover" />
-                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-blue-600 to-transparent p-4">
-                  <p className="text-white font-bold text-xl">KUSAIDIA Approach</p>
-                </div>
-              </div>
-              <div className="p-6">
-                <div className="space-y-4">
-                  {[
-                    { title: '3 days delivery time', desc: 'From donation to water access' },
-                    { title: 'Only 5% platform fee', desc: '95% reaches the community' },
-                    { title: 'Full transparency', desc: 'Real-time tracking on blockchain' },
-                    { title: 'Direct vendor payments', desc: 'No intermediary handling of funds' }
-                  ].map((item, idx) => (
-                    <div key={idx} className="flex items-start">
-                      <div className="bg-blue-100 p-2 rounded-full mr-3 mt-1">
-                        <FaCheckCircle className="text-blue-600" size={16} />
-                      </div>
-                      <div>
-                        <p className="font-bold text-gray-800">{item.title}</p>
-                        <p className="text-gray-600 text-sm">{item.desc}</p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-                <div className="mt-6 pt-4 border-t border-gray-200">
-                  <div className="flex items-center justify-between">
-                    <p className="font-bold text-gray-800">Effective Impact:</p>
-                    <p className="text-blue-600 font-bold text-xl">$47 per person</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="mt-8 bg-blue-50 p-6 rounded-xl shadow-md w-full max-w-4xl">
+  // Slide 7: Traction & Roadmap
+  {
+    id: "roadmap",
+    title: "From Vision to Victory",
+    content: (
+      <div className="flex flex-col items-center justify-center h-full w-full text-center px-4">
+        <h3 className="text-4xl md:text-5xl font-extrabold text-blue-600 mb-10">
+          Our Path Forward
+        </h3>
+        <div className="mb-8">
+          <div className="bg-white px-6 md:px-8 py-4 rounded-xl shadow-lg inline-block">
             <div className="flex items-center">
-              <div className="bg-blue-600 text-white p-3 rounded-full mr-4">
-                <FaChartLine size={24} />
-              </div>
-              <div>
-                <h4 className="text-xl font-bold text-gray-800">Results Comparison</h4>
-                <p className="text-gray-600">KUSAIDIA delivers 35% more impact per dollar with 97% faster delivery</p>
-              </div>
+              <FaUsers className="text-blue-600 mr-3" size={24} />
+              <p className="text-xl md:text-2xl font-bold text-gray-700">
+                Traction: <span className="text-blue-600">X+</span> interviews
+                with NGOs & donors
+              </p>
             </div>
           </div>
         </div>
-      ),
-      bgColor: "bg-white",
-    },
-
-    // Slide 13: Contact
-    {
-      id: 'contact',
-      title: "Get In Touch",
-      content: (
-        <div className="flex flex-col items-center justify-center h-full w-full text-center px-4">
-          <h3 className="text-4xl md:text-5xl font-extrabold text-blue-600 mb-10">Get In Touch</h3>
-          <div className="w-full max-w-6xl mx-auto bg-white rounded-xl shadow-lg overflow-hidden">
-            <div className="grid grid-cols-1 md:grid-cols-2">
-              <div className="p-8 bg-blue-600 text-white">
-                <h4 className="text-xl md:text-2xl font-bold mb-6">Contact Information</h4>
-                <div className="space-y-6">
-                  {[
-                    { icon: <FaMapMarkerAlt />, title: 'Location', details: ['Nairobi, Kenya', 'Kilimani Business Center, 3rd Floor'] },
-                    { icon: <FaPhone />, title: 'Phone', details: ['+254 700 000 000'] },
-                    { icon: <FaEnvelope />, title: 'Email', details: ['contact@kusaidia.africa'] }
-                  ].map((item, idx) => (
-                    <div key={idx} className="flex items-start">
-                      <div className="p-2 rounded-full bg-blue-500 mr-4">
-                        <span>{item.icon}</span>
-                      </div>
-                      <div>
-                        <p className="font-bold">{item.title}</p>
-                        {item.details.map((detail, i) => <p key={i}>{detail}</p>)}
-                      </div>
-                    </div>
-                  ))}
+        <div className="w-full max-w-4xl mx-auto bg-white rounded-xl shadow-lg p-6 md:p-8 mb-8">
+          <div className="relative">
+            <div className="absolute top-24 left-0 right-0 h-1 bg-gray-200 hidden md:block"></div>
+            <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
+              {[
+                {
+                  num: 1,
+                  title: "Research",
+                  desc: "Market validation",
+                  active: false,
+                },
+                {
+                  num: 2,
+                  title: "MVP",
+                  desc: "Core functionality",
+                  active: false,
+                },
+                {
+                  num: 3,
+                  title: "Testing",
+                  desc: "Initial pilot projects",
+                  active: true,
+                },
+                {
+                  num: 4,
+                  title: "Partners",
+                  desc: "NGO partnerships",
+                  active: false,
+                },
+                {
+                  num: 5,
+                  title: "Launch",
+                  desc: "Full market release",
+                  active: false,
+                },
+              ].map((item, idx) => (
+                <div key={idx} className="flex flex-col items-center relative">
+                  <div
+                    className={`w-16 h-16 ${
+                      item.active ? "bg-blue-600" : "bg-blue-100"
+                    } rounded-full flex items-center justify-center mb-4 border-4 border-white shadow-md z-10`}
+                  >
+                    <span
+                      className={item.active ? "text-white" : "text-blue-600"}
+                    >
+                      {item.num}
+                    </span>
+                  </div>
+                  <div
+                    className={`${
+                      item.active
+                        ? "bg-blue-600 text-white"
+                        : "bg-blue-50 text-gray-800"
+                    } p-4 rounded-lg shadow-sm w-full`}
+                  >
+                    <p className="font-bold">{item.title}</p>
+                    <p
+                      className={`${
+                        item.active ? "text-blue-100" : "text-gray-600"
+                      } text-sm`}
+                    >
+                      {item.desc}
+                    </p>
+                  </div>
+                  {item.active && (
+                    <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-4 h-4 bg-blue-600 rotate-45 hidden md:block"></div>
+                  )}
                 </div>
-                <div className="mt-12">
-                  <h5 className="font-bold text-xl mb-4">Follow Us</h5>
-                  <div className="flex space-x-4">
-                    {['X', 'Li', 'Fb', 'Ig'].map((social, idx) => (
-                      <div key={idx} className="w-10 h-10 rounded-full bg-blue-500 flex items-center justify-center hover:bg-blue-700 transition">
-                        <span className="font-bold">{social}</span>
-                      </div>
+              ))}
+            </div>
+          </div>
+        </div>
+        <div className="flex justify-center">
+          {/* <img src="/api/placeholder/500/150" alt="Growth projection" className="rounded-lg shadow-md" /> */}
+        </div>
+      </div>
+    ),
+    bgColor: "bg-gradient-to-br from-blue-50 to-white",
+  },
+
+  // Slide 8: How It Works
+  {
+    id: "how-it-works",
+    title: "How It Works",
+    content: (
+      <div className="flex flex-col items-center justify-center h-full w-full text-center px-4">
+        <h3 className="text-4xl md:text-5xl font-extrabold text-blue-600 mb-10">
+          The Process
+        </h3>
+        <div className="w-full max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-6">
+          {/* <div className="flex-1 relative">
+              <img src="/api/placeholder/400/300" alt="Blockchain aid distribution" className="rounded-xl shadow-lg mx-auto" />
+            </div> */}
+          <div className="flex-1">
+            <div className="space-y-6">
+              {[
+                {
+                  step: 1,
+                  title: "Donor funds a project",
+                  desc: "Select a specific project to support",
+                },
+                {
+                  step: 2,
+                  title: "Smart contract generates a purchase order",
+                  desc: "Automatically prepared for local vendors",
+                },
+                {
+                  step: 3,
+                  title: "Verified vendor delivers resources",
+                  desc: "Local vendors provide supplies or services",
+                },
+                {
+                  step: 4,
+                  title: "Payment released upon delivery verification",
+                  desc: "Funds automatically released with proof of delivery",
+                },
+              ].map((item, idx) => (
+                <div
+                  key={idx}
+                  className="bg-white p-5 rounded-xl shadow-md flex items-start"
+                >
+                  <div className="bg-blue-600 text-white rounded-full w-10 h-10 flex items-center justify-center flex-shrink-0 mr-4">
+                    {item.step}
+                  </div>
+                  <div className="text-left">
+                    <h4 className="font-bold text-lg text-gray-800">
+                      {item.title}
+                    </h4>
+                    <p className="text-gray-600 text-sm md:text-base">
+                      {item.desc}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    ),
+    bgColor: "bg-white",
+  },
+
+  // Slide 9: Tech Stack
+  {
+    id: "tech-stack",
+    title: "Our Technology",
+    content: (
+      <div className="flex flex-col items-center justify-center h-full w-full text-center px-4">
+        <h3 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-10">
+          Tech Stack
+        </h3>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-5xl mx-auto">
+          {[
+            {
+              title: "Frontend",
+              icon: <FaLightbulb />,
+              items: [
+                { name: "React.js", desc: "Sleek & user-friendly" },
+                {
+                  name: "Responsive Design",
+                  desc: "Mobile & desktop optimized",
+                },
+              ],
+            },
+            {
+              title: "Backend",
+              icon: <FaShieldAlt />,
+              items: [
+                { name: "Django", desc: "Robust API & contract interactions" },
+                { name: "PostgreSQL", desc: "Scalable & efficient database" },
+                { name: "Docker", desc: "Seamless deployment" },
+              ],
+            },
+            {
+              title: "Blockchain",
+              icon: <FaLock />,
+              items: [
+                { name: "Celo", desc: "Secure & low-cost transactions" },
+                { name: "Smart Contracts", desc: "Automated, secure payments" },
+              ],
+            },
+          ].map((section, idx) => (
+            <div key={idx} className="bg-white p-6 rounded-xl shadow-lg">
+              <div className="bg-blue-100 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
+                <span className="text-blue-600">{section.icon}</span>
+              </div>
+              <h4 className="text-xl md:text-2xl font-bold text-gray-800 mb-4">
+                {section.title}
+              </h4>
+              <div className="space-y-3">
+                {section.items.map((item, i) => (
+                  <div key={i} className="bg-blue-50 px-4 py-2 rounded-lg">
+                    <p className="font-medium text-gray-700">{item.name}</p>
+                    <p className="text-sm text-gray-500">{item.desc}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+        <div className="mt-10">
+          {/* <img src="/api/placeholder/700/150" alt="System architecture diagram" className="rounded-lg shadow-lg" /> */}
+        </div>
+      </div>
+    ),
+    bgColor: "bg-gradient-to-br from-blue-50 to-white",
+  },
+
+  // Slide 10: Team
+  {
+    id: "team",
+    title: "The Minds Behind It",
+    content: (
+      <div className="flex flex-col items-center justify-center h-full w-full text-center px-4">
+        <h3 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-10">
+          Our Team
+        </h3>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-5xl mx-auto">
+          {[
+            { name: "Maku P. Mazakpe", role: "Tech Lead", icon: <FaRocket /> },
+            {
+              name: "Nana Abokoma Sika Antwi",
+              role: "Communication Lead",
+              icon: <FaLightbulb />,
+            },
+            {
+              name: "[Team Member]",
+              role: "Partnerships",
+              icon: <FaHandshake />,
+            },
+          ].map((member, idx) => (
+            <div
+              key={idx}
+              className="bg-white rounded-xl shadow-lg overflow-hidden group transform transition hover:scale-105"
+            >
+              <div className="h-48 overflow-hidden">
+                <img
+                  src="/api/placeholder/300/200"
+                  alt={member.name}
+                  className="w-full h-full object-cover transition group-hover:scale-110"
+                />
+              </div>
+              <div className="p-6">
+                <h4 className="text-xl md:text-2xl font-bold text-gray-800">
+                  {member.name}
+                </h4>
+                <p className="text-blue-600 font-semibold mb-4 text-sm md:text-base">
+                  {member.role}
+                </p>
+                <div className="flex justify-center">
+                  <div className="bg-blue-100 p-3 rounded-full">
+                    <span className="text-blue-600">{member.icon}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    ),
+    bgColor: "bg-white",
+  },
+
+  // Slide 11: Competitive Analysis
+  {
+    id: "competitive-analysis",
+    title: "Competitive Landscape",
+    content: (
+      <div className="flex flex-col items-center justify-center h-full w-full text-center px-4 py-12 bg-gradient-to-br from-blue-100 to-gray-50">
+        {/* Header */}
+        <h3 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-12">
+          Competitive <span className="text-blue-600">Landscape</span>
+        </h3>
+
+        {/* Table Container */}
+        <div className="w-full max-w-6xl mx-auto overflow-x-auto rounded-xl shadow-2xl">
+          <table className="min-w-full bg-white rounded-xl overflow-hidden border-separate border-spacing-0">
+            <thead>
+              <tr className="bg-gradient-to-r from-blue-600 to-blue-800 text-white text-left">
+                <th className="py-4 px-6 text-lg font-semibold rounded-tl-xl">
+                  Features
+                </th>
+                <th className="py-4 px-6 text-lg font-semibold">KUSAIDIA</th>
+                <th className="py-4 px-6 text-lg font-semibold">
+                  Traditional NGOs
+                </th>
+                <th className="py-4 px-6 text-lg font-semibold">GoFundMe</th>
+                <th className="py-4 px-6 text-lg font-semibold rounded-tr-xl">
+                  Crypto Solutions
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {[
+                {
+                  feature: "Transparency",
+                  kusaidia: "Full blockchain tracking",
+                  ngo: "Limited reporting",
+                  gofundme: "Basic",
+                  crypto: "Full but complex",
+                },
+                {
+                  feature: "Speed of Delivery",
+                  kusaidia: "1-3 days (goods)",
+                  ngo: "Months",
+                  gofundme: "1-2 weeks (funds)",
+                  crypto: "Minutes (transactions)",
+                },
+                {
+                  feature: "Fees",
+                  kusaidia: "2-5%",
+                  ngo: "20-30%",
+                  gofundme: "7.9% + $0.30",
+                  crypto: "Variable gas fees",
+                },
+                {
+                  feature: "Ease of Use",
+                  kusaidia: "Simple interface",
+                  ngo: "Straightforward",
+                  gofundme: "User-friendly",
+                  crypto: "Technical barriers",
+                },
+                {
+                  feature: "Impact Verification",
+                  kusaidia: "Real-time verification",
+                  ngo: "Annual reports only",
+                  gofundme: "Self-reported",
+                  crypto: "On-chain but complex",
+                },
+              ].map((row, idx) => (
+                <tr
+                  key={idx}
+                  className={`border-t border-gray-200 hover:bg-blue-50 transition-colors duration-200 ${
+                    idx === 4 ? "rounded-bl-xl rounded-br-xl" : ""
+                  }`}
+                >
+                  <td className="py-4 px-6 font-medium text-gray-700 text-left">
+                    {row.feature}
+                  </td>
+                  <td className="py-4 px-6">
+                    <div className="flex items-center">
+                      <FaCheckCircle className="text-green-500 mr-2 animate-pulse" />
+                      <span className="text-gray-800 font-semibold">
+                        {row.kusaidia}
+                      </span>
+                    </div>
+                  </td>
+                  <td className="py-4 px-6">
+                    <div className="flex items-center">
+                      {row.ngo.includes("Limited") ||
+                      row.ngo.includes("Months") ||
+                      row.ngo.includes("20-30%") ? (
+                        <FaTimesCircle className="text-red-500 mr-2" />
+                      ) : (
+                        <FaCheckCircle className="text-green-500 mr-2" />
+                      )}
+                      <span className="text-gray-600">{row.ngo}</span>
+                    </div>
+                  </td>
+                  <td className="py-4 px-6">
+                    <div className="flex items-center">
+                      {row.gofundme.includes("Basic") ||
+                      row.gofundme.includes("weeks") ||
+                      row.gofundme.includes("7.9%") ? (
+                        <FaTimesCircle className="text-red-500 mr-2" />
+                      ) : (
+                        <FaCheckCircle className="text-green-500 mr-2" />
+                      )}
+                      <span className="text-gray-600">{row.gofundme}</span>
+                    </div>
+                  </td>
+                  <td className="py-4 px-6">
+                    <div className="flex items-center">
+                      {row.crypto.includes("complex") ||
+                      row.crypto.includes("barriers") ? (
+                        <FaTimesCircle className="text-red-500 mr-2" />
+                      ) : (
+                        <FaCheckCircle className="text-green-500 mr-2" />
+                      )}
+                      <span className="text-gray-600">{row.crypto}</span>
+                    </div>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        {/* Footer Note */}
+        <p className="mt-6 text-sm text-gray-500 italic">
+          Crypto Solutions: BitGive, GiveCrypto | Data as of March 2025
+        </p>
+      </div>
+    ),
+    bgColor: "bg-gradient-to-br from-blue-100 to-gray-50",
+  },
+
+  // Slide 13: Contact
+  // Slide 13: Contact
+  // Slide 13: Contact
+  {
+    id: "contact",
+    title: "Get In Touch",
+    content: (
+      <div className="flex flex-col items-center justify-start min-h-full w-full text-center px-4 py-12 bg-gradient-to-r from-blue-50 to-gray-100">
+        {/* Horizontal Scrollable Container */}
+        <div className="w-full max-w-6xl mx-auto h-[70vh] overflow-x-auto overflow-y-hidden scrollbar-thin scrollbar-thumb-blue-500 scrollbar-track-gray-100 flex space-x-6 px-4 snap-x snap-mandatory">
+          {/* Combined Contact Card */}
+          <div className="bg-white rounded-3xl shadow-lg p-8 min-w-[320px] max-w-[400px] flex-shrink-0 transform transition-all hover:shadow-xl hover:-translate-y-2 duration-300 snap-center">
+            <h4 className="text-3xl font-extrabold text-gray-900 mb-6 flex items-center justify-center">
+              <FaInfoCircle className="text-blue-600 mr-2" />{" "}
+              <span className="text-blue-600">Let’s Connect</span>
+            </h4>
+            <div className="space-y-6 text-left">
+              {[
+                {
+                  icon: <FaMapMarkerAlt className="text-blue-600 text-2xl" />,
+                  title: "Location",
+                  details: [
+                    "Nairobi, Kenya",
+                    "Kilimani X Center, 3rd Floor",
+                  ],
+                },
+                {
+                  icon: <FaPhone className="text-blue-600 text-2xl" />,
+                  title: "Phone",
+                  details: ["+254 700 000 000"],
+                },
+                {
+                  icon: <FaEnvelope className="text-blue-600 text-2xl" />,
+                  title: "Email",
+                  details: ["kusaidia75@gmail.com"],
+                },
+              ].map((item, idx) => (
+                <div key={idx} className="flex items-start">
+                  <div className="p-3 rounded-full bg-blue-100 mr-4">
+                    {item.icon}
+                  </div>
+                  <div>
+                    <p className="font-semibold text-gray-800 text-lg">
+                      {item.title}
+                    </p>
+                    {item.details.map((detail, i) => (
+                      <p key={i} className="text-gray-600 text-sm">
+                        {detail}
+                      </p>
                     ))}
                   </div>
                 </div>
-              </div>
-              <div className="p-8">
-                <h4 className="text-xl md:text-2xl font-bold text-gray-800 mb-6">Send a Message</h4>
-                <div className="space-y-4">
-                  {[
-                    { label: 'Your Name', type: 'text', placeholder: 'John Doe' },
-                    { label: 'Your Email', type: 'email', placeholder: 'john@example.com' },
-                    { label: 'Subject', type: 'text', placeholder: 'Partnerships Inquiry' }
-                  ].map((field, idx) => (
-                    <div key={idx}>
-                      <label className="block text-gray-700 mb-2">{field.label}</label>
-                      <input
-                        type={field.type}
-                        className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                        placeholder={field.placeholder}
-                      />
-                    </div>
-                  ))}
-                  <div>
-                    <label className="block text-gray-700 mb-2">Message</label>
-                    <textarea
-                      className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 h-32"
-                      placeholder="Your message here..."
-                    ></textarea>
-                  </div>
-                  <div className="pt-4">
-                    <button className="bg-blue-600 text-white px-6 py-2 rounded-lg font-bold hover:bg-blue-700 transition">
-                      Send Message
-                    </button>
-                  </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Combined Form & Social Card */}
+          <div className="bg-white rounded-3xl shadow-lg p-8 min-w-[320px] max-w-[400px] flex-shrink-0 transform transition-all hover:shadow-xl hover:-translate-y-2 duration-300 snap-center">
+            <h4 className="text-2xl font-bold text-gray-800 mb-6 flex items-center justify-center">
+              <FaPaperPlane className="text-blue-600 mr-2" /> Send a Message
+            </h4>
+            <form
+              action="https://script.google.com/macros/s/AKfycbxZ-HSVjtGhOxvxErMeXgXOfBCgmUaUdnTW05DsWRbHJbdwiCTGDI4cqDkO6dUKyIFi/exec"
+              method="POST"
+              className="space-y-5"
+            >
+              {[
+                {
+                  name: "name",
+                  label: "Name",
+                  type: "text",
+                  placeholder: "Your Name",
+                },
+                {
+                  name: "email",
+                  label: "Email",
+                  type: "email",
+                  placeholder: "Your Email",
+                },
+                {
+                  name: "subject",
+                  label: "Subject",
+                  type: "text",
+                  placeholder: "What’s on your mind?",
+                },
+              ].map((field, idx) => (
+                <div key={idx} className="relative">
+                  <label className="absolute -top-2 left-3 bg-white px-2 text-xs text-gray-600 font-medium">
+                    {field.label}
+                  </label>
+                  <input
+                    type={field.type}
+                    name={field.name}
+                    className="w-full px-4 py-2 rounded-xl border border-gray-200 bg-gray-50 text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent transition duration-200 placeholder-gray-400 text-sm"
+                    placeholder={field.placeholder}
+                    required
+                  />
                 </div>
+              ))}
+              <div className="relative">
+                <label className="absolute -top-2 left-3 bg-white px-2 text-xs text-gray-600 font-medium">
+                  Message
+                </label>
+                <textarea
+                  name="message"
+                  className="w-full px-4 py-2 rounded-xl border border-gray-200 bg-gray-50 text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent h-20 transition duration-200 placeholder-gray-400 text-sm"
+                  placeholder="Tell us more..."
+                  required
+                ></textarea>
+              </div>
+              <button
+                type="submit"
+                className="w-full bg-blue-600 text-white px-6 py-2 rounded-xl font-semibold hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 transition duration-300 text-sm"
+              >
+                Send It!
+              </button>
+            </form>
+
+            {/* Social Section */}
+            <div className="mt-6 pt-6 border-t border-gray-200">
+              <h5 className="text-xl font-bold text-gray-800 mb-4 flex items-center justify-center">
+                <FaShareAlt className="text-blue-600 mr-2" /> Stay Connected
+              </h5>
+              <div className="flex flex-wrap justify-center gap-3">
+                {[
+                  {
+                    icon: <FaTwitter />,
+                    label: "X",
+                    link: "https://twitter.com/Kusaidia",
+                  },
+                  { icon: <FaLinkedin />, label: "LinkedIn", link: "#" },
+                  { icon: <FaFacebook />, label: "Facebook", link: "#" },
+                  { icon: <FaInstagram />, label: "Instagram", link: "#" },
+                ].map((social, idx) => (
+                  <a
+                    key={idx}
+                    href={social.link}
+                    className="flex items-center justify-center w-10 h-10 rounded-full bg-blue-100 text-blue-600 hover:bg-blue-600 hover:text-white transition duration-300 transform hover:scale-110"
+                  >
+                    {social.icon}
+                  </a>
+                ))}
               </div>
             </div>
           </div>
         </div>
-      ),
-      bgColor: "bg-gradient-to-br from-blue-50 to-white",
-    }
-  ];
+      </div>
+    ),
+    bgColor: "bg-gradient-to-r from-blue-50 to-gray-100",
+  },
+];
 
-  // return (
-  //   <div>
-  //     {slides.map((slide) => (
-  //       <section key={slide.id} className={`${slide.bgColor} min-h-screen flex items-center justify-center py-12`}>
-  //         <div className="w-full max-w-7xl mx-auto">
-  //           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 text-center mb-8">{slide.title}</h2>
-  //           {slide.content}
-  //         </div>
-  //       </section>
-  //     ))}
-  //   </div>
-  // );
-
+// return (
+//   <div>
+//     {slides.map((slide) => (
+//       <section key={slide.id} className={`${slide.bgColor} min-h-screen flex items-center justify-center py-12`}>
+//         <div className="w-full max-w-7xl mx-auto">
+//           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 text-center mb-8">{slide.title}</h2>
+//           {slide.content}
+//         </div>
+//       </section>
+//     ))}
+//   </div>
+// );
 
 // PitchDeck Component (unchanged, abbreviated for brevity)
 const PitchDeck = () => {
@@ -709,41 +1181,106 @@ const PitchDeck = () => {
   };
 
   return (
-    <div className={`transition-all duration-300 ease-in-out ${isFullScreen ? "fixed inset-0 z-50 bg-gray-900 flex items-center justify-center" : "py-16 bg-gray-50"}`}>
-      <div className={`relative mx-auto px-4 sm:px-6 transition-all duration-300 ${isFullScreen ? "w-full h-full max-w-none p-8" : "max-w-4xl lg:px-8"}`}>
+    <div
+      className={`transition-all duration-300 ease-in-out ${
+        isFullScreen
+          ? "fixed inset-0 z-50 bg-gray-900 flex items-center justify-center"
+          : "py-16 bg-gray-50"
+      }`}
+    >
+      <div
+        className={`relative mx-auto px-4 sm:px-6 transition-all duration-300 ${
+          isFullScreen ? "w-full h-full max-w-none p-8" : "max-w-4xl lg:px-8"
+        }`}
+      >
         <div className="flex justify-between items-center mb-8">
-          <h2 className={`font-extrabold text-indigo-600 ${isFullScreen ? "text-4xl" : "text-3xl"}`}>KUSAIDIA Pitch Deck</h2>
-          <button onClick={toggleFullScreen} className="p-2 bg-indigo-100 text-indigo-600 rounded-full hover:bg-indigo-200 transition-colors">
-            {isFullScreen ? <FaCompressAlt size={20} /> : <FaExpandAlt size={20} />}
+          <h2
+            className={`font-extrabold text-indigo-600 ${
+              isFullScreen ? "text-4xl" : "text-3xl"
+            }`}
+          >
+            KUSAIDIA Pitch Deck
+          </h2>
+          <button
+            onClick={toggleFullScreen}
+            className="p-2 bg-indigo-100 text-indigo-600 rounded-full hover:bg-indigo-200 transition-colors"
+          >
+            {isFullScreen ? (
+              <FaCompressAlt size={20} />
+            ) : (
+              <FaExpandAlt size={20} />
+            )}
           </button>
         </div>
         <div className="h-1 bg-gray-200 rounded-full mb-6">
-          <div className="h-1 bg-indigo-600 rounded-full transition-all duration-300 ease-out" style={{ width: `${((currentSlide + 1) / slides.length) * 100}%` }}></div>
+          <div
+            className="h-1 bg-indigo-600 rounded-full transition-all duration-300 ease-out"
+            style={{ width: `${((currentSlide + 1) / slides.length) * 100}%` }}
+          ></div>
         </div>
         <div className="relative">
-          <div className={`rounded-xl shadow-xl overflow-hidden transition-all duration-500 flex flex-col ${isFullScreen ? "h-[calc(100vh-200px)]" : "h-[500px]"} ${slides[currentSlide].bgColor}`}>
-            <div className="p-6 md:p-10 flex-grow overflow-auto">{slides[currentSlide].content}</div>
+          <div
+            className={`rounded-xl shadow-xl overflow-hidden transition-all duration-500 flex flex-col ${
+              isFullScreen ? "h-[calc(100vh-200px)]" : "h-[500px]"
+            } ${slides[currentSlide].bgColor}`}
+          >
+            <div className="p-6 md:p-10 flex-grow overflow-auto">
+              {slides[currentSlide].content}
+            </div>
           </div>
           <div className="absolute top-1/2 left-0 right-0 transform -translate-y-1/2 flex justify-between pointer-events-none px-4">
-            <button onClick={() => currentSlide > 0 && setCurrentSlide((prev) => prev - 1)} className={`p-3 rounded-full shadow-lg pointer-events-auto transition-all ${currentSlide > 0 ? "bg-white text-indigo-600 opacity-80 hover:opacity-100 hover:bg-indigo-50" : "opacity-0 cursor-default"}`}>
+            <button
+              onClick={() =>
+                currentSlide > 0 && setCurrentSlide((prev) => prev - 1)
+              }
+              className={`p-3 rounded-full shadow-lg pointer-events-auto transition-all ${
+                currentSlide > 0
+                  ? "bg-white text-indigo-600 opacity-80 hover:opacity-100 hover:bg-indigo-50"
+                  : "opacity-0 cursor-default"
+              }`}
+            >
               <FaChevronLeft size={24} />
             </button>
-            <button onClick={() => currentSlide < slides.length - 1 && setCurrentSlide((prev) => prev + 1)} className={`p-3 rounded-full shadow-lg pointer-events-auto transition-all ${currentSlide < slides.length - 1 ? "bg-white text-indigo-600 opacity-80 hover:opacity-100 hover:bg-indigo-50" : "opacity-0 cursor-default"}`}>
+            <button
+              onClick={() =>
+                currentSlide < slides.length - 1 &&
+                setCurrentSlide((prev) => prev + 1)
+              }
+              className={`p-3 rounded-full shadow-lg pointer-events-auto transition-all ${
+                currentSlide < slides.length - 1
+                  ? "bg-white text-indigo-600 opacity-80 hover:opacity-100 hover:bg-indigo-50"
+                  : "opacity-0 cursor-default"
+              }`}
+            >
               <FaChevronRight size={24} />
             </button>
           </div>
           <div className="flex justify-center mt-6 space-x-2 flex-wrap">
             {slides.map((_, index) => (
-              <button key={index} onClick={() => setCurrentSlide(index)} className={`w-2 h-2 rounded-full transition-all ${index === currentSlide ? "bg-indigo-600 w-4" : "bg-gray-300 hover:bg-indigo-400"}`}></button>
+              <button
+                key={index}
+                onClick={() => setCurrentSlide(index)}
+                className={`w-2 h-2 rounded-full transition-all ${
+                  index === currentSlide
+                    ? "bg-indigo-600 w-4"
+                    : "bg-gray-300 hover:bg-indigo-400"
+                }`}
+              ></button>
             ))}
           </div>
         </div>
         <div className="mt-6 text-center">
-          <h3 className="text-xl font-semibold text-gray-700">{slides[currentSlide].title}</h3>
+          <h3 className="text-xl font-semibold text-gray-700">
+            {slides[currentSlide].title}
+          </h3>
         </div>
         {isFullScreen && (
           <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 text-gray-400 text-sm">
-            Press <kbd className="px-2 py-1 bg-gray-100 rounded text-gray-700">Esc</kbd> to exit fullscreen
+            Press{" "}
+            <kbd className="px-2 py-1 bg-gray-100 rounded text-gray-700">
+              Esc
+            </kbd>{" "}
+            to exit fullscreen
           </div>
         )}
       </div>
@@ -790,7 +1327,6 @@ const milestones = [
   },
 ];
 
-
 const AdminInstructions = () => {
   return (
     <div className="py-12 bg-gradient-to-b from-gray-50 to-gray-100">
@@ -801,9 +1337,7 @@ const AdminInstructions = () => {
           className="w-full bg-white shadow-lg rounded-xl overflow-hidden border border-gray-200"
         >
           <AccordionItem value="admin-guide">
-            <AccordionTrigger
-              className="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-bold text-lg rounded-t-xl p-6 transition-all duration-300"
-            >
+            <AccordionTrigger className="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-bold text-lg rounded-t-xl p-6 transition-all duration-300">
               <span className="flex items-center">
                 <svg
                   className="w-6 h-6 mr-2"
@@ -830,39 +1364,70 @@ const AdminInstructions = () => {
                 </h3>
                 <div className="space-y-6">
                   <div className="bg-white p-5 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200">
-                    <h4 className="text-lg font-semibold text-indigo-700">1. Initial Review</h4>
-                    <p className="text-gray-700 mt-2">When a project enters "pending_review" status, carefully examine:</p>
+                    <h4 className="text-lg font-semibold text-indigo-700">
+                      1. Initial Review
+                    </h4>
+                    <p className="text-gray-700 mt-2">
+                      When a project enters "pending_review" status, carefully
+                      examine:
+                    </p>
                     <ul className="list-disc pl-6 mt-3 space-y-2 text-gray-600">
-                      <li>Project description and goals for clarity and feasibility</li>
+                      <li>
+                        Project description and goals for clarity and
+                        feasibility
+                      </li>
                       <li>Organization credentials and history</li>
                       <li>Location and beneficiary information for accuracy</li>
                       <li>Contact information for completeness</li>
                     </ul>
                   </div>
                   <div className="bg-white p-5 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200">
-                    <h4 className="text-lg font-semibold text-indigo-700">2. Success Metrics Validation</h4>
-                    <p className="text-gray-700 mt-2">Strong success metrics should be:</p>
+                    <h4 className="text-lg font-semibold text-indigo-700">
+                      2. Success Metrics Validation
+                    </h4>
+                    <p className="text-gray-700 mt-2">
+                      Strong success metrics should be:
+                    </p>
                     <ul className="list-disc pl-6 mt-3 space-y-2 text-gray-600">
-                      <li>Specific and measurable (e.g., "500 students will have access to clean water")</li>
+                      <li>
+                        Specific and measurable (e.g., "500 students will have
+                        access to clean water")
+                      </li>
                       <li>Relevant to the project goals</li>
                       <li>Achievable within the project scope and timeline</li>
                       <li>Time-bound with clear deadlines</li>
                     </ul>
-                    <p className="mt-3 text-amber-700 font-medium italic">Edit vague metrics to be concrete before approval.</p>
+                    <p className="mt-3 text-amber-700 font-medium italic">
+                      Edit vague metrics to be concrete before approval.
+                    </p>
                   </div>
                   <div className="bg-white p-5 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200">
-                    <h4 className="text-lg font-semibold text-indigo-700">3. Impact Assessment Review</h4>
-                    <p className="text-gray-700 mt-2">Effective impact assessment methods should describe:</p>
+                    <h4 className="text-lg font-semibold text-indigo-700">
+                      3. Impact Assessment Review
+                    </h4>
+                    <p className="text-gray-700 mt-2">
+                      Effective impact assessment methods should describe:
+                    </p>
                     <ul className="list-disc pl-6 mt-3 space-y-2 text-gray-600">
-                      <li>Data collection techniques (surveys, interviews, observations)</li>
-                      <li>Frequency of measurement (e.g., baseline, midpoint, completion)</li>
+                      <li>
+                        Data collection techniques (surveys, interviews,
+                        observations)
+                      </li>
+                      <li>
+                        Frequency of measurement (e.g., baseline, midpoint,
+                        completion)
+                      </li>
                       <li>Who will be conducting the assessment</li>
                       <li>How results will be reported and verified</li>
                     </ul>
                   </div>
                   <div className="bg-white p-5 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200">
-                    <h4 className="text-lg font-semibold text-indigo-700">4. Milestone Evaluation</h4>
-                    <p className="text-gray-700 mt-2">Check that each milestone:</p>
+                    <h4 className="text-lg font-semibold text-indigo-700">
+                      4. Milestone Evaluation
+                    </h4>
+                    <p className="text-gray-700 mt-2">
+                      Check that each milestone:
+                    </p>
                     <ul className="list-disc pl-6 mt-3 space-y-2 text-gray-600">
                       <li>Has a clear deliverable</li>
                       <li>Includes a reasonable budget allocation</li>
@@ -875,22 +1440,34 @@ const AdminInstructions = () => {
 
               {/* Setting Fees */}
               <div className="space-y-6">
-                <h3 className="text-2xl font-extrabold text-gray-900 tracking-tight">Setting Fees</h3>
+                <h3 className="text-2xl font-extrabold text-gray-900 tracking-tight">
+                  Setting Fees
+                </h3>
                 <div className="space-y-6">
                   <div className="bg-white p-5 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200">
-                    <h4 className="text-lg font-semibold text-indigo-700">Vetting Fee Guidelines</h4>
-                    <p className="text-gray-700 mt-2">When setting vetting fees, consider:</p>
+                    <h4 className="text-lg font-semibold text-indigo-700">
+                      Vetting Fee Guidelines
+                    </h4>
+                    <p className="text-gray-700 mt-2">
+                      When setting vetting fees, consider:
+                    </p>
                     <ul className="list-disc pl-6 mt-3 space-y-2 text-gray-600">
                       <li>Project complexity (more complex = more vetting)</li>
                       <li>Typical range: 1-3% of total project budget</li>
                       <li>Higher risk projects may warrant higher fees</li>
                       <li>First-time organizations may need deeper checks</li>
                     </ul>
-                    <p className="mt-3 text-blue-700 font-medium italic">Higher fees may extend fundraising timelines.</p>
+                    <p className="mt-3 text-blue-700 font-medium italic">
+                      Higher fees may extend fundraising timelines.
+                    </p>
                   </div>
                   <div className="bg-white p-5 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200">
-                    <h4 className="text-lg font-semibold text-indigo-700">Insurance Fee Guidelines</h4>
-                    <p className="text-gray-700 mt-2">Apply insurance fees when:</p>
+                    <h4 className="text-lg font-semibold text-indigo-700">
+                      Insurance Fee Guidelines
+                    </h4>
+                    <p className="text-gray-700 mt-2">
+                      Apply insurance fees when:
+                    </p>
                     <ul className="list-disc pl-6 mt-3 space-y-2 text-gray-600">
                       <li>Projects involve construction or infrastructure</li>
                       <li>Activities have safety risks</li>
@@ -905,7 +1482,9 @@ const AdminInstructions = () => {
                     </ul>
                   </div>
                   <div className="bg-amber-100 p-5 rounded-lg shadow-sm border border-amber-300">
-                    <h4 className="text-lg font-semibold text-amber-800">Important Note on Fee Changes</h4>
+                    <h4 className="text-lg font-semibold text-amber-800">
+                      Important Note on Fee Changes
+                    </h4>
                     <p className="mt-2 text-amber-800">Fee changes impact:</p>
                     <ul className="list-disc pl-6 mt-3 space-y-2 text-amber-700">
                       <li>Funding percentage</li>
@@ -919,36 +1498,80 @@ const AdminInstructions = () => {
 
               {/* Blockchain Management */}
               <div className="space-y-6">
-                <h3 className="text-2xl font-extrabold text-gray-900 tracking-tight">Blockchain Management</h3>
+                <h3 className="text-2xl font-extrabold text-gray-900 tracking-tight">
+                  Blockchain Management
+                </h3>
                 <div className="space-y-6">
                   <div className="bg-white p-5 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200">
-                    <h4 className="text-lg font-semibold text-indigo-700">Registration Process</h4>
-                    <p className="text-gray-700 mt-2">Post-approval, projects auto-register on the blockchain:</p>
+                    <h4 className="text-lg font-semibold text-indigo-700">
+                      Registration Process
+                    </h4>
+                    <p className="text-gray-700 mt-2">
+                      Post-approval, projects auto-register on the blockchain:
+                    </p>
                     <ul className="list-disc pl-6 mt-3 space-y-2 text-gray-600">
-                      <li><code className="text-indigo-700 bg-indigo-50 rounded-md px-1 py-0.5">register_project_on_blockchain</code> creates the record</li>
-                      <li><code className="text-indigo-700 bg-indigo-50 rounded-md px-1 py-0.5">blockchain_tx_hash</code> is populated on success</li>
-                      <li><code className="text-indigo-700 bg-indigo-50 rounded-md px-1 py-0.5">contract_address</code> follows after confirmation</li>
+                      <li>
+                        <code className="text-indigo-700 bg-indigo-50 rounded-md px-1 py-0.5">
+                          register_project_on_blockchain
+                        </code>{" "}
+                        creates the record
+                      </li>
+                      <li>
+                        <code className="text-indigo-700 bg-indigo-50 rounded-md px-1 py-0.5">
+                          blockchain_tx_hash
+                        </code>{" "}
+                        is populated on success
+                      </li>
+                      <li>
+                        <code className="text-indigo-700 bg-indigo-50 rounded-md px-1 py-0.5">
+                          contract_address
+                        </code>{" "}
+                        follows after confirmation
+                      </li>
                     </ul>
                   </div>
                   <div className="bg-white p-5 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200">
-                    <h4 className="text-lg font-semibold text-indigo-700">Troubleshooting Registration Issues</h4>
+                    <h4 className="text-lg font-semibold text-indigo-700">
+                      Troubleshooting Registration Issues
+                    </h4>
                     <p className="text-gray-700 mt-2">If registration fails:</p>
                     <ul className="list-disc pl-6 mt-3 space-y-2 text-gray-600">
-                      <li>Verify organization’s <code className="text-indigo-700 bg-indigo-50 rounded-md px-1 py-0.5">wallet_address</code></li>
+                      <li>
+                        Verify organization’s{" "}
+                        <code className="text-indigo-700 bg-indigo-50 rounded-md px-1 py-0.5">
+                          wallet_address
+                        </code>
+                      </li>
                       <li>Check blockchain network connectivity</li>
                       <li>Ensure contract registry is deployed</li>
                       <li>Inspect transaction status on the explorer</li>
                     </ul>
-                    <p className="mt-3 text-blue-700 font-medium italic">Manually trigger via "Register on Blockchain" button.</p>
+                    <p className="mt-3 text-blue-700 font-medium italic">
+                      Manually trigger via "Register on Blockchain" button.
+                    </p>
                   </div>
                   <div className="bg-white p-5 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200">
-                    <h4 className="text-lg font-semibold text-indigo-700">Milestone Registration</h4>
-                    <p className="text-gray-700 mt-2">Milestones register post-project setup:</p>
+                    <h4 className="text-lg font-semibold text-indigo-700">
+                      Milestone Registration
+                    </h4>
+                    <p className="text-gray-700 mt-2">
+                      Milestones register post-project setup:
+                    </p>
                     <ul className="list-disc pl-6 mt-3 space-y-2 text-gray-600">
                       <li>Vendors need valid wallet addresses</li>
-                      <li><code className="text-indigo-700 bg-indigo-50 rounded-md px-1 py-0.5">register_project_milestones</code> handles this</li>
+                      <li>
+                        <code className="text-indigo-700 bg-indigo-50 rounded-md px-1 py-0.5">
+                          register_project_milestones
+                        </code>{" "}
+                        handles this
+                      </li>
                       <li>Purchase orders are generated</li>
-                      <li><code className="text-indigo-700 bg-indigo-50 rounded-md px-1 py-0.5">blockchain_tx_hash</code> populates on success</li>
+                      <li>
+                        <code className="text-indigo-700 bg-indigo-50 rounded-md px-1 py-0.5">
+                          blockchain_tx_hash
+                        </code>{" "}
+                        populates on success
+                      </li>
                     </ul>
                   </div>
                 </div>
@@ -960,7 +1583,6 @@ const AdminInstructions = () => {
     </div>
   );
 };
-
 
 export default function AboutPage() {
   const [loaded, setLoaded] = useState(false);
