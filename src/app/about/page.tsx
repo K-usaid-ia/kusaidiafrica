@@ -1237,35 +1237,35 @@ const PitchDeck = () => {
 const milestones = [
   {
     title: "Validate Idea & Research",
-    period: "Month 1-2 (April - May 2025)",
+    period: "Month 1-2 (x - y 2025)",
     description:
       "We kick off by proving the concept—talking to donors, NGOs, and vendors to understand their needs. No heavy coding yet, just listening and learning to ensure KUSAIDIA solves a real problem.",
     highlight: "Focus: Market insights, no dev rush.",
   },
   {
     title: "Build MVP & Revenue Model",
-    period: "Month 3-4 (June - July 2025)",
+    period: "Month 3-4 (x - y 2025)",
     description:
       "We build a lean minimum viable product—a simple platform linking donors to vendors. Alongside, we draft a revenue model to keep it sustainable, focusing on fast, efficient development.",
     highlight: "Focus: Lean prototype, cost-effective.",
   },
   {
     title: "Test with Users & Iterate",
-    period: "Month 5-6 (August - September 2025)",
+    period: "Month 5-6 (x - y 2025)",
     description:
       "Real users—donors and vendors—test the MVP with small projects, like delivering supplies. We tweak based on their input and start drafting a proposal to show what works.",
     highlight: "Focus: User feedback, proposal prep.",
   },
   {
     title: "Prep Pitch & Secure Partners",
-    period: "Month 7 (October 2025)",
+    period: "Month 7 (y 2025)",
     description:
       "With a tested platform, we polish our pitch for partners—NGOs, blockchain experts, and local networks. The goal is to lock in support to scale KUSAIDIA’s reach.",
     highlight: "Focus: Partnerships, pitch ready.",
   },
   {
     title: "Launch Small & Gather Data",
-    period: "Month 8 (November - December 2025)",
+    period: "Month 8 (x - y 2025)",
     description:
       "We launch quietly with small, live projects—think $50 deliveries—tracking every step. Data from this fuels our next pitch for funding to grow bigger.",
     highlight: "Focus: Live start, data for growth.",
