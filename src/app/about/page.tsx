@@ -54,6 +54,7 @@ import {
   FaPaperPlane,
   FaInfoCircle,
 } from "react-icons/fa";
+import ContactForm from "@/components/contact/ContactForm";
 
 const slides = [
   // Slide 1: Title
@@ -991,9 +992,7 @@ const slides = [
     ),
     bgColor: "bg-gradient-to-br from-blue-100 to-gray-50",
   },
-
-  // Slide 13: Contact
-  // Slide 13: Contact
+   
   // Slide 13: Contact
   {
     id: "contact",
@@ -1053,62 +1052,7 @@ const slides = [
             <h4 className="text-2xl font-bold text-gray-800 mb-6 flex items-center justify-center">
               <FaPaperPlane className="text-blue-600 mr-2" /> Send a Message
             </h4>
-            <form
-              action="https://script.google.com/macros/s/AKfycbxZ-HSVjtGhOxvxErMeXgXOfBCgmUaUdnTW05DsWRbHJbdwiCTGDI4cqDkO6dUKyIFi/exec"
-              method="POST"
-              className="space-y-5"
-            >
-              {[
-                {
-                  name: "name",
-                  label: "Name",
-                  type: "text",
-                  placeholder: "Your Name",
-                },
-                {
-                  name: "email",
-                  label: "Email",
-                  type: "email",
-                  placeholder: "Your Email",
-                },
-                {
-                  name: "subject",
-                  label: "Subject",
-                  type: "text",
-                  placeholder: "What’s on your mind?",
-                },
-              ].map((field, idx) => (
-                <div key={idx} className="relative">
-                  <label className="absolute -top-2 left-3 bg-white px-2 text-xs text-gray-600 font-medium">
-                    {field.label}
-                  </label>
-                  <input
-                    type={field.type}
-                    name={field.name}
-                    className="w-full px-4 py-2 rounded-xl border border-gray-200 bg-gray-50 text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent transition duration-200 placeholder-gray-400 text-sm"
-                    placeholder={field.placeholder}
-                    required
-                  />
-                </div>
-              ))}
-              <div className="relative">
-                <label className="absolute -top-2 left-3 bg-white px-2 text-xs text-gray-600 font-medium">
-                  Message
-                </label>
-                <textarea
-                  name="message"
-                  className="w-full px-4 py-2 rounded-xl border border-gray-200 bg-gray-50 text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent h-20 transition duration-200 placeholder-gray-400 text-sm"
-                  placeholder="Tell us more..."
-                  required
-                ></textarea>
-              </div>
-              <button
-                type="submit"
-                className="w-full bg-blue-600 text-white px-6 py-2 rounded-xl font-semibold hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 transition duration-300 text-sm"
-              >
-                Send It!
-              </button>
-            </form>
+            <ContactForm />
 
             {/* Social Section */}
             <div className="mt-6 pt-6 border-t border-gray-200">
