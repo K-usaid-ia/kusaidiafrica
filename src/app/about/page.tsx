@@ -63,18 +63,18 @@ const slides = [
     title: "KUSAIDIA: Help That Hits Home",
     content: (
       <div className="flex flex-col items-center justify-center h-full w-full text-center px-4">
-        <div className="mb-8 relative">
+        <div className="mb-4 sm:mb-8 relative">
           <div className="absolute inset-0 bg-blue-600 rounded-xl blur-md opacity-30 transform -rotate-3"></div>
-          <div className="relative bg-gradient-to-r from-blue-600 to-blue-800 px-8 py-6 rounded-xl shadow-2xl">
-            <h1 className="text-5xl md:text-6xl font-black text-white tracking-tight">
+          <div className="relative bg-gradient-to-r from-blue-600 to-blue-800 px-4 sm:px-8 py-4 sm:py-6 rounded-xl shadow-2xl">
+            <h1 className="text-3xl sm:text-5xl md:text-6xl font-black text-white tracking-tight">
               KUSAIDIA
             </h1>
           </div>
         </div>
-        <p className="text-2xl md:text-3xl font-bold text-gray-800 mb-6">
+        <p className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-800 mb-4 sm:mb-6">
           Direct, Transparent Aid Powered by Blockchain
         </p>
-        <p className="text-lg md:text-xl font-medium text-gray-600 mb-10">
+        <p className="text-base sm:text-lg md:text-xl font-medium text-gray-600 mb-6 sm:mb-10">
           Presented by Maku P. Mazakpe | March 2025
         </p>
       </div>
@@ -87,29 +87,29 @@ const slides = [
     id: "problem",
     title: "The Broken Aid Pipeline",
     content: (
-      <div className="flex flex-col items-center justify-center h-full w-full text-center px-4 py-12 bg-gradient-to-br from-gray-50 to-blue-50">
+      <div className="flex flex-col items-center justify-center h-full w-full text-center px-4 py-8 sm:py-12 bg-gradient-to-br from-gray-50 to-blue-50">
         {/* Header */}
-        <h3 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-12">
-          Aid’s <span className="text-red-600">Trust Crisis</span>
+        <h3 className="text-2xl sm:text-4xl md:text-5xl font-extrabold text-gray-900 mb-6 sm:mb-12">
+          Aid's <span className="text-red-600">Trust Crisis</span>
         </h3>
 
         {/* Problem Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-8 w-full max-w-5xl mx-auto">
           {[
             {
               title: "Untrusted",
               desc: "80% of donors doubt impact delivery",
-              icon: <FaUsers className="text-red-600 text-5xl" />,
+              icon: <FaUsers className="text-red-600 text-3xl sm:text-5xl" />,
             },
             {
               title: "Inefficient",
               desc: "30% lost to delays & fraud",
-              icon: <FaChartArea className="text-red-600 text-5xl" />,
+              icon: <FaChartArea className="text-red-600 text-3xl sm:text-5xl" />,
             },
             {
               title: "Slow",
               desc: "Months to deliver essentials",
-              icon: <FaClock className="text-red-600 text-5xl" />,
+              icon: <FaClock className="text-red-600 text-3xl sm:text-5xl" />,
             },
           ].map((item, idx) => (
             <div
@@ -117,12 +117,12 @@ const slides = [
               className="bg-white rounded-2xl shadow-xl overflow-hidden transform transition-all hover:scale-105 hover:shadow-2xl duration-300 border border-gray-100"
             >
               <div className="bg-gradient-to-r from-red-500 to-red-700 h-2 w-full"></div>
-              <div className="p-6">
-                <div className="flex justify-center mb-4">{item.icon}</div>
-                <h4 className="text-xl md:text-2xl font-bold text-gray-800 mb-2">
+              <div className="p-4 sm:p-6">
+                <div className="flex justify-center mb-3 sm:mb-4">{item.icon}</div>
+                <h4 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-800 mb-1 sm:mb-2">
                   {item.title}
                 </h4>
-                <p className="text-gray-600 text-sm md:text-base leading-tight">
+                <p className="text-gray-600 text-xs sm:text-sm md:text-base leading-tight">
                   {item.desc}
                 </p>
               </div>
@@ -131,7 +131,7 @@ const slides = [
         </div>
 
         {/* Footer Note */}
-        <div className="mt-8 text-sm text-gray-500">
+        <div className="mt-6 sm:mt-8 text-xs sm:text-sm text-gray-500">
           Sources: CAF 2023, OECD 2023 | $50B Africa aid, $200B+ global in 2025
         </div>
       </div>
@@ -145,15 +145,15 @@ const slides = [
     title: "KUSAIDIA – Direct Impact",
     content: (
       <div className="flex flex-col items-center justify-center h-full w-full text-center px-4">
-        <h3 className="text-4xl md:text-5xl font-extrabold text-blue-600 mb-10">
+        <h3 className="text-2xl sm:text-4xl md:text-5xl font-extrabold text-blue-600 mb-6 sm:mb-10">
           Our Solution
         </h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-5xl mx-auto">
-          <div className="bg-white p-6 md:p-8 rounded-xl shadow-lg">
-            <h4 className="text-xl md:text-2xl font-bold text-gray-800 mb-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 w-full max-w-5xl mx-auto">
+          <div className="bg-white p-4 sm:p-6 md:p-8 rounded-xl shadow-lg">
+            <h4 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-800 mb-4 sm:mb-6">
               How It Works
             </h4>
-            <div className="space-y-6">
+            <div className="space-y-4 sm:space-y-6">
               {[
                 {
                   title: "Smart Contract Automation",
@@ -169,14 +169,14 @@ const slides = [
                 },
               ].map((item, idx) => (
                 <div key={idx} className="flex items-start">
-                  <div className="flex-shrink-0 bg-blue-100 rounded-full p-3 mr-4">
-                    <FaCheckCircle size={24} className="text-blue-600" />
+                  <div className="flex-shrink-0 bg-blue-100 rounded-full p-2 sm:p-3 mr-3 sm:mr-4">
+                    <FaCheckCircle size={20} className="text-blue-600" />
                   </div>
                   <div className="text-left">
-                    <p className="font-bold text-gray-800 text-lg">
+                    <p className="font-bold text-gray-800 text-base sm:text-lg">
                       {item.title}
                     </p>
-                    <p className="text-gray-600 text-sm md:text-base">
+                    <p className="text-gray-600 text-xs sm:text-sm md:text-base">
                       {item.desc}
                     </p>
                   </div>
@@ -185,16 +185,16 @@ const slides = [
             </div>
           </div>
           <div className="relative flex flex-col items-center justify-center">
-            <div className="w-full relative mb-8">
+            <div className="w-full relative mb-6 sm:mb-8">
               {/* <img src="/api/placeholder/400/300" alt="Direct impact" className="rounded-xl shadow-lg mx-auto" /> */}
-              <div className="absolute -bottom-4 -right-4 bg-blue-600 text-white p-4 rounded-lg shadow-md">
-                <p className="font-bold text-lg md:text-xl">Days not months</p>
+              <div className="absolute -bottom-4 -right-4 bg-blue-600 text-white p-3 sm:p-4 rounded-lg shadow-md">
+                <p className="font-bold text-base sm:text-lg md:text-xl">Days not months</p>
               </div>
             </div>
-            <div className="bg-gradient-to-br from-blue-600 to-blue-800 p-6 rounded-xl shadow-xl text-white text-center w-full max-w-xs">
-              <FaWater size={40} className="mb-3 mx-auto" />
-              <p className="text-3xl md:text-4xl font-bold mb-2">$50</p>
-              <p className="text-lg md:text-xl">
+            <div className="bg-gradient-to-br from-blue-600 to-blue-800 p-4 sm:p-6 rounded-xl shadow-xl text-white text-center w-full max-w-xs">
+              <FaWater size={32} className="mb-2 sm:mb-3 mx-auto" />
+              <p className="text-2xl sm:text-3xl md:text-4xl font-bold mb-1 sm:mb-2">$50</p>
+              <p className="text-base sm:text-lg md:text-xl">
                 delivers water in days—verified & tracked
               </p>
             </div>
@@ -211,12 +211,12 @@ const slides = [
     title: "A $300B Frontier",
     content: (
       <div className="flex flex-col items-center justify-center h-full w-full text-center px-4">
-        <h3 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-10">
+        <h3 className="text-2xl sm:text-4xl md:text-5xl font-extrabold text-gray-900 mb-6 sm:mb-10">
           The <span className="text-blue-600">Market</span>
         </h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 w-full max-w-5xl mx-auto">
-          <div className="bg-white p-6 md:p-8 rounded-xl shadow-lg">
-            <div className="space-y-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-10 w-full max-w-5xl mx-auto">
+          <div className="bg-white p-4 sm:p-6 md:p-8 rounded-xl shadow-lg">
+            <div className="space-y-4 sm:space-y-6">
               {[
                 {
                   label: "Africa Aid Inflow",
@@ -238,10 +238,10 @@ const slides = [
                 },
               ].map((item, idx) => (
                 <div key={idx} className="flex items-center justify-between">
-                  <span className="text-lg md:text-xl font-bold text-gray-800">
+                  <span className="text-base sm:text-lg md:text-xl font-bold text-gray-800">
                     {item.label}
                   </span>
-                  <div className="text-blue-600 text-2xl md:text-3xl font-bold flex items-center">
+                  <div className="text-blue-600 text-xl sm:text-2xl md:text-3xl font-bold flex items-center">
                     <span>{item.value}</span>
                     <span className="ml-2">{item.icon}</span>
                   </div>
@@ -250,7 +250,7 @@ const slides = [
             </div>
           </div>
           <div className="flex flex-col items-center justify-center">
-            <div className="relative w-56 md:w-64 h-56 md:h-64 mb-8">
+            <div className="relative w-40 h-40 sm:w-56 md:w-64 sm:h-56 md:h-64 mb-6 sm:mb-8">
               <svg
                 viewBox="0 0 100 100"
                 className="w-full h-full drop-shadow-xl"
@@ -278,22 +278,22 @@ const slides = [
                 <circle cx="50" cy="50" r="30" fill="#FFFFFF" />
               </svg>
               <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center w-full">
-                <p className="text-blue-600 font-black text-4xl md:text-5xl">
+                <p className="text-blue-600 font-black text-3xl sm:text-4xl md:text-5xl">
                   80%
                 </p>
-                <p className="text-lg font-bold text-blue-800">
+                <p className="text-base sm:text-lg font-bold text-blue-800">
                   Doubt Aid Impact
                 </p>
               </div>
             </div>
-            <div className="bg-blue-100 px-6 py-4 rounded-xl shadow-md border-2 border-blue-200">
-              <p className="text-lg md:text-xl font-bold text-gray-800">
+            <div className="bg-blue-100 px-4 sm:px-6 py-3 sm:py-4 rounded-xl shadow-md border-2 border-blue-200">
+              <p className="text-base sm:text-lg md:text-xl font-bold text-gray-800">
                 Targeting small donors + NGOs with blockchain trust
               </p>
             </div>
           </div>
         </div>
-        <div className="mt-4 text-sm text-gray-600">
+        <div className="mt-3 sm:mt-4 text-xs sm:text-sm text-gray-600">
           Sources: OECD (2023), UN OCHA (2024), Charities Aid Foundation (CAF)
           2023 Report
         </div>
@@ -307,47 +307,47 @@ const slides = [
     id: "competition",
     title: "We're Different",
     content: (
-      <div className="flex flex-col items-center justify-center h-full w-full text-center px-4 py-12 bg-gradient-to-br from-blue-50 to-gray-100">
+      <div className="flex flex-col items-center justify-center h-full w-full text-center px-4 py-8 sm:py-12 bg-gradient-to-br from-blue-50 to-gray-100">
         {/* Header */}
-        <h3 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-12">
+        <h3 className="text-2xl sm:text-4xl md:text-5xl font-extrabold text-gray-900 mb-6 sm:mb-12">
           We <span className="text-blue-600">Stand Out</span>
         </h3>
 
         {/* Comparison Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 w-full max-w-5xl mx-auto">
           {/* Others Card */}
-          <div className="bg-white p-6 md:p-8 rounded-2xl shadow-xl relative border border-gray-200 hover:shadow-2xl transition-shadow duration-300">
+          <div className="bg-white p-4 sm:p-6 md:p-8 rounded-2xl shadow-xl relative border border-gray-200 hover:shadow-2xl transition-shadow duration-300">
             <div className="absolute top-0 left-0 w-full h-3 bg-gradient-to-r from-gray-400 to-gray-600 rounded-t-2xl"></div>
-            <h4 className="font-bold text-2xl md:text-3xl text-gray-800 mb-6 pt-4">
+            <h4 className="font-bold text-xl sm:text-2xl md:text-3xl text-gray-800 mb-4 sm:mb-6 pt-3 sm:pt-4">
               OTHERS
             </h4>
-            <div className="space-y-6">
+            <div className="space-y-4 sm:space-y-6">
               {[
                 {
                   title: "Slow",
                   desc: "UNICEF: Months of bureaucracy",
-                  icon: <FaClock className="text-red-600 text-2xl" />,
+                  icon: <FaClock className="text-red-600 text-xl sm:text-2xl" />,
                 },
                 {
                   title: "Expensive",
                   desc: "GoFundMe: 7.9% + $0.30 fees",
-                  icon: <FaDollarSign className="text-red-600 text-2xl" />,
+                  icon: <FaDollarSign className="text-red-600 text-xl sm:text-2xl" />,
                 },
                 {
                   title: "Complex",
                   desc: "BitGive: Technical barriers",
-                  icon: <FaShieldAlt className="text-red-600 text-2xl" />,
+                  icon: <FaShieldAlt className="text-red-600 text-xl sm:text-2xl" />,
                 },
               ].map((item, idx) => (
                 <div key={idx} className="flex items-center group">
-                  <div className="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center mr-4 group-hover:scale-110 transition-transform duration-200">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-red-100 rounded-full flex items-center justify-center mr-3 sm:mr-4 group-hover:scale-110 transition-transform duration-200">
                     {item.icon}
                   </div>
                   <div className="text-left">
-                    <p className="font-semibold text-red-600 text-lg md:text-xl">
+                    <p className="font-semibold text-red-600 text-base sm:text-lg md:text-xl">
                       {item.title}
                     </p>
-                    <p className="text-gray-600 text-sm md:text-base">
+                    <p className="text-gray-600 text-xs sm:text-sm md:text-base">
                       {item.desc}
                     </p>
                   </div>
@@ -357,36 +357,36 @@ const slides = [
           </div>
 
           {/* Kusaidia Card */}
-          <div className="bg-gradient-to-br from-blue-600 to-blue-800 p-6 md:p-8 rounded-2xl shadow-xl text-white relative hover:shadow-2xl transition-shadow duration-300">
+          <div className="bg-gradient-to-br from-blue-600 to-blue-800 p-4 sm:p-6 md:p-8 rounded-2xl shadow-xl text-white relative hover:shadow-2xl transition-shadow duration-300">
             <div className="absolute top-0 left-0 w-full h-3 bg-blue-900 rounded-t-2xl"></div>
-            <h4 className="font-bold text-2xl md:text-3xl mb-6 pt-4">
+            <h4 className="font-bold text-xl sm:text-2xl md:text-3xl mb-4 sm:mb-6 pt-3 sm:pt-4">
               KUSAIDIA
             </h4>
-            <div className="space-y-6">
+            <div className="space-y-4 sm:space-y-6">
               {[
                 {
                   title: "Fast",
                   desc: "1-3 days delivery",
-                  icon: <FaRocket className="text-blue-100 text-2xl" />,
+                  icon: <FaRocket className="text-blue-100 text-xl sm:text-2xl" />,
                 },
                 {
                   title: "Low-Cost",
                   desc: "2-5% platform fee",
-                  icon: <FaMoneyBillWave className="text-blue-100 text-2xl" />,
+                  icon: <FaMoneyBillWave className="text-blue-100 text-xl sm:text-2xl" />,
                 },
                 {
                   title: "Simple",
                   desc: "User-friendly platform",
-                  icon: <FaLightbulb className="text-blue-100 text-2xl" />,
+                  icon: <FaLightbulb className="text-blue-100 text-xl sm:text-2xl" />,
                 },
               ].map((item, idx) => (
                 <div key={idx} className="flex items-center group">
-                  <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center mr-4 group-hover:scale-110 transition-transform duration-200">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-white rounded-full flex items-center justify-center mr-3 sm:mr-4 group-hover:scale-110 transition-transform duration-200">
                     {item.icon}
                   </div>
                   <div className="text-left">
-                    <p className="font-bold text-lg md:text-xl">{item.title}</p>
-                    <p className="text-blue-100 text-sm md:text-base">
+                    <p className="font-bold text-base sm:text-lg md:text-xl">{item.title}</p>
+                    <p className="text-blue-100 text-xs sm:text-sm md:text-base">
                       {item.desc}
                     </p>
                   </div>
@@ -406,15 +406,15 @@ const slides = [
     title: "How We Work & Win",
     content: (
       <div className="flex flex-col items-center justify-center h-full w-full text-center px-4">
-        <h3 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-10">
+        <h3 className="text-2xl sm:text-4xl md:text-5xl font-extrabold text-gray-900 mb-6 sm:mb-10">
           Our Business Model
         </h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 w-full max-w-4xl mx-auto">
-          <div className="bg-gradient-to-br from-blue-600 to-blue-700 p-6 md:p-8 rounded-xl shadow-lg text-white">
-            <h4 className="text-xl md:text-2xl font-bold mb-6 pb-2 border-b border-blue-300">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-10 w-full max-w-4xl mx-auto">
+          <div className="bg-gradient-to-br from-blue-600 to-blue-700 p-4 sm:p-6 md:p-8 rounded-xl shadow-lg text-white">
+            <h4 className="text-lg sm:text-xl md:text-2xl font-bold mb-4 sm:mb-6 pb-2 border-b border-blue-300">
               Revenue Streams
             </h4>
-            <div className="space-y-6 text-left">
+            <div className="space-y-4 sm:space-y-6 text-left">
               {[
                 {
                   title: "2-5% Platform Fee",
@@ -433,12 +433,12 @@ const slides = [
                 },
               ].map((item, idx) => (
                 <div key={idx} className="flex items-center">
-                  <div className="bg-white/20 p-3 rounded-full mr-4">
+                  <div className="bg-white/20 p-2 sm:p-3 rounded-full mr-3 sm:mr-4">
                     <span className="text-white">{item.icon}</span>
                   </div>
                   <div>
-                    <p className="font-bold text-lg md:text-xl">{item.title}</p>
-                    <p className="text-blue-100 text-sm md:text-base">
+                    <p className="font-bold text-base sm:text-lg md:text-xl">{item.title}</p>
+                    <p className="text-blue-100 text-xs sm:text-sm md:text-base">
                       {item.desc}
                     </p>
                   </div>
@@ -447,23 +447,23 @@ const slides = [
             </div>
           </div>
           <div className="flex flex-col justify-center">
-            <div className="relative mb-8">
+            <div className="relative mb-6 sm:mb-8">
               <div className="absolute inset-0 bg-blue-200 rounded-full blur-sm"></div>
-              <div className="relative flex items-center justify-center w-56 h-56 mx-auto rounded-full border-8 border-white shadow-xl overflow-hidden">
+              <div className="relative flex items-center justify-center w-40 h-40 sm:w-56 sm:h-56 mx-auto rounded-full border-8 border-white shadow-xl overflow-hidden">
                 {/* <img src="/api/placeholder/200/200" alt="Blockchain aid delivery" className="w-full h-full object-cover" /> */}
               </div>
             </div>
-            <div className="flex flex-col space-y-4">
-              <div className="bg-blue-100 px-6 py-4 rounded-full shadow-md border-2 border-blue-200 mx-auto">
+            <div className="flex flex-col space-y-3 sm:space-y-4">
+              <div className="bg-blue-100 px-4 sm:px-6 py-3 sm:py-4 rounded-full shadow-md border-2 border-blue-200 mx-auto">
                 <div className="flex items-center">
                   <FaLock className="text-blue-600 mr-2" />
-                  <p className="text-lg md:text-xl font-bold text-gray-800">
+                  <p className="text-base sm:text-lg md:text-xl font-bold text-gray-800">
                     Lean + Locked on Blockchain
                   </p>
                 </div>
               </div>
-              <div className="bg-white px-6 py-4 rounded-xl shadow-md mx-auto">
-                <p className="text-blue-600 font-bold text-sm md:text-base">
+              <div className="bg-white px-4 sm:px-6 py-3 sm:py-4 rounded-xl shadow-md mx-auto">
+                <p className="text-blue-600 font-bold text-xs sm:text-sm md:text-base">
                   Milestone payments, zero waste
                 </p>
               </div>
@@ -480,95 +480,95 @@ const slides = [
     id: "revenue-streams",
     title: "How Kusaidia Makes Money",
     content: (
-      <div className="flex flex-col items-center justify-center h-full w-full text-center px-4 py-12 bg-gray-50">
+      <div className="flex flex-col items-center justify-center h-full w-full text-center px-4 py-8 sm:py-12 bg-gray-50">
         {/* Header */}
-        <h3 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-12">
+        <h3 className="text-2xl sm:text-4xl md:text-5xl font-extrabold text-gray-900 mb-6 sm:mb-12">
           <span className="text-blue-600">Revenue</span> Streams
         </h3>
 
         {/* Grid of Revenue Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 w-full max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 w-full max-w-6xl mx-auto">
           {[
             {
               title: "Platform Service Fees",
               subtitle: "2-5% per project",
               desc: "Covers vetting, tracking, and delivery. $500K aid at 5% = $25K.",
-              icon: <FaChartLine className="text-blue-600 text-3xl" />,
+              icon: <FaChartLine className="text-blue-600 text-2xl sm:text-3xl" />,
               why: "Donors pay for transparency—beats 10-30% aid waste.",
             },
             {
               title: "Insurance Commissions",
               subtitle: "10-20% of premiums",
               desc: "Partner for risk coverage. $10K premiums at 15% = $1.5K/project.",
-              icon: <FaShieldAlt className="text-blue-600 text-3xl" />,
+              icon: <FaShieldAlt className="text-blue-600 text-2xl sm:text-3xl" />,
               why: "Boosts trust, recurring cash, no fee hikes.",
             },
             {
               title: "Premium Analytics",
               subtitle: "$500/month subscriptions",
               desc: "Data for NGOs. 10 subscribers = $5K/month.",
-              icon: <FaChartPie className="text-blue-600 text-3xl" />,
+              icon: <FaChartPie className="text-blue-600 text-2xl sm:text-3xl" />,
               why: "Leverages blockchain data for partners.",
             },
             {
               title: "Enterprise Solutions",
               subtitle: "Licensing fees",
               desc: "$50K setup + $10K/month per client.",
-              icon: <FaBuilding className="text-blue-600 text-3xl" />,
+              icon: <FaBuilding className="text-blue-600 text-2xl sm:text-3xl" />,
               why: "Scales tech to big players affordably.",
             },
             {
               title: "Vendor Partnership Fees",
               subtitle: "$1K/year per vendor",
               desc: "50 vendors = $50K/year for contract access.",
-              icon: <FaTruck className="text-blue-600 text-3xl" />,
+              icon: <FaTruck className="text-blue-600 text-2xl sm:text-3xl" />,
               why: "Monetizes our supply chain network.",
             },
             {
               title: "Donor Memberships",
               subtitle: "$10/month tier",
               desc: "1,000 donors = $120K/year for perks.",
-              icon: <FaUserPlus className="text-blue-600 text-3xl" />,
+              icon: <FaUserPlus className="text-blue-600 text-2xl sm:text-3xl" />,
               why: "Turns donors into loyal supporters.",
             },
             {
               title: "Carbon/ESG Credits",
               subtitle: "10% of credit sales",
               desc: "$100K credits = $10K/project.",
-              icon: <FaLeaf className="text-blue-600 text-3xl" />,
+              icon: <FaLeaf className="text-blue-600 text-2xl sm:text-3xl" />,
               why: "Taps corporate sustainability trends.",
             },
             {
               title: "Sponsorships",
               subtitle: "$5K per campaign",
               desc: "5 projects = $25K from ethical brands.",
-              icon: <FaAd className="text-blue-600 text-3xl" />,
+              icon: <FaAd className="text-blue-600 text-2xl sm:text-3xl" />,
               why: "Non-intrusive audience leverage.",
             },
           ].map((stream, idx) => (
             <div
               key={idx}
-              className="bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300 border border-gray-100 flex flex-col items-center"
+              className="bg-white p-4 sm:p-6 rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300 border border-gray-100 flex flex-col items-center"
             >
               {/* Icon */}
-              <div className="mb-4">{stream.icon}</div>
+              <div className="mb-3 sm:mb-4">{stream.icon}</div>
               {/* Title & Subtitle */}
-              <h4 className="text-xl font-bold text-gray-800">
+              <h4 className="text-base sm:text-xl font-bold text-gray-800">
                 {stream.title}
               </h4>
-              <p className="text-sm text-blue-600 font-semibold mb-2">
+              <p className="text-xs sm:text-sm text-blue-600 font-semibold mb-1 sm:mb-2">
                 {stream.subtitle}
               </p>
               {/* Description */}
-              <p className="text-gray-600 text-sm mb-4">{stream.desc}</p>
+              <p className="text-gray-600 text-xs sm:text-sm mb-3 sm:mb-4">{stream.desc}</p>
               {/* Why It Works */}
-              <p className="text-gray-500 text-xs italic">“{stream.why}”</p>
+              <p className="text-gray-500 text-xs italic">"{stream.why}"</p>
             </div>
           ))}
         </div>
 
         {/* Footer Note */}
-        <div className="mt-8 text-sm text-gray-500">
+        <div className="mt-6 sm:mt-8 text-xs sm:text-sm text-gray-500">
           Built lean, powered by blockchain—revenue scales with impact.
         </div>
       </div>
@@ -577,29 +577,30 @@ const slides = [
   },
 
   // Slide 7: Traction & Roadmap
+  // Slide 7: Traction & Roadmap
   {
     id: "roadmap",
     title: "From Vision to Victory",
     content: (
       <div className="flex flex-col items-center justify-center h-full w-full text-center px-4">
-        <h3 className="text-4xl md:text-5xl font-extrabold text-blue-600 mb-10">
+        <h3 className="text-2xl sm:text-4xl md:text-5xl font-extrabold text-blue-600 mb-6 sm:mb-10">
           Our Path Forward
         </h3>
-        <div className="mb-8">
-          <div className="bg-white px-6 md:px-8 py-4 rounded-xl shadow-lg inline-block">
+        <div className="mb-4 sm:mb-8">
+          <div className="bg-white px-4 sm:px-6 md:px-8 py-3 sm:py-4 rounded-xl shadow-lg inline-block">
             <div className="flex items-center">
-              <FaUsers className="text-blue-600 mr-3" size={24} />
-              <p className="text-xl md:text-2xl font-bold text-gray-700">
+              <FaUsers className="text-blue-600 mr-2 sm:mr-3" size={20} />
+              <p className="text-lg sm:text-xl md:text-2xl font-bold text-gray-700">
                 Traction: <span className="text-blue-600">X+</span> interviews
                 with NGOs & donors
               </p>
             </div>
           </div>
         </div>
-        <div className="w-full max-w-4xl mx-auto bg-white rounded-xl shadow-lg p-6 md:p-8 mb-8">
+        <div className="w-full max-w-4xl mx-auto bg-white rounded-xl shadow-lg p-4 sm:p-6 md:p-8 mb-6 sm:mb-8">
           <div className="relative">
             <div className="absolute top-24 left-0 right-0 h-1 bg-gray-200 hidden md:block"></div>
-            <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-5 gap-4 sm:gap-6">
               {[
                 {
                   num: 1,
@@ -634,12 +635,12 @@ const slides = [
               ].map((item, idx) => (
                 <div key={idx} className="flex flex-col items-center relative">
                   <div
-                    className={`w-16 h-16 ${
+                    className={`w-12 h-12 sm:w-16 sm:h-16 ${
                       item.active ? "bg-blue-600" : "bg-blue-100"
-                    } rounded-full flex items-center justify-center mb-4 border-4 border-white shadow-md z-10`}
+                    } rounded-full flex items-center justify-center mb-3 sm:mb-4 border-4 border-white shadow-md z-10`}
                   >
                     <span
-                      className={item.active ? "text-white" : "text-blue-600"}
+                      className={`text-sm sm:text-base ${item.active ? "text-white" : "text-blue-600"}`}
                     >
                       {item.num}
                     </span>
@@ -649,19 +650,19 @@ const slides = [
                       item.active
                         ? "bg-blue-600 text-white"
                         : "bg-blue-50 text-gray-800"
-                    } p-4 rounded-lg shadow-sm w-full`}
+                    } p-3 sm:p-4 rounded-lg shadow-sm w-full`}
                   >
-                    <p className="font-bold">{item.title}</p>
+                    <p className="font-bold text-sm sm:text-base">{item.title}</p>
                     <p
                       className={`${
                         item.active ? "text-blue-100" : "text-gray-600"
-                      } text-sm`}
+                      } text-xs sm:text-sm`}
                     >
                       {item.desc}
                     </p>
                   </div>
                   {item.active && (
-                    <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-4 h-4 bg-blue-600 rotate-45 hidden md:block"></div>
+                    <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-3 sm:w-4 h-3 sm:h-4 bg-blue-600 rotate-45 hidden md:block"></div>
                   )}
                 </div>
               ))}
@@ -682,15 +683,15 @@ const slides = [
     title: "How It Works",
     content: (
       <div className="flex flex-col items-center justify-center h-full w-full text-center px-4">
-        <h3 className="text-4xl md:text-5xl font-extrabold text-blue-600 mb-10">
+        <h3 className="text-2xl sm:text-4xl md:text-5xl font-extrabold text-blue-600 mb-6 sm:mb-10">
           The Process
         </h3>
-        <div className="w-full max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-6">
+        <div className="w-full max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-4 sm:gap-6">
           {/* <div className="flex-1 relative">
               <img src="/api/placeholder/400/300" alt="Blockchain aid distribution" className="rounded-xl shadow-lg mx-auto" />
             </div> */}
           <div className="flex-1">
-            <div className="space-y-6">
+            <div className="space-y-3 sm:space-y-6">
               {[
                 {
                   step: 1,
@@ -715,16 +716,16 @@ const slides = [
               ].map((item, idx) => (
                 <div
                   key={idx}
-                  className="bg-white p-5 rounded-xl shadow-md flex items-start"
+                  className="bg-white p-3 sm:p-5 rounded-xl shadow-md flex items-start"
                 >
-                  <div className="bg-blue-600 text-white rounded-full w-10 h-10 flex items-center justify-center flex-shrink-0 mr-4">
-                    {item.step}
+                  <div className="bg-blue-600 text-white rounded-full w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center flex-shrink-0 mr-3 sm:mr-4">
+                    <span className="text-sm sm:text-base">{item.step}</span>
                   </div>
                   <div className="text-left">
-                    <h4 className="font-bold text-lg text-gray-800">
+                    <h4 className="font-bold text-base sm:text-lg text-gray-800">
                       {item.title}
                     </h4>
-                    <p className="text-gray-600 text-sm md:text-base">
+                    <p className="text-gray-600 text-xs sm:text-sm md:text-base">
                       {item.desc}
                     </p>
                   </div>
@@ -744,14 +745,14 @@ const slides = [
     title: "Our Technology",
     content: (
       <div className="flex flex-col items-center justify-center h-full w-full text-center px-4">
-        <h3 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-10">
+        <h3 className="text-2xl sm:text-4xl md:text-5xl font-extrabold text-gray-900 mb-6 sm:mb-10">
           Tech Stack
         </h3>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-8 w-full max-w-5xl mx-auto">
           {[
             {
               title: "Frontend",
-              icon: <FaLightbulb />,
+              icon: <FaLightbulb size={20} className="sm:text-xl" />,
               items: [
                 { name: "React.js", desc: "Sleek & user-friendly" },
                 {
@@ -762,7 +763,7 @@ const slides = [
             },
             {
               title: "Backend",
-              icon: <FaShieldAlt />,
+              icon: <FaShieldAlt size={20} className="sm:text-xl" />,
               items: [
                 { name: "Django", desc: "Robust API & contract interactions" },
                 { name: "PostgreSQL", desc: "Scalable & efficient database" },
@@ -771,32 +772,32 @@ const slides = [
             },
             {
               title: "Blockchain",
-              icon: <FaLock />,
+              icon: <FaLock size={20} className="sm:text-xl" />,
               items: [
                 { name: "Celo", desc: "Secure & low-cost transactions" },
                 { name: "Smart Contracts", desc: "Automated, secure payments" },
               ],
             },
           ].map((section, idx) => (
-            <div key={idx} className="bg-white p-6 rounded-xl shadow-lg">
-              <div className="bg-blue-100 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
+            <div key={idx} className="bg-white p-4 sm:p-6 rounded-xl shadow-lg">
+              <div className="bg-blue-100 w-12 h-12 sm:w-20 sm:h-20 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
                 <span className="text-blue-600">{section.icon}</span>
               </div>
-              <h4 className="text-xl md:text-2xl font-bold text-gray-800 mb-4">
+              <h4 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-800 mb-3 sm:mb-4">
                 {section.title}
               </h4>
-              <div className="space-y-3">
+              <div className="space-y-2 sm:space-y-3">
                 {section.items.map((item, i) => (
-                  <div key={i} className="bg-blue-50 px-4 py-2 rounded-lg">
-                    <p className="font-medium text-gray-700">{item.name}</p>
-                    <p className="text-sm text-gray-500">{item.desc}</p>
+                  <div key={i} className="bg-blue-50 px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg">
+                    <p className="font-medium text-gray-700 text-sm sm:text-base">{item.name}</p>
+                    <p className="text-xs sm:text-sm text-gray-500">{item.desc}</p>
                   </div>
                 ))}
               </div>
             </div>
           ))}
         </div>
-        <div className="mt-10">
+        <div className="mt-6 sm:mt-10">
           {/* <img src="/api/placeholder/700/150" alt="System architecture diagram" className="rounded-lg shadow-lg" /> */}
         </div>
       </div>
@@ -810,43 +811,43 @@ const slides = [
     title: "The Minds Behind It",
     content: (
       <div className="flex flex-col items-center justify-center h-full w-full text-center px-4">
-        <h3 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-10">
+        <h3 className="text-2xl sm:text-4xl md:text-5xl font-extrabold text-gray-900 mb-6 sm:mb-10">
           Our Team
         </h3>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 w-full max-w-5xl mx-auto">
           {[
-            { name: "Maku P. Mazakpe", role: "Tech Lead", icon: <FaRocket /> },
+            { name: "Maku P. Mazakpe", role: "Tech Lead", icon: <FaRocket size={20} className="sm:text-xl" /> },
             {
               name: "Nana Abokoma Sika Antwi",
               role: "Communication Lead",
-              icon: <FaLightbulb />,
+              icon: <FaLightbulb size={20} className="sm:text-xl" />,
             },
             {
               name: "[Team Member]",
               role: "Partnerships",
-              icon: <FaHandshake />,
+              icon: <FaHandshake size={20} className="sm:text-xl" />,
             },
           ].map((member, idx) => (
             <div
               key={idx}
               className="bg-white rounded-xl shadow-lg overflow-hidden group transform transition hover:scale-105"
             >
-              <div className="h-48 overflow-hidden">
+              <div className="h-32 sm:h-48 overflow-hidden">
                 <img
                   src="/api/placeholder/300/200"
                   alt={member.name}
                   className="w-full h-full object-cover transition group-hover:scale-110"
                 />
               </div>
-              <div className="p-6">
-                <h4 className="text-xl md:text-2xl font-bold text-gray-800">
+              <div className="p-4 sm:p-6">
+                <h4 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-800">
                   {member.name}
                 </h4>
-                <p className="text-blue-600 font-semibold mb-4 text-sm md:text-base">
+                <p className="text-blue-600 font-semibold mb-3 sm:mb-4 text-xs sm:text-sm md:text-base">
                   {member.role}
                 </p>
                 <div className="flex justify-center">
-                  <div className="bg-blue-100 p-3 rounded-full">
+                  <div className="bg-blue-100 p-2 sm:p-3 rounded-full">
                     <span className="text-blue-600">{member.icon}</span>
                   </div>
                 </div>
@@ -864,9 +865,9 @@ const slides = [
     id: "competitive-analysis",
     title: "Competitive Landscape",
     content: (
-      <div className="flex flex-col items-center justify-center h-full w-full text-center px-4 py-12 bg-gradient-to-br from-blue-100 to-gray-50">
+      <div className="flex flex-col items-center justify-center h-full w-full text-center px-4 py-6 sm:py-12 bg-gradient-to-br from-blue-100 to-gray-50">
         {/* Header */}
-        <h3 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-12">
+        <h3 className="text-2xl sm:text-4xl md:text-5xl font-extrabold text-gray-900 mb-6 sm:mb-12">
           Competitive <span className="text-blue-600">Landscape</span>
         </h3>
 
@@ -875,15 +876,15 @@ const slides = [
           <table className="min-w-full bg-white rounded-xl overflow-hidden border-separate border-spacing-0">
             <thead>
               <tr className="bg-gradient-to-r from-blue-600 to-blue-800 text-white text-left">
-                <th className="py-4 px-6 text-lg font-semibold rounded-tl-xl">
+                <th className="py-3 px-3 sm:py-4 sm:px-6 text-sm sm:text-lg font-semibold rounded-tl-xl">
                   Features
                 </th>
-                <th className="py-4 px-6 text-lg font-semibold">KUSAIDIA</th>
-                <th className="py-4 px-6 text-lg font-semibold">
+                <th className="py-3 px-3 sm:py-4 sm:px-6 text-sm sm:text-lg font-semibold">KUSAIDIA</th>
+                <th className="py-3 px-3 sm:py-4 sm:px-6 text-sm sm:text-lg font-semibold">
                   Traditional NGOs
                 </th>
-                <th className="py-4 px-6 text-lg font-semibold">GoFundMe</th>
-                <th className="py-4 px-6 text-lg font-semibold rounded-tr-xl">
+                <th className="py-3 px-3 sm:py-4 sm:px-6 text-sm sm:text-lg font-semibold">GoFundMe</th>
+                <th className="py-3 px-3 sm:py-4 sm:px-6 text-sm sm:text-lg font-semibold rounded-tr-xl">
                   Crypto Solutions
                 </th>
               </tr>
@@ -932,50 +933,50 @@ const slides = [
                     idx === 4 ? "rounded-bl-xl rounded-br-xl" : ""
                   }`}
                 >
-                  <td className="py-4 px-6 font-medium text-gray-700 text-left">
+                  <td className="py-2 px-3 sm:py-4 sm:px-6 font-medium text-gray-700 text-left text-xs sm:text-sm md:text-base">
                     {row.feature}
                   </td>
-                  <td className="py-4 px-6">
+                  <td className="py-2 px-3 sm:py-4 sm:px-6">
                     <div className="flex items-center">
-                      <FaCheckCircle className="text-green-500 mr-2 animate-pulse" />
-                      <span className="text-gray-800 font-semibold">
+                      <FaCheckCircle className="text-green-500 mr-1 sm:mr-2 w-3 h-3 sm:w-4 sm:h-4 animate-pulse" />
+                      <span className="text-gray-800 font-semibold text-xs sm:text-sm md:text-base">
                         {row.kusaidia}
                       </span>
                     </div>
                   </td>
-                  <td className="py-4 px-6">
+                  <td className="py-2 px-3 sm:py-4 sm:px-6">
                     <div className="flex items-center">
                       {row.ngo.includes("Limited") ||
                       row.ngo.includes("Months") ||
                       row.ngo.includes("20-30%") ? (
-                        <FaTimesCircle className="text-red-500 mr-2" />
+                        <FaTimesCircle className="text-red-500 mr-1 sm:mr-2 w-3 h-3 sm:w-4 sm:h-4" />
                       ) : (
-                        <FaCheckCircle className="text-green-500 mr-2" />
+                        <FaCheckCircle className="text-green-500 mr-1 sm:mr-2 w-3 h-3 sm:w-4 sm:h-4" />
                       )}
-                      <span className="text-gray-600">{row.ngo}</span>
+                      <span className="text-gray-600 text-xs sm:text-sm md:text-base">{row.ngo}</span>
                     </div>
                   </td>
-                  <td className="py-4 px-6">
+                  <td className="py-2 px-3 sm:py-4 sm:px-6">
                     <div className="flex items-center">
                       {row.gofundme.includes("Basic") ||
                       row.gofundme.includes("weeks") ||
                       row.gofundme.includes("7.9%") ? (
-                        <FaTimesCircle className="text-red-500 mr-2" />
+                        <FaTimesCircle className="text-red-500 mr-1 sm:mr-2 w-3 h-3 sm:w-4 sm:h-4" />
                       ) : (
-                        <FaCheckCircle className="text-green-500 mr-2" />
+                        <FaCheckCircle className="text-green-500 mr-1 sm:mr-2 w-3 h-3 sm:w-4 sm:h-4" />
                       )}
-                      <span className="text-gray-600">{row.gofundme}</span>
+                      <span className="text-gray-600 text-xs sm:text-sm md:text-base">{row.gofundme}</span>
                     </div>
                   </td>
-                  <td className="py-4 px-6">
+                  <td className="py-2 px-3 sm:py-4 sm:px-6">
                     <div className="flex items-center">
                       {row.crypto.includes("complex") ||
                       row.crypto.includes("barriers") ? (
-                        <FaTimesCircle className="text-red-500 mr-2" />
+                        <FaTimesCircle className="text-red-500 mr-1 sm:mr-2 w-3 h-3 sm:w-4 sm:h-4" />
                       ) : (
-                        <FaCheckCircle className="text-green-500 mr-2" />
+                        <FaCheckCircle className="text-green-500 mr-1 sm:mr-2 w-3 h-3 sm:w-4 sm:h-4" />
                       )}
-                      <span className="text-gray-600">{row.crypto}</span>
+                      <span className="text-gray-600 text-xs sm:text-sm md:text-base">{row.crypto}</span>
                     </div>
                   </td>
                 </tr>
@@ -985,7 +986,7 @@ const slides = [
         </div>
 
         {/* Footer Note */}
-        <p className="mt-6 text-sm text-gray-500 italic">
+        <p className="mt-4 sm:mt-6 text-xs sm:text-sm text-gray-500 italic">
           Crypto Solutions: BitGive, GiveCrypto | Data as of March 2025
         </p>
       </div>
@@ -998,19 +999,19 @@ const slides = [
     id: "contact",
     title: "Get In Touch",
     content: (
-      <div className="flex flex-col items-center justify-start min-h-full w-full text-center px-4 py-12 bg-gradient-to-r from-blue-50 to-gray-100">
+      <div className="flex flex-col items-center justify-start min-h-full w-full text-center px-4 py-8 sm:py-12 bg-gradient-to-r from-blue-50 to-gray-100">
         {/* Horizontal Scrollable Container */}
-        <div className="w-full max-w-6xl mx-auto h-[70vh] overflow-x-auto overflow-y-hidden scrollbar-thin scrollbar-thumb-blue-500 scrollbar-track-gray-100 flex space-x-6 px-4 snap-x snap-mandatory">
+        <div className="w-full max-w-6xl mx-auto h-[60vh] sm:h-[70vh] overflow-x-auto overflow-y-hidden scrollbar-thin scrollbar-thumb-blue-500 scrollbar-track-gray-100 flex space-x-4 sm:space-x-6 px-3 sm:px-4 snap-x snap-mandatory">
           {/* Combined Contact Card */}
-          <div className="bg-white rounded-3xl shadow-lg p-8 min-w-[320px] max-w-[400px] flex-shrink-0 transform transition-all hover:shadow-xl hover:-translate-y-2 duration-300 snap-center">
-            <h4 className="text-3xl font-extrabold text-gray-900 mb-6 flex items-center justify-center">
+          <div className="bg-white rounded-2xl sm:rounded-3xl shadow-lg p-4 sm:p-8 min-w-[280px] sm:min-w-[320px] max-w-[320px] sm:max-w-[400px] flex-shrink-0 transform transition-all hover:shadow-xl hover:-translate-y-2 duration-300 snap-center">
+            <h4 className="text-xl sm:text-3xl font-extrabold text-gray-900 mb-4 sm:mb-6 flex items-center justify-center">
               <FaInfoCircle className="text-blue-600 mr-2" />{" "}
-              <span className="text-blue-600">Let’s Connect</span>
+              <span className="text-blue-600">Let's Connect</span>
             </h4>
-            <div className="space-y-6 text-left">
+            <div className="space-y-4 sm:space-y-6 text-left">
               {[
                 {
-                  icon: <FaMapMarkerAlt className="text-blue-600 text-2xl" />,
+                  icon: <FaMapMarkerAlt className="text-blue-600 text-lg sm:text-2xl" />,
                   title: "Location",
                   details: [
                     "Nairobi, Kenya",
@@ -1018,26 +1019,26 @@ const slides = [
                   ],
                 },
                 {
-                  icon: <FaPhone className="text-blue-600 text-2xl" />,
+                  icon: <FaPhone className="text-blue-600 text-lg sm:text-2xl" />,
                   title: "Phone",
                   details: ["+254 700 000 000"],
                 },
                 {
-                  icon: <FaEnvelope className="text-blue-600 text-2xl" />,
+                  icon: <FaEnvelope className="text-blue-600 text-lg sm:text-2xl" />,
                   title: "Email",
                   details: ["kusaidia75@gmail.com"],
                 },
               ].map((item, idx) => (
                 <div key={idx} className="flex items-start">
-                  <div className="p-3 rounded-full bg-blue-100 mr-4">
+                  <div className="p-2 sm:p-3 rounded-full bg-blue-100 mr-3 sm:mr-4">
                     {item.icon}
                   </div>
                   <div>
-                    <p className="font-semibold text-gray-800 text-lg">
+                    <p className="font-semibold text-gray-800 text-base sm:text-lg">
                       {item.title}
                     </p>
                     {item.details.map((detail, i) => (
-                      <p key={i} className="text-gray-600 text-sm">
+                      <p key={i} className="text-gray-600 text-xs sm:text-sm">
                         {detail}
                       </p>
                     ))}
@@ -1048,18 +1049,18 @@ const slides = [
           </div>
 
           {/* Combined Form & Social Card */}
-          <div className="bg-white rounded-3xl shadow-lg p-8 min-w-[320px] max-w-[400px] flex-shrink-0 transform transition-all hover:shadow-xl hover:-translate-y-2 duration-300 snap-center">
-            <h4 className="text-2xl font-bold text-gray-800 mb-6 flex items-center justify-center">
+          <div className="bg-white rounded-2xl sm:rounded-3xl shadow-lg p-4 sm:p-8 min-w-[280px] sm:min-w-[320px] max-w-[320px] sm:max-w-[400px] flex-shrink-0 transform transition-all hover:shadow-xl hover:-translate-y-2 duration-300 snap-center">
+            <h4 className="text-lg sm:text-2xl font-bold text-gray-800 mb-4 sm:mb-6 flex items-center justify-center">
               <FaPaperPlane className="text-blue-600 mr-2" /> Send a Message
             </h4>
             <ContactForm />
 
             {/* Social Section */}
-            <div className="mt-6 pt-6 border-t border-gray-200">
-              <h5 className="text-xl font-bold text-gray-800 mb-4 flex items-center justify-center">
+            <div className="mt-4 sm:mt-6 pt-4 sm:pt-6 border-t border-gray-200">
+              <h5 className="text-base sm:text-xl font-bold text-gray-800 mb-3 sm:mb-4 flex items-center justify-center">
                 <FaShareAlt className="text-blue-600 mr-2" /> Stay Connected
               </h5>
-              <div className="flex flex-wrap justify-center gap-3">
+              <div className="flex flex-wrap justify-center gap-2 sm:gap-3">
                 {[
                   {
                     icon: <FaTwitter />,
@@ -1073,7 +1074,7 @@ const slides = [
                   <a
                     key={idx}
                     href={social.link}
-                    className="flex items-center justify-center w-10 h-10 rounded-full bg-blue-100 text-blue-600 hover:bg-blue-600 hover:text-white transition duration-300 transform hover:scale-110"
+                    className="flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-blue-100 text-blue-600 hover:bg-blue-600 hover:text-white transition duration-300 transform hover:scale-110"
                   >
                     {social.icon}
                   </a>
