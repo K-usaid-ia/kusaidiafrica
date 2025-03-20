@@ -4,7 +4,8 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/features/auth/AuthContext";
 import { useEffect, useState } from "react";
-import { trackVisitor } from "@/utils/analytics";
+import { trackVisitor, getVisitorCount } from "@/lib/firebase";
+import VisitorCounter from "@/components/VisitorCounter";
 
 export default function HomePage() {
   const router = useRouter();
@@ -14,11 +15,27 @@ export default function HomePage() {
 
   // Track visitors and update count on page load
   useEffect(() => {
-    if (!loaded) {
-      const count = trackVisitor("home");
-      setVisitorCount(count);
-      setLoaded(true);
-    }
+    const handlePageLoad = async () => {
+      if (!loaded) {
+        try {
+          // First get the visitor count without incrementing
+          const currentCount = await getVisitorCount();
+          setVisitorCount(currentCount);
+          
+          // Then track the new visit and update the count
+          const newCount = await trackVisitor("home");
+          setVisitorCount(newCount);
+          setLoaded(true);
+        } catch (error) {
+          console.error("Error tracking visitors:", error);
+          setLoaded(true);
+        }
+      }
+    };
+    
+    handlePageLoad();
+    
+    // Redirect if authenticated
     if (isAuthenticated) {
       router.push("/projects");
     }
@@ -304,7 +321,7 @@ export default function HomePage() {
             <div className="mt-12 flex justify-center">
               <div className="max-w-lg bg-gray-50 rounded-lg p-6 shadow-md">
                 <p className="text-gray-600 italic">
-                  “With KUSAIDIA, we built a school in 3 months—every step was clear, every dollar mattered.”
+                  "With KUSAIDIA, we built a school in 3 months—every step was clear, every dollar mattered."
                 </p>
                 <p className="mt-4 text-indigo-600 font-medium">
                   — Amina, Community Leader, Kenya (Coming Soon)
@@ -314,7 +331,7 @@ export default function HomePage() {
           </div>
         </div>
 
-        {/* CTA Section */}
+        {/* CTA Section with Live Visitor Count */}
         <div className="bg-indigo-700">
           <div className="max-w-2xl mx-auto text-center py-16 px-4 sm:py-20 sm:px-6 lg:px-8">
             <h2 className="text-3xl font-extrabold text-white sm:text-4xl">
@@ -322,17 +339,21 @@ export default function HomePage() {
               <span className="block">Your Impact Starts Here</span>
             </h2>
             <p className="mt-4 text-lg leading-6 text-indigo-100">
-              Join us to empower Africa with support that’s fast, fair, and fully yours to track.
+              Join us to empower Africa with support that's fast, fair, and fully yours to track.
             </p>
-            <p className="mt-4 text-xl font-bold text-white">
-              Join <span className="text-indigo-200">{visitorCount}</span> visitors making an impact with KUSAIDIA
-            </p>
-            <Link
-              href="/projects"
-              className="mt-8 w-full inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-indigo-600 bg-white hover:bg-indigo-50 sm:w-auto"
-            >
-              Discover Your Impact
-            </Link>
+            <div className="mt-8 flex flex-col items-center">
+              <div className="bg-white/10 backdrop-blur-sm rounded-lg py-4 px-6 mb-6">
+                <p className="text-xl text-white">
+                  Join <span className="text-3xl font-bold text-yellow-300 animate-pulse">{visitorCount.toLocaleString()}</span> visitors making an impact with KUSAIDIA
+                </p>
+              </div>
+              <Link
+                href="/projects"
+                className="w-full inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-indigo-600 bg-white hover:bg-indigo-50 sm:w-auto"
+              >
+                Discover Your Impact
+              </Link>
+            </div>
           </div>
         </div>
       </main>

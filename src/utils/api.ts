@@ -73,6 +73,7 @@ export const projectsApi = {
   
   getById: async (id: string) => {
     const response = await api.get(`/projects/${id}/`);
+    console.log(response.data);
     return response.data;
   },
   
