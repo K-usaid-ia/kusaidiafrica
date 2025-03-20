@@ -111,6 +111,7 @@ function ProjectProgress({
   total: number; 
   percentage: number;
 }) {
+  console.log("ProjectProgress props:", { current, total, percentage });
   const { formatCurrency, formatDate, isMounted } = useClientSideFormatting();
     // Convert all inputs to numbers to ensure proper handling
     const safePercentage = typeof percentage === 'string' ? parseFloat(percentage) : (percentage || 0);
@@ -134,7 +135,7 @@ function ProjectProgress({
         </div>
         <div className="flex justify-between text-sm mt-2">
           <span className="text-gray-600">Raised: ${safeCurrent.toLocaleString()}</span>
-          <span className="text-gray-600">Goal: ${safeTotal.toLocaleString()}</span>
+          <span className="text-gray-600">Goal: {formatCurrency(safeTotal)}</span>
         </div>
       </div>
     );
@@ -197,6 +198,7 @@ export default function ProjectDetailPage() {
     const fetchProject = async () => {
       try {
         const data = await projectsApi.getById(id as string);
+        console.log("Project data received:", data); 
         setProject(data);
       } catch (error) {
         console.error('Failed to fetch project details:', error);
