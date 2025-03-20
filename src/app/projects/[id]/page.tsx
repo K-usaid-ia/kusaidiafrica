@@ -111,7 +111,6 @@ function ProjectProgress({
   total: number; 
   percentage: number;
 }) {
-  console.log("ProjectProgress props:", { current, total, percentage });
   const { formatCurrency, formatDate, isMounted } = useClientSideFormatting();
     // Convert all inputs to numbers to ensure proper handling
     const safePercentage = typeof percentage === 'string' ? parseFloat(percentage) : (percentage || 0);
@@ -356,17 +355,17 @@ export default function ProjectDetailPage() {
             </div>
             <div className="p-4 border-r border-gray-200">
               <p className="text-sm text-gray-500">Timeline</p>
-              <p className="font-medium mt-1">
+              <p className="text-gray-700 font-medium mt-1">
                 {formatDate(project.timeline_start)} - {formatDate(project.timeline_end)}
               </p>
             </div>
             <div className="p-4 border-r border-gray-200">
               <p className="text-sm text-gray-500">Budget</p>
-              <p className="font-medium mt-1">{formatCurrency(project.budget)}</p>
+              <p className=" text-gray-700 font-medium mt-1">{formatCurrency(project.budget)}</p>
             </div>
             <div className="p-4">
-              <p className="text-sm text-gray-500">Beneficiaries</p>
-              <p className="font-medium mt-1">{project.beneficiary_count}</p>
+              <p className="text-sm text-gray-700">Beneficiaries</p>
+              <p className="text-gray-700 font-medium mt-1">{project.beneficiary_count}</p>
             </div>
           </div>
         </div>
@@ -532,7 +531,7 @@ export default function ProjectDetailPage() {
                     type="number"
                     name="amount"
                     id="amount"
-                    className="focus:ring-indigo-500 focus:border-indigo-500 block w-full pl-7 pr-12 sm:text-sm border-gray-300 rounded-md"
+                    className="focus:ring-indigo-500 focus:border-indigo-500 text-gray-700 block w-full pl-7 pr-12 sm:text-sm border-gray-300 rounded-md"
                     placeholder="0.00"
                     value={donationAmount}
                     onChange={(e) => setDonationAmount(Number(e.target.value))}
@@ -574,7 +573,7 @@ export default function ProjectDetailPage() {
                   <span className="font-medium">${calculateServiceFee(donationAmount).toFixed(2)}</span>
                 </div>
                 <div className="border-t border-gray-200 my-2"></div>
-                <div className="flex justify-between font-medium">
+                <div className="text-gray-700 flex justify-between font-medium">
                   <span>Total amount:</span>
                   <span>${calculateTotalAmount().toFixed(2)}</span>
                 </div>
