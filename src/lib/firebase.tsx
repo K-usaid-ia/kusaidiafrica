@@ -32,7 +32,7 @@ if (typeof window !== 'undefined') {
   });
   
   // Initialize Realtime Database
-  database = getDatabase(app);
+  // database = getDatabase(app);
 }
 
 // Track a page visit and update counter
