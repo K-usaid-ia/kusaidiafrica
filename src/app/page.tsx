@@ -5,7 +5,6 @@ import { useRouter } from "next/navigation";
 import { useAuth } from "@/features/auth/AuthContext";
 import { useEffect, useState } from "react";
 import { trackVisitor, getVisitorCount } from "@/lib/firebase";
-import VisitorCounter from "@/components/VisitorCounter";
 
 export default function HomePage() {
   const router = useRouter();
