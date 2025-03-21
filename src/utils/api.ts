@@ -2,7 +2,7 @@
 import axios, { AxiosRequestConfig } from 'axios';
 
 // Get the base URL from environment variables
-const API_BASE_URL = process.env.NEXT_PRIVATE_API_URL || 'http://localhost:8000/api';
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000/api';
 
 interface ProjectsApiResponse {
   count: number;
