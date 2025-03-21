@@ -14,7 +14,7 @@ import { useRouter } from "next/navigation";
 
 // API URLs
 const API_BASE_URL =
-  process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000/api";
+  process.env.NEXT_PRIVATE_API_URL || "http://localhost:8000/api";
   const AUTH_ENDPOINTS = {
     NONCE: `${API_BASE_URL}/auth/nonce/`,
     VERIFY: `${API_BASE_URL}/auth/verify/`,

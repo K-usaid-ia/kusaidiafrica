@@ -68,7 +68,7 @@ export default function ContactForm() {
         </div>
       ) : (
         <form
-        action={`https://script.google.com/macros/s/${process.env.NEXT_PUBLIC_GOOGLE_SCRIPT_ID}/exec`}
+        action={`https://script.google.com/macros/s/${process.env.NEXT_PRIVATE_GOOGLE_SCRIPT_ID}/exec`}
         method="POST"
               className="space-y-5"
             >
