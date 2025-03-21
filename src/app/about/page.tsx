@@ -2,7 +2,6 @@
 "use client";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { trackVisitor } from "@/utils/analytics";
 import {
   Accordion,
   AccordionContent,
@@ -53,6 +52,12 @@ import {
   FaShareAlt,
   FaPaperPlane,
   FaInfoCircle,
+  FaGithub,
+  FaGlobeAfrica,
+  FaBug,
+  FaQuestionCircle,
+  FaChessKnight,
+  FaGavel,
 } from "react-icons/fa";
 import ContactForm from "@/components/contact/ContactForm";
 
@@ -104,7 +109,9 @@ const slides = [
             {
               title: "Inefficient",
               desc: "30% lost to delays & fraud",
-              icon: <FaChartArea className="text-red-600 text-3xl sm:text-5xl" />,
+              icon: (
+                <FaChartArea className="text-red-600 text-3xl sm:text-5xl" />
+              ),
             },
             {
               title: "Slow",
@@ -118,7 +125,9 @@ const slides = [
             >
               <div className="bg-gradient-to-r from-red-500 to-red-700 h-2 w-full"></div>
               <div className="p-4 sm:p-6">
-                <div className="flex justify-center mb-3 sm:mb-4">{item.icon}</div>
+                <div className="flex justify-center mb-3 sm:mb-4">
+                  {item.icon}
+                </div>
                 <h4 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-800 mb-1 sm:mb-2">
                   {item.title}
                 </h4>
@@ -188,12 +197,16 @@ const slides = [
             <div className="w-full relative mb-6 sm:mb-8">
               {/* <img src="/api/placeholder/400/300" alt="Direct impact" className="rounded-xl shadow-lg mx-auto" /> */}
               <div className="absolute -bottom-4 -right-4 bg-blue-600 text-white p-3 sm:p-4 rounded-lg shadow-md">
-                <p className="font-bold text-base sm:text-lg md:text-xl">Days not months</p>
+                <p className="font-bold text-base sm:text-lg md:text-xl">
+                  Days not months
+                </p>
               </div>
             </div>
             <div className="bg-gradient-to-br from-blue-600 to-blue-800 p-4 sm:p-6 rounded-xl shadow-xl text-white text-center w-full max-w-xs">
               <FaWater size={32} className="mb-2 sm:mb-3 mx-auto" />
-              <p className="text-2xl sm:text-3xl md:text-4xl font-bold mb-1 sm:mb-2">$50</p>
+              <p className="text-2xl sm:text-3xl md:text-4xl font-bold mb-1 sm:mb-2">
+                $50
+              </p>
               <p className="text-base sm:text-lg md:text-xl">
                 delivers water in days—verified & tracked
               </p>
@@ -203,6 +216,68 @@ const slides = [
       </div>
     ),
     bgColor: "bg-gradient-to-br from-blue-50 to-white",
+  },
+
+  // Slide 8: How It Works
+  {
+    id: "how-it-works",
+    title: "How It Works",
+    content: (
+      <div className="flex flex-col items-center justify-center h-full w-full text-center px-4">
+        <h3 className="text-2xl sm:text-4xl md:text-5xl font-extrabold text-blue-600 mb-6 sm:mb-10">
+          The Process
+        </h3>
+        <div className="w-full max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-4 sm:gap-6">
+          {/* <div className="flex-1 relative">
+              <img src="/api/placeholder/400/300" alt="Blockchain aid distribution" className="rounded-xl shadow-lg mx-auto" />
+            </div> */}
+          <div className="flex-1">
+            <div className="space-y-3 sm:space-y-6">
+              {[
+                {
+                  step: 1,
+                  title: "Donor funds a project",
+                  desc: "Select a specific project to support",
+                },
+                {
+                  step: 2,
+                  title: "Smart contract generates a purchase order",
+                  desc: "Automatically prepared for local vendors",
+                },
+                {
+                  step: 3,
+                  title: "Verified vendor delivers resources",
+                  desc: "Local vendors provide supplies or services",
+                },
+                {
+                  step: 4,
+                  title: "Payment released upon delivery verification",
+                  desc: "Funds automatically released with proof of delivery",
+                },
+              ].map((item, idx) => (
+                <div
+                  key={idx}
+                  className="bg-white p-3 sm:p-5 rounded-xl shadow-md flex items-start"
+                >
+                  <div className="bg-blue-600 text-white rounded-full w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center flex-shrink-0 mr-3 sm:mr-4">
+                    <span className="text-sm sm:text-base">{item.step}</span>
+                  </div>
+                  <div className="text-left">
+                    <h4 className="font-bold text-base sm:text-lg text-gray-800">
+                      {item.title}
+                    </h4>
+                    <p className="text-gray-600 text-xs sm:text-sm md:text-base">
+                      {item.desc}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    ),
+    bgColor: "bg-white",
   },
 
   // Slide 4: Market Opportunity
@@ -326,17 +401,23 @@ const slides = [
                 {
                   title: "Slow",
                   desc: "UNICEF: Months of bureaucracy",
-                  icon: <FaClock className="text-red-600 text-xl sm:text-2xl" />,
+                  icon: (
+                    <FaClock className="text-red-600 text-xl sm:text-2xl" />
+                  ),
                 },
                 {
                   title: "Expensive",
                   desc: "GoFundMe: 7.9% + $0.30 fees",
-                  icon: <FaDollarSign className="text-red-600 text-xl sm:text-2xl" />,
+                  icon: (
+                    <FaDollarSign className="text-red-600 text-xl sm:text-2xl" />
+                  ),
                 },
                 {
                   title: "Complex",
                   desc: "BitGive: Technical barriers",
-                  icon: <FaShieldAlt className="text-red-600 text-xl sm:text-2xl" />,
+                  icon: (
+                    <FaShieldAlt className="text-red-600 text-xl sm:text-2xl" />
+                  ),
                 },
               ].map((item, idx) => (
                 <div key={idx} className="flex items-center group">
@@ -367,17 +448,23 @@ const slides = [
                 {
                   title: "Fast",
                   desc: "1-3 days delivery",
-                  icon: <FaRocket className="text-blue-100 text-xl sm:text-2xl" />,
+                  icon: (
+                    <FaRocket className="text-blue-100 text-xl sm:text-2xl" />
+                  ),
                 },
                 {
                   title: "Low-Cost",
                   desc: "2-5% platform fee",
-                  icon: <FaMoneyBillWave className="text-blue-100 text-xl sm:text-2xl" />,
+                  icon: (
+                    <FaMoneyBillWave className="text-blue-100 text-xl sm:text-2xl" />
+                  ),
                 },
                 {
                   title: "Simple",
                   desc: "User-friendly platform",
-                  icon: <FaLightbulb className="text-blue-100 text-xl sm:text-2xl" />,
+                  icon: (
+                    <FaLightbulb className="text-blue-100 text-xl sm:text-2xl" />
+                  ),
                 },
               ].map((item, idx) => (
                 <div key={idx} className="flex items-center group">
@@ -385,7 +472,9 @@ const slides = [
                     {item.icon}
                   </div>
                   <div className="text-left">
-                    <p className="font-bold text-base sm:text-lg md:text-xl">{item.title}</p>
+                    <p className="font-bold text-base sm:text-lg md:text-xl">
+                      {item.title}
+                    </p>
                     <p className="text-blue-100 text-xs sm:text-sm md:text-base">
                       {item.desc}
                     </p>
@@ -437,7 +526,9 @@ const slides = [
                     <span className="text-white">{item.icon}</span>
                   </div>
                   <div>
-                    <p className="font-bold text-base sm:text-lg md:text-xl">{item.title}</p>
+                    <p className="font-bold text-base sm:text-lg md:text-xl">
+                      {item.title}
+                    </p>
                     <p className="text-blue-100 text-xs sm:text-sm md:text-base">
                       {item.desc}
                     </p>
@@ -475,108 +566,6 @@ const slides = [
     bgColor: "bg-white",
   },
 
-  // Revenue Streams UI Component
-  {
-    id: "revenue-streams",
-    title: "How Kusaidia Makes Money",
-    content: (
-      <div className="flex flex-col items-center justify-center h-full w-full text-center px-4 py-8 sm:py-12 bg-gray-50">
-        {/* Header */}
-        <h3 className="text-2xl sm:text-4xl md:text-5xl font-extrabold text-gray-900 mb-6 sm:mb-12">
-          <span className="text-blue-600">Revenue</span> Streams
-        </h3>
-
-        {/* Grid of Revenue Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 w-full max-w-6xl mx-auto">
-          {[
-            {
-              title: "Platform Service Fees",
-              subtitle: "2-5% per project",
-              desc: "Covers vetting, tracking, and delivery. $500K aid at 5% = $25K.",
-              icon: <FaChartLine className="text-blue-600 text-2xl sm:text-3xl" />,
-              why: "Donors pay for transparency—beats 10-30% aid waste.",
-            },
-            {
-              title: "Insurance Commissions",
-              subtitle: "10-20% of premiums",
-              desc: "Partner for risk coverage. $10K premiums at 15% = $1.5K/project.",
-              icon: <FaShieldAlt className="text-blue-600 text-2xl sm:text-3xl" />,
-              why: "Boosts trust, recurring cash, no fee hikes.",
-            },
-            {
-              title: "Premium Analytics",
-              subtitle: "$500/month subscriptions",
-              desc: "Data for NGOs. 10 subscribers = $5K/month.",
-              icon: <FaChartPie className="text-blue-600 text-2xl sm:text-3xl" />,
-              why: "Leverages blockchain data for partners.",
-            },
-            {
-              title: "Enterprise Solutions",
-              subtitle: "Licensing fees",
-              desc: "$50K setup + $10K/month per client.",
-              icon: <FaBuilding className="text-blue-600 text-2xl sm:text-3xl" />,
-              why: "Scales tech to big players affordably.",
-            },
-            {
-              title: "Vendor Partnership Fees",
-              subtitle: "$1K/year per vendor",
-              desc: "50 vendors = $50K/year for contract access.",
-              icon: <FaTruck className="text-blue-600 text-2xl sm:text-3xl" />,
-              why: "Monetizes our supply chain network.",
-            },
-            {
-              title: "Donor Memberships",
-              subtitle: "$10/month tier",
-              desc: "1,000 donors = $120K/year for perks.",
-              icon: <FaUserPlus className="text-blue-600 text-2xl sm:text-3xl" />,
-              why: "Turns donors into loyal supporters.",
-            },
-            {
-              title: "Carbon/ESG Credits",
-              subtitle: "10% of credit sales",
-              desc: "$100K credits = $10K/project.",
-              icon: <FaLeaf className="text-blue-600 text-2xl sm:text-3xl" />,
-              why: "Taps corporate sustainability trends.",
-            },
-            {
-              title: "Sponsorships",
-              subtitle: "$5K per campaign",
-              desc: "5 projects = $25K from ethical brands.",
-              icon: <FaAd className="text-blue-600 text-2xl sm:text-3xl" />,
-              why: "Non-intrusive audience leverage.",
-            },
-          ].map((stream, idx) => (
-            <div
-              key={idx}
-              className="bg-white p-4 sm:p-6 rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300 border border-gray-100 flex flex-col items-center"
-            >
-              {/* Icon */}
-              <div className="mb-3 sm:mb-4">{stream.icon}</div>
-              {/* Title & Subtitle */}
-              <h4 className="text-base sm:text-xl font-bold text-gray-800">
-                {stream.title}
-              </h4>
-              <p className="text-xs sm:text-sm text-blue-600 font-semibold mb-1 sm:mb-2">
-                {stream.subtitle}
-              </p>
-              {/* Description */}
-              <p className="text-gray-600 text-xs sm:text-sm mb-3 sm:mb-4">{stream.desc}</p>
-              {/* Why It Works */}
-              <p className="text-gray-500 text-xs italic">"{stream.why}"</p>
-            </div>
-          ))}
-        </div>
-
-        {/* Footer Note */}
-        <div className="mt-6 sm:mt-8 text-xs sm:text-sm text-gray-500">
-          Built lean, powered by blockchain—revenue scales with impact.
-        </div>
-      </div>
-    ),
-    bgColor: "bg-gray-50",
-  },
-
-  // Slide 7: Traction & Roadmap
   // Slide 7: Traction & Roadmap
   {
     id: "roadmap",
@@ -640,7 +629,9 @@ const slides = [
                     } rounded-full flex items-center justify-center mb-3 sm:mb-4 border-4 border-white shadow-md z-10`}
                   >
                     <span
-                      className={`text-sm sm:text-base ${item.active ? "text-white" : "text-blue-600"}`}
+                      className={`text-sm sm:text-base ${
+                        item.active ? "text-white" : "text-blue-600"
+                      }`}
                     >
                       {item.num}
                     </span>
@@ -652,7 +643,9 @@ const slides = [
                         : "bg-blue-50 text-gray-800"
                     } p-3 sm:p-4 rounded-lg shadow-sm w-full`}
                   >
-                    <p className="font-bold text-sm sm:text-base">{item.title}</p>
+                    <p className="font-bold text-sm sm:text-base">
+                      {item.title}
+                    </p>
                     <p
                       className={`${
                         item.active ? "text-blue-100" : "text-gray-600"
@@ -677,66 +670,426 @@ const slides = [
     bgColor: "bg-gradient-to-br from-blue-50 to-white",
   },
 
-  // Slide 8: How It Works
+  // Slide 8: Challenges & Solutions
   {
-    id: "how-it-works",
-    title: "How It Works",
+    id: "weak-points",
+    title: "Our Challenges & Solutions",
+    content: (
+      <div className="flex flex-col items-center justify-start h-full w-full text-center px-4 py-6 sm:py-8 bg-gradient-to-br from-gray-50 to-blue-100 overflow-hidden">
+        {/* Header */}
+        <h3 className="text-xl sm:text-3xl md:text-4xl font-extrabold text-gray-900 mb-4 sm:mb-6">
+          Facing <span className="text-blue-600">All Risks</span> Head-On
+        </h3>
+
+        {/* Scrollable Grid */}
+        <div className="w-full max-w-5xl mx-auto h-[calc(100%-150px)] overflow-y-auto scrollbar-thin scrollbar-thumb-blue-500 scrollbar-track-gray-100">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+            {[
+              {
+                challenge: "Tight Funding",
+                desc: "$10K-$150K limits scale",
+                solution: "Focus on MVP, chase follow-on",
+                icon: (
+                  <FaDollarSign className="text-red-600 text-xl sm:text-2xl" />
+                ),
+              },
+              {
+                challenge: "Vendor Reliability",
+                desc: "Local vendors may fail",
+                solution: "Partner with logistics pros",
+                icon: <FaTruck className="text-red-600 text-xl sm:text-2xl" />,
+              },
+              {
+                challenge: "Blockchain Barriers",
+                desc: "Crypto adoption slow",
+                solution: "Add fiat, simplify UX",
+                icon: <FaLock className="text-red-600 text-xl sm:text-2xl" />,
+              },
+              {
+                challenge: "Revenue Uncertainty",
+                desc: "2-5% fee may not sustain",
+                solution: "Test insurance, analytics early",
+                icon: (
+                  <FaChartLine className="text-red-600 text-xl sm:text-2xl" />
+                ),
+              },
+              {
+                challenge: "Small Team",
+                desc: "3 people overstretched",
+                solution: "Hire ops, tap community",
+                icon: <FaUsers className="text-red-600 text-xl sm:text-2xl" />,
+              },
+              {
+                challenge: "Overpromising",
+                desc: "Delays hurt credibility",
+                solution: "Set modest goals, exceed them",
+                icon: <FaClock className="text-red-600 text-xl sm:text-2xl" />,
+              },
+              {
+                challenge: "Regulatory Hurdles",
+                desc: "Laws could block us",
+                solution: "Budget for legal, start small",
+                icon: <FaGavel className="text-red-600 text-xl sm:text-2xl" />,
+              },
+              {
+                challenge: "Competition",
+                desc: "Big players may copy",
+                solution: "Move fast, build moat",
+                icon: (
+                  <FaChessKnight className="text-red-600 text-xl sm:text-2xl" />
+                ),
+              },
+              {
+                challenge: "Donor Skepticism",
+                desc: "Trust takes time",
+                solution: "Show pilots, market hard",
+                icon: (
+                  <FaQuestionCircle className="text-red-600 text-xl sm:text-2xl" />
+                ),
+              },
+              {
+                challenge: "Technical Debt",
+                desc: "MVP bugs could crash",
+                solution: "Audit contracts, test rigorously",
+                icon: <FaBug className="text-red-600 text-xl sm:text-2xl" />,
+              },
+            ].map((item, idx) => (
+              <div
+                key={idx}
+                className="bg-white p-3 sm:p-4 rounded-lg shadow-md border border-gray-100 flex items-start space-x-3 sm:space-x-4"
+              >
+                {/* Icon */}
+                <div className="flex-shrink-0">{item.icon}</div>
+                {/* Text */}
+                <div className="text-left">
+                  <h4 className="text-sm sm:text-base font-bold text-gray-800 leading-tight">
+                    {item.challenge}
+                  </h4>
+                  <p className="text-xs sm:text-sm text-gray-600 leading-tight">
+                    {item.desc}
+                  </p>
+                  <p className="text-xs sm:text-sm text-blue-600 font-semibold mt-1 leading-tight">
+                    Fix: {item.solution}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Footer Note */}
+        <div className="mt-4 sm:mt-6 text-xs sm:text-sm text-gray-500">
+          Every pitfall’s a step—we’re climbing to $300B.
+        </div>
+      </div>
+    ),
+    bgColor: "bg-gradient-to-br from-gray-50 to-blue-100",
+  },
+
+  // Financials & Funding Ask
+  {
+    id: "financials",
+    title: "Prize Money & Impact",
     content: (
       <div className="flex flex-col items-center justify-center h-full w-full text-center px-4">
-        <h3 className="text-2xl sm:text-4xl md:text-5xl font-extrabold text-blue-600 mb-6 sm:mb-10">
-          The Process
+        <h3 className="text-2xl sm:text-4xl md:text-5xl font-extrabold text-gray-900 mb-6 sm:mb-10">
+          The <span className="text-blue-600">Plan</span>
         </h3>
-        <div className="w-full max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-4 sm:gap-6">
-          {/* <div className="flex-1 relative">
-              <img src="/api/placeholder/400/300" alt="Blockchain aid distribution" className="rounded-xl shadow-lg mx-auto" />
-            </div> */}
-          <div className="flex-1">
-            <div className="space-y-3 sm:space-y-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 w-full max-w-5xl mx-auto">
+          <div className="bg-white p-4 sm:p-6 rounded-xl shadow-lg">
+            <h4 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-800 mb-4">
+              Prize Allocation
+            </h4>
+            <p className="text-blue-600 text-2xl sm:text-3xl font-bold">$10K</p>
+            <div className="text-gray-600 text-sm sm:text-base mt-2 space-y-2">
+              <p>$2K (20%) - Build MVP (8 months)</p>
+              <p>$8K (80%) - Team Split (3 members, ~$2.67K each)</p>
+            </div>
+          </div>
+          <div className="bg-blue-600 p-4 sm:p-6 rounded-xl shadow-lg text-white">
+            <h4 className="text-lg sm:text-xl md:text-2xl font-bold mb-4">
+              Next Steps
+            </h4>
+            <p className="text-2xl sm:text-3xl font-bold">Pilot Ready</p>
+            <p className="text-blue-100 text-sm sm:text-base">
+              5 Deliveries in 8 Months
+            </p>
+            <p className="text-blue-200 text-xs sm:text-sm mt-2">
+              Scales with More Funding
+            </p>
+          </div>
+        </div>
+        <div className="mt-6 text-gray-500 text-xs sm:text-sm">
+          Lean budget powers our 8-month roadmap from hackathon to real impact.
+        </div>
+      </div>
+    ),
+    bgColor: "bg-gradient-to-br from-blue-50 to-white",
+  },
+
+  {
+    id: "financials",
+    title: "Prize Money & Impact",
+    content: (
+      <div className="flex flex-col items-center justify-center h-full w-full text-center px-4">
+        <h3 className="text-2xl sm:text-4xl md:text-5xl font-extrabold text-gray-900 mb-6 sm:mb-10">
+          The <span className="text-blue-600">Plan</span>
+        </h3>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 w-full max-w-5xl mx-auto">
+          <div className="bg-white p-4 sm:p-6 rounded-xl shadow-lg">
+            <h4 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-800 mb-4">
+              Prize Allocation
+            </h4>
+            <p className="text-blue-600 text-2xl sm:text-3xl font-bold">$10K</p>
+            <div className="text-gray-600 text-sm sm:text-base mt-2 space-y-2">
+              <p>$7K (70%) - MVP + Pilot (8 months)</p>
+              <p>$3K (30%) - Team Split (3 members, ~$1K each)</p>
+            </div>
+          </div>
+          <div className="bg-blue-600 p-4 sm:p-6 rounded-xl shadow-lg text-white">
+            <h4 className="text-lg sm:text-xl md:text-2xl font-bold mb-4">
+              Next Steps
+            </h4>
+            <p className="text-2xl sm:text-3xl font-bold">10 Deliveries</p>
+            <p className="text-blue-100 text-sm sm:text-base">
+              Live Pilot by Dec 2025
+            </p>
+            <p className="text-blue-200 text-xs sm:text-sm mt-2">
+              Proof for Bigger Funding
+            </p>
+          </div>
+        </div>
+        <div className="mt-6 text-gray-500 text-xs sm:text-sm">
+          $7K builds a blockchain-tracked MVP, $3K fuels our team—impact starts
+          now.
+        </div>
+      </div>
+    ),
+    bgColor: "bg-gradient-to-br from-blue-50 to-white",
+  },
+
+  // Slide 10: Team
+  {
+    id: "team",
+    title: "The Minds Behind It",
+    content: (
+      <div className="flex flex-col items-center justify-center h-full w-full text-center px-4">
+        <h3 className="text-2xl sm:text-4xl md:text-5xl font-extrabold text-gray-900 mb-6 sm:mb-10">
+          Our Team
+        </h3>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 w-full max-w-5xl mx-auto">
+          {[
+            {
+              name: "Maku P. Mazakpe",
+              role: "Tech Lead",
+              icon: <FaRocket size={20} className="sm:text-xl" />,
+            },
+            {
+              name: "Nana Abokoma Sika Antwi",
+              role: "Communication Lead",
+              icon: <FaLightbulb size={20} className="sm:text-xl" />,
+            },
+            {
+              name: "Andy",
+              role: "Partnerships",
+              icon: <FaHandshake size={20} className="sm:text-xl" />,
+            },
+          ].map((member, idx) => (
+            <div
+              key={idx}
+              className="bg-white rounded-xl shadow-lg overflow-hidden group transform transition hover:scale-105"
+            >
+              <div className="h-32 sm:h-48 overflow-hidden">
+                <img
+                  src="/api/placeholder/300/200"
+                  alt={member.name}
+                  className="w-full h-full object-cover transition group-hover:scale-110"
+                />
+              </div>
+              <div className="p-4 sm:p-6">
+                <h4 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-800">
+                  {member.name}
+                </h4>
+                <p className="text-blue-600 font-semibold mb-3 sm:mb-4 text-xs sm:text-sm md:text-base">
+                  {member.role}
+                </p>
+                <div className="flex justify-center">
+                  <div className="bg-blue-100 p-2 sm:p-3 rounded-full">
+                    <span className="text-blue-600">{member.icon}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    ),
+    bgColor: "bg-white",
+  },
+
+  // Closing
+  {
+    id: "closing",
+    title: "Let’s Make Aid Work",
+    content: (
+      <div className="flex flex-col items-center justify-center h-full w-full text-center px-4 py-8 sm:py-12 bg-gradient-to-br from-blue-600 to-blue-800 text-white">
+        {/* Header */}
+        <h3 className="text-3xl sm:text-5xl md:text-6xl font-extrabold mb-6 sm:mb-10">
+          <span className="text-blue-100">KUSAIDIA</span> Starts Here
+        </h3>
+
+        {/* Core Message */}
+        <div className="max-w-4xl mx-auto mb-6 sm:mb-10">
+          <p className="text-xl sm:text-2xl md:text-3xl font-bold text-blue-100 mb-4 sm:mb-6">
+            $10K Fuels 10 Deliveries in 8 Months
+          </p>
+          <p className="text-base sm:text-lg md:text-xl text-blue-200">
+            From this hackathon to real impact—procurement, delivery,
+            trust—powered by blockchain.
+          </p>
+        </div>
+
+        {/* Call-to-Action */}
+        <div className="bg-white text-blue-600 rounded-xl p-4 sm:p-6 shadow-lg mb-6 sm:mb-8">
+          <p className="text-lg sm:text-xl md:text-2xl font-bold">
+            Award Us $10K to Shift the Aid Paradigm
+          </p>
+          <p className="text-sm sm:text-base mt-2">
+            Join us to rewrite how $50B moves—starting now.
+          </p>
+        </div>
+
+        {/* Contact Info */}
+        <div className="flex flex-col items-center space-y-3 sm:space-y-4">
+          <p className="text-sm sm:text-base md:text-lg font-medium">
+            Maku P. Mazakpe | kusaidia75@gmail.com | @KusaidiaHQ
+          </p>
+          <div className="flex space-x-3 sm:space-x-4">
+            {[
+              { icon: <FaTwitter />, link: "https://twitter.com/KusaidiaHQ" },
+              {
+                icon: <FaLinkedin />,
+                link: "https://linkedin.com/company/kusaidia",
+              },
+              { icon: <FaGithub />, link: "https://github.com/kusaidia" },
+            ].map((social, idx) => (
+              <a
+                key={idx}
+                href={social.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 sm:w-12 sm:h-12 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center hover:bg-blue-200 transition duration-300 transform hover:scale-110"
+              >
+                {social.icon}
+              </a>
+            ))}
+          </div>
+        </div>
+
+        {/* Footer Visual */}
+        <div className="mt-6 sm:mt-8">
+          <FaRocket className="text-blue-100 text-3xl sm:text-4xl animate-bounce" />
+        </div>
+      </div>
+    ),
+    bgColor: "bg-gradient-to-br from-blue-600 to-blue-800",
+  },
+
+  // Slide 13: Contact
+  {
+    id: "contact",
+    title: "Get In Touch",
+    content: (
+      <div className="flex flex-col items-center justify-start min-h-full w-full text-center px-4 py-8 sm:py-12 bg-gradient-to-r from-blue-50 to-gray-100">
+        {/* Horizontal Scrollable Container */}
+        <div className="w-full max-w-6xl mx-auto h-[60vh] sm:h-[70vh] overflow-x-auto overflow-y-hidden scrollbar-thin scrollbar-thumb-blue-500 scrollbar-track-gray-100 flex space-x-4 sm:space-x-6 px-3 sm:px-4 snap-x snap-mandatory">
+          {/* Combined Contact Card */}
+          <div className="bg-white rounded-2xl sm:rounded-3xl shadow-lg p-4 sm:p-8 min-w-[280px] sm:min-w-[320px] max-w-[320px] sm:max-w-[400px] flex-shrink-0 transform transition-all hover:shadow-xl hover:-translate-y-2 duration-300 snap-center">
+            <h4 className="text-xl sm:text-3xl font-extrabold text-gray-900 mb-4 sm:mb-6 flex items-center justify-center">
+              <FaInfoCircle className="text-blue-600 mr-2" />{" "}
+              <span className="text-blue-600">Let's Connect</span>
+            </h4>
+            <div className="space-y-4 sm:space-y-6 text-left">
               {[
                 {
-                  step: 1,
-                  title: "Donor funds a project",
-                  desc: "Select a specific project to support",
+                  icon: (
+                    <FaMapMarkerAlt className="text-blue-600 text-lg sm:text-2xl" />
+                  ),
+                  title: "Location",
+                  details: ["Nairobi, Kenya", "Kilimani X Center, 3rd Floor"],
                 },
                 {
-                  step: 2,
-                  title: "Smart contract generates a purchase order",
-                  desc: "Automatically prepared for local vendors",
+                  icon: (
+                    <FaPhone className="text-blue-600 text-lg sm:text-2xl" />
+                  ),
+                  title: "Phone",
+                  details: ["+254 700 000 000"],
                 },
                 {
-                  step: 3,
-                  title: "Verified vendor delivers resources",
-                  desc: "Local vendors provide supplies or services",
-                },
-                {
-                  step: 4,
-                  title: "Payment released upon delivery verification",
-                  desc: "Funds automatically released with proof of delivery",
+                  icon: (
+                    <FaEnvelope className="text-blue-600 text-lg sm:text-2xl" />
+                  ),
+                  title: "Email",
+                  details: ["kusaidia75@gmail.com"],
                 },
               ].map((item, idx) => (
-                <div
-                  key={idx}
-                  className="bg-white p-3 sm:p-5 rounded-xl shadow-md flex items-start"
-                >
-                  <div className="bg-blue-600 text-white rounded-full w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center flex-shrink-0 mr-3 sm:mr-4">
-                    <span className="text-sm sm:text-base">{item.step}</span>
+                <div key={idx} className="flex items-start">
+                  <div className="p-2 sm:p-3 rounded-full bg-blue-100 mr-3 sm:mr-4">
+                    {item.icon}
                   </div>
-                  <div className="text-left">
-                    <h4 className="font-bold text-base sm:text-lg text-gray-800">
+                  <div>
+                    <p className="font-semibold text-gray-800 text-base sm:text-lg">
                       {item.title}
-                    </h4>
-                    <p className="text-gray-600 text-xs sm:text-sm md:text-base">
-                      {item.desc}
                     </p>
+                    {item.details.map((detail, i) => (
+                      <p key={i} className="text-gray-600 text-xs sm:text-sm">
+                        {detail}
+                      </p>
+                    ))}
                   </div>
                 </div>
               ))}
             </div>
           </div>
+
+          {/* Combined Form & Social Card */}
+          <div className="bg-white rounded-2xl sm:rounded-3xl shadow-lg p-4 sm:p-8 min-w-[280px] sm:min-w-[320px] max-w-[320px] sm:max-w-[400px] flex-shrink-0 transform transition-all hover:shadow-xl hover:-translate-y-2 duration-300 snap-center">
+            <h4 className="text-lg sm:text-2xl font-bold text-gray-800 mb-4 sm:mb-6 flex items-center justify-center">
+              <FaPaperPlane className="text-blue-600 mr-2" /> Send a Message
+            </h4>
+            <ContactForm />
+
+            {/* Social Section */}
+            <div className="mt-4 sm:mt-6 pt-4 sm:pt-6 border-t border-gray-200">
+              <h5 className="text-base sm:text-xl font-bold text-gray-800 mb-3 sm:mb-4 flex items-center justify-center">
+                <FaShareAlt className="text-blue-600 mr-2" /> Stay Connected
+              </h5>
+              <div className="flex flex-wrap justify-center gap-2 sm:gap-3">
+                {[
+                  {
+                    icon: <FaTwitter />,
+                    label: "X",
+                    link: "https://twitter.com/Kusaidia",
+                  },
+                  { icon: <FaLinkedin />, label: "LinkedIn", link: "#" },
+                  { icon: <FaFacebook />, label: "Facebook", link: "#" },
+                  { icon: <FaInstagram />, label: "Instagram", link: "#" },
+                ].map((social, idx) => (
+                  <a
+                    key={idx}
+                    href={social.link}
+                    className="flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-blue-100 text-blue-600 hover:bg-blue-600 hover:text-white transition duration-300 transform hover:scale-110"
+                  >
+                    {social.icon}
+                  </a>
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     ),
-    bgColor: "bg-white",
+    bgColor: "bg-gradient-to-r from-blue-50 to-gray-100",
   },
 
   // Slide 9: Tech Stack
@@ -788,9 +1141,16 @@ const slides = [
               </h4>
               <div className="space-y-2 sm:space-y-3">
                 {section.items.map((item, i) => (
-                  <div key={i} className="bg-blue-50 px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg">
-                    <p className="font-medium text-gray-700 text-sm sm:text-base">{item.name}</p>
-                    <p className="text-xs sm:text-sm text-gray-500">{item.desc}</p>
+                  <div
+                    key={i}
+                    className="bg-blue-50 px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg"
+                  >
+                    <p className="font-medium text-gray-700 text-sm sm:text-base">
+                      {item.name}
+                    </p>
+                    <p className="text-xs sm:text-sm text-gray-500">
+                      {item.desc}
+                    </p>
                   </div>
                 ))}
               </div>
@@ -803,61 +1163,6 @@ const slides = [
       </div>
     ),
     bgColor: "bg-gradient-to-br from-blue-50 to-white",
-  },
-
-  // Slide 10: Team
-  {
-    id: "team",
-    title: "The Minds Behind It",
-    content: (
-      <div className="flex flex-col items-center justify-center h-full w-full text-center px-4">
-        <h3 className="text-2xl sm:text-4xl md:text-5xl font-extrabold text-gray-900 mb-6 sm:mb-10">
-          Our Team
-        </h3>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 w-full max-w-5xl mx-auto">
-          {[
-            { name: "Maku P. Mazakpe", role: "Tech Lead", icon: <FaRocket size={20} className="sm:text-xl" /> },
-            {
-              name: "Nana Abokoma Sika Antwi",
-              role: "Communication Lead",
-              icon: <FaLightbulb size={20} className="sm:text-xl" />,
-            },
-            {
-              name: "[Team Member]",
-              role: "Partnerships",
-              icon: <FaHandshake size={20} className="sm:text-xl" />,
-            },
-          ].map((member, idx) => (
-            <div
-              key={idx}
-              className="bg-white rounded-xl shadow-lg overflow-hidden group transform transition hover:scale-105"
-            >
-              <div className="h-32 sm:h-48 overflow-hidden">
-                <img
-                  src="/api/placeholder/300/200"
-                  alt={member.name}
-                  className="w-full h-full object-cover transition group-hover:scale-110"
-                />
-              </div>
-              <div className="p-4 sm:p-6">
-                <h4 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-800">
-                  {member.name}
-                </h4>
-                <p className="text-blue-600 font-semibold mb-3 sm:mb-4 text-xs sm:text-sm md:text-base">
-                  {member.role}
-                </p>
-                <div className="flex justify-center">
-                  <div className="bg-blue-100 p-2 sm:p-3 rounded-full">
-                    <span className="text-blue-600">{member.icon}</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    ),
-    bgColor: "bg-white",
   },
 
   // Slide 11: Competitive Analysis
@@ -879,11 +1184,15 @@ const slides = [
                 <th className="py-3 px-3 sm:py-4 sm:px-6 text-sm sm:text-lg font-semibold rounded-tl-xl">
                   Features
                 </th>
-                <th className="py-3 px-3 sm:py-4 sm:px-6 text-sm sm:text-lg font-semibold">KUSAIDIA</th>
+                <th className="py-3 px-3 sm:py-4 sm:px-6 text-sm sm:text-lg font-semibold">
+                  KUSAIDIA
+                </th>
                 <th className="py-3 px-3 sm:py-4 sm:px-6 text-sm sm:text-lg font-semibold">
                   Traditional NGOs
                 </th>
-                <th className="py-3 px-3 sm:py-4 sm:px-6 text-sm sm:text-lg font-semibold">GoFundMe</th>
+                <th className="py-3 px-3 sm:py-4 sm:px-6 text-sm sm:text-lg font-semibold">
+                  GoFundMe
+                </th>
                 <th className="py-3 px-3 sm:py-4 sm:px-6 text-sm sm:text-lg font-semibold rounded-tr-xl">
                   Crypto Solutions
                 </th>
@@ -953,7 +1262,9 @@ const slides = [
                       ) : (
                         <FaCheckCircle className="text-green-500 mr-1 sm:mr-2 w-3 h-3 sm:w-4 sm:h-4" />
                       )}
-                      <span className="text-gray-600 text-xs sm:text-sm md:text-base">{row.ngo}</span>
+                      <span className="text-gray-600 text-xs sm:text-sm md:text-base">
+                        {row.ngo}
+                      </span>
                     </div>
                   </td>
                   <td className="py-2 px-3 sm:py-4 sm:px-6">
@@ -965,7 +1276,9 @@ const slides = [
                       ) : (
                         <FaCheckCircle className="text-green-500 mr-1 sm:mr-2 w-3 h-3 sm:w-4 sm:h-4" />
                       )}
-                      <span className="text-gray-600 text-xs sm:text-sm md:text-base">{row.gofundme}</span>
+                      <span className="text-gray-600 text-xs sm:text-sm md:text-base">
+                        {row.gofundme}
+                      </span>
                     </div>
                   </td>
                   <td className="py-2 px-3 sm:py-4 sm:px-6">
@@ -976,7 +1289,9 @@ const slides = [
                       ) : (
                         <FaCheckCircle className="text-green-500 mr-1 sm:mr-2 w-3 h-3 sm:w-4 sm:h-4" />
                       )}
-                      <span className="text-gray-600 text-xs sm:text-sm md:text-base">{row.crypto}</span>
+                      <span className="text-gray-600 text-xs sm:text-sm md:text-base">
+                        {row.crypto}
+                      </span>
                     </div>
                   </td>
                 </tr>
@@ -993,99 +1308,222 @@ const slides = [
     ),
     bgColor: "bg-gradient-to-br from-blue-100 to-gray-50",
   },
-   
-  // Slide 13: Contact
+  // Revenue Streams UI Component
   {
-    id: "contact",
-    title: "Get In Touch",
+    id: "revenue-streams",
+    title: "How Kusaidia Makes Money",
     content: (
-      <div className="flex flex-col items-center justify-start min-h-full w-full text-center px-4 py-8 sm:py-12 bg-gradient-to-r from-blue-50 to-gray-100">
-        {/* Horizontal Scrollable Container */}
-        <div className="w-full max-w-6xl mx-auto h-[60vh] sm:h-[70vh] overflow-x-auto overflow-y-hidden scrollbar-thin scrollbar-thumb-blue-500 scrollbar-track-gray-100 flex space-x-4 sm:space-x-6 px-3 sm:px-4 snap-x snap-mandatory">
-          {/* Combined Contact Card */}
-          <div className="bg-white rounded-2xl sm:rounded-3xl shadow-lg p-4 sm:p-8 min-w-[280px] sm:min-w-[320px] max-w-[320px] sm:max-w-[400px] flex-shrink-0 transform transition-all hover:shadow-xl hover:-translate-y-2 duration-300 snap-center">
-            <h4 className="text-xl sm:text-3xl font-extrabold text-gray-900 mb-4 sm:mb-6 flex items-center justify-center">
-              <FaInfoCircle className="text-blue-600 mr-2" />{" "}
-              <span className="text-blue-600">Let's Connect</span>
-            </h4>
-            <div className="space-y-4 sm:space-y-6 text-left">
-              {[
-                {
-                  icon: <FaMapMarkerAlt className="text-blue-600 text-lg sm:text-2xl" />,
-                  title: "Location",
-                  details: [
-                    "Nairobi, Kenya",
-                    "Kilimani X Center, 3rd Floor",
-                  ],
-                },
-                {
-                  icon: <FaPhone className="text-blue-600 text-lg sm:text-2xl" />,
-                  title: "Phone",
-                  details: ["+254 700 000 000"],
-                },
-                {
-                  icon: <FaEnvelope className="text-blue-600 text-lg sm:text-2xl" />,
-                  title: "Email",
-                  details: ["kusaidia75@gmail.com"],
-                },
-              ].map((item, idx) => (
-                <div key={idx} className="flex items-start">
-                  <div className="p-2 sm:p-3 rounded-full bg-blue-100 mr-3 sm:mr-4">
-                    {item.icon}
-                  </div>
-                  <div>
-                    <p className="font-semibold text-gray-800 text-base sm:text-lg">
-                      {item.title}
-                    </p>
-                    {item.details.map((detail, i) => (
-                      <p key={i} className="text-gray-600 text-xs sm:text-sm">
-                        {detail}
-                      </p>
-                    ))}
-                  </div>
-                </div>
-              ))}
+      <div className="flex flex-col items-center justify-center h-full w-full text-center px-4 py-8 sm:py-12 bg-gray-50">
+        {/* Header */}
+        <h3 className="text-2xl sm:text-4xl md:text-5xl font-extrabold text-gray-900 mb-6 sm:mb-12">
+          <span className="text-blue-600">Revenue</span> Streams
+        </h3>
+
+        {/* Grid of Revenue Cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 w-full max-w-6xl mx-auto">
+          {[
+            {
+              title: "Platform Service Fees",
+              subtitle: "2-5% per project",
+              desc: "Covers vetting, tracking, and delivery. $500K aid at 5% = $25K.",
+              icon: (
+                <FaChartLine className="text-blue-600 text-2xl sm:text-3xl" />
+              ),
+              why: "Donors pay for transparency—beats 10-30% aid waste.",
+            },
+            {
+              title: "Insurance Commissions",
+              subtitle: "10-20% of premiums",
+              desc: "Partner for risk coverage. $10K premiums at 15% = $1.5K/project.",
+              icon: (
+                <FaShieldAlt className="text-blue-600 text-2xl sm:text-3xl" />
+              ),
+              why: "Boosts trust, recurring cash, no fee hikes.",
+            },
+            {
+              title: "Premium Analytics",
+              subtitle: "$500/month subscriptions",
+              desc: "Data for NGOs. 10 subscribers = $5K/month.",
+              icon: (
+                <FaChartPie className="text-blue-600 text-2xl sm:text-3xl" />
+              ),
+              why: "Leverages blockchain data for partners.",
+            },
+            {
+              title: "Enterprise Solutions",
+              subtitle: "Licensing fees",
+              desc: "$50K setup + $10K/month per client.",
+              icon: (
+                <FaBuilding className="text-blue-600 text-2xl sm:text-3xl" />
+              ),
+              why: "Scales tech to big players affordably.",
+            },
+            {
+              title: "Vendor Partnership Fees",
+              subtitle: "$1K/year per vendor",
+              desc: "50 vendors = $50K/year for contract access.",
+              icon: <FaTruck className="text-blue-600 text-2xl sm:text-3xl" />,
+              why: "Monetizes our supply chain network.",
+            },
+            {
+              title: "Donor Memberships",
+              subtitle: "$10/month tier",
+              desc: "1,000 donors = $120K/year for perks.",
+              icon: (
+                <FaUserPlus className="text-blue-600 text-2xl sm:text-3xl" />
+              ),
+              why: "Turns donors into loyal supporters.",
+            },
+            {
+              title: "Carbon/ESG Credits",
+              subtitle: "10% of credit sales",
+              desc: "$100K credits = $10K/project.",
+              icon: <FaLeaf className="text-blue-600 text-2xl sm:text-3xl" />,
+              why: "Taps corporate sustainability trends.",
+            },
+            {
+              title: "Sponsorships",
+              subtitle: "$5K per campaign",
+              desc: "5 projects = $25K from ethical brands.",
+              icon: <FaAd className="text-blue-600 text-2xl sm:text-3xl" />,
+              why: "Non-intrusive audience leverage.",
+            },
+          ].map((stream, idx) => (
+            <div
+              key={idx}
+              className="bg-white p-4 sm:p-6 rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300 border border-gray-100 flex flex-col items-center"
+            >
+              {/* Icon */}
+              <div className="mb-3 sm:mb-4">{stream.icon}</div>
+              {/* Title & Subtitle */}
+              <h4 className="text-base sm:text-xl font-bold text-gray-800">
+                {stream.title}
+              </h4>
+              <p className="text-xs sm:text-sm text-blue-600 font-semibold mb-1 sm:mb-2">
+                {stream.subtitle}
+              </p>
+              {/* Description */}
+              <p className="text-gray-600 text-xs sm:text-sm mb-3 sm:mb-4">
+                {stream.desc}
+              </p>
+              {/* Why It Works */}
+              <p className="text-gray-500 text-xs italic">"{stream.why}"</p>
             </div>
+          ))}
+        </div>
+
+        {/* Footer Note */}
+        <div className="mt-6 sm:mt-8 text-xs sm:text-sm text-gray-500">
+          Built lean, powered by blockchain—revenue scales with impact.
+        </div>
+      </div>
+    ),
+    bgColor: "bg-gray-50",
+  },
+
+  {
+    id: "financials",
+    title: "Funding Ask & Financials",
+    content: (
+      <div className="flex flex-col items-center justify-center h-full w-full text-center px-4">
+        <h3 className="text-2xl sm:text-4xl md:text-5xl font-extrabold text-gray-900 mb-6 sm:mb-10">
+          The <span className="text-blue-600">Numbers</span>
+        </h3>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 w-full max-w-5xl mx-auto">
+          <div className="bg-white p-4 sm:p-6 rounded-xl shadow-lg">
+            <h4 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-800 mb-4">
+              Funding Ask
+            </h4>
+            <p className="text-blue-600 text-2xl sm:text-3xl font-bold">
+              $150K
+            </p>
+            <p className="text-gray-600 text-sm sm:text-base">
+              $50K MVP + $100K Year 1
+            </p>
+            <p className="text-gray-500 text-xs sm:text-sm mt-2">10% Equity</p>
           </div>
-
-          {/* Combined Form & Social Card */}
-          <div className="bg-white rounded-2xl sm:rounded-3xl shadow-lg p-4 sm:p-8 min-w-[280px] sm:min-w-[320px] max-w-[320px] sm:max-w-[400px] flex-shrink-0 transform transition-all hover:shadow-xl hover:-translate-y-2 duration-300 snap-center">
-            <h4 className="text-lg sm:text-2xl font-bold text-gray-800 mb-4 sm:mb-6 flex items-center justify-center">
-              <FaPaperPlane className="text-blue-600 mr-2" /> Send a Message
+          <div className="bg-blue-600 p-4 sm:p-6 rounded-xl shadow-lg text-white">
+            <h4 className="text-lg sm:text-xl md:text-2xl font-bold mb-4">
+              Year 1 Revenue
             </h4>
-            <ContactForm />
-
-            {/* Social Section */}
-            <div className="mt-4 sm:mt-6 pt-4 sm:pt-6 border-t border-gray-200">
-              <h5 className="text-base sm:text-xl font-bold text-gray-800 mb-3 sm:mb-4 flex items-center justify-center">
-                <FaShareAlt className="text-blue-600 mr-2" /> Stay Connected
-              </h5>
-              <div className="flex flex-wrap justify-center gap-2 sm:gap-3">
-                {[
-                  {
-                    icon: <FaTwitter />,
-                    label: "X",
-                    link: "https://twitter.com/Kusaidia",
-                  },
-                  { icon: <FaLinkedin />, label: "LinkedIn", link: "#" },
-                  { icon: <FaFacebook />, label: "Facebook", link: "#" },
-                  { icon: <FaInstagram />, label: "Instagram", link: "#" },
-                ].map((social, idx) => (
-                  <a
-                    key={idx}
-                    href={social.link}
-                    className="flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-blue-100 text-blue-600 hover:bg-blue-600 hover:text-white transition duration-300 transform hover:scale-110"
-                  >
-                    {social.icon}
-                  </a>
-                ))}
-              </div>
-            </div>
+            <p className="text-2xl sm:text-3xl font-bold">$25K</p>
+            <p className="text-blue-100 text-sm sm:text-base">
+              5% of $500K Aid Moved
+            </p>
+            <p className="text-blue-200 text-xs sm:text-sm mt-2">
+              Scales to Billions
+            </p>
           </div>
         </div>
       </div>
     ),
-    bgColor: "bg-gradient-to-r from-blue-50 to-gray-100",
+    bgColor: "bg-gradient-to-br from-blue-50 to-white",
+  },
+  {
+    id: "closing",
+    title: "Rewrite the Future of Aid",
+    content: (
+      <div className="flex flex-col items-center justify-center h-full w-full text-center px-4 py-8 sm:py-12 bg-gradient-to-br from-blue-50 to-blue-200 text-gray-900">
+        {/* Header */}
+        <h3 className="text-3xl sm:text-5xl md:text-6xl font-extrabold mb-6 sm:mb-10">
+          Join the <span className="text-blue-600">Aid Revolution</span>
+        </h3>
+
+        {/* Core Message */}
+        <div className="max-w-4xl mx-auto mb-6 sm:mb-10">
+          <p className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-800 mb-4 sm:mb-6">
+            $150K Unlocks a $300B Opportunity
+          </p>
+          <p className="text-base sm:text-lg md:text-xl text-gray-700">
+            Direct procurement. Verified delivery. Blockchain trust—scaling to
+            billions.
+          </p>
+        </div>
+
+        {/* Call-to-Action */}
+        <div className="bg-blue-600 text-white rounded-xl p-4 sm:p-6 shadow-lg mb-6 sm:mb-8">
+          <p className="text-lg sm:text-xl md:text-2xl font-bold">
+            Invest $150K to Transform Global Giving
+          </p>
+          <p className="text-sm sm:text-base mt-2 text-blue-100">
+            Partner with us to make every dollar count—starting today.
+          </p>
+        </div>
+
+        {/* Contact Info */}
+        <div className="flex flex-col items-center space-y-3 sm:space-y-4">
+          <p className="text-sm sm:text-base md:text-lg font-medium text-gray-800">
+            Maku P. Mazakpe | kusaidia75@gmail.com | @KusaidiaHQ
+          </p>
+          <div className="flex space-x-3 sm:space-x-4">
+            {[
+              { icon: <FaTwitter />, link: "https://twitter.com/KusaidiaHQ" },
+              {
+                icon: <FaLinkedin />,
+                link: "https://linkedin.com/company/kusaidia",
+              },
+              { icon: <FaGithub />, link: "https://github.com/kusaidia" },
+            ].map((social, idx) => (
+              <a
+                key={idx}
+                href={social.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 sm:w-12 sm:h-12 bg-blue-600 text-white rounded-full flex items-center justify-center hover:bg-blue-700 transition duration-300 transform hover:scale-110"
+              >
+                {social.icon}
+              </a>
+            ))}
+          </div>
+        </div>
+
+        {/* Footer Visual */}
+        <div className="mt-6 sm:mt-8">
+          <FaGlobeAfrica className="text-blue-600 text-3xl sm:text-4xl animate-pulse" />
+        </div>
+      </div>
+    ),
+    bgColor: "bg-gradient-to-br from-blue-50 to-blue-200",
   },
 ];
 
@@ -1532,14 +1970,6 @@ const AdminInstructions = () => {
 export default function AboutPage() {
   const [loaded, setLoaded] = useState(false);
   const [visitorCount, setVisitorCount] = useState(0);
-
-  useEffect(() => {
-    if (!loaded) {
-      const count = trackVisitor("about");
-      setVisitorCount(count);
-      setLoaded(true);
-    }
-  }, [loaded]);
 
   return (
     <div className="min-h-screen bg-white">
