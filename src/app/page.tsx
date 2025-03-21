@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { useAuth } from "@/features/auth/AuthContext";
 import { useEffect, useState } from "react";
 import { trackVisitor, getVisitorCount } from "@/lib/firebase";
+import VisitorCounter from "@/components/VisitorCounter";
 
 export default function HomePage() {
   const router = useRouter();
@@ -20,7 +21,7 @@ export default function HomePage() {
           // First get the visitor count without incrementing
           const currentCount = await getVisitorCount();
           setVisitorCount(currentCount);
-          
+
           // Then track the new visit and update the count
           const newCount = await trackVisitor("home");
           setVisitorCount(newCount);
@@ -31,9 +32,9 @@ export default function HomePage() {
         }
       }
     };
-    
+
     handlePageLoad();
-    
+
     // Redirect if authenticated
     if (isAuthenticated) {
       router.push("/projects");
@@ -48,10 +49,10 @@ export default function HomePage() {
     <div className="min-h-screen bg-white relative">
       {/* Diagonal Ribbon */}
       <div className="absolute w-32 h-8 bg-yellow-500 transform rotate-45 origin-bottom-left translate-x-8 -translate-y-2 shadow-md">
-      <p className="text-black text-sm font-medium text-center pt-1">
-        Proof of Concept
-      </p>
-    </div>
+        <p className="text-black text-sm font-medium text-center pt-1">
+          Proof of Concept
+        </p>
+      </div>
 
       {/* Navigation */}
       <nav className="bg-white border-b border-gray-200">
@@ -106,7 +107,9 @@ export default function HomePage() {
                   </span>
                 </h1>
                 <p className="mt-6 max-w-lg mx-auto text-center text-xl text-indigo-100 sm:max-w-3xl">
-                  With KUSAIDIA, your support flows straight to vendors in Africa—reaching communities quickly, clearly, and without the clutter. Real help, real outcomes.
+                  With KUSAIDIA, your support flows straight to vendors in
+                  Africa—reaching communities quickly, clearly, and without the
+                  clutter. Real help, real outcomes.
                 </p>
                 <div className="mt-10 max-w-sm mx-auto sm:max-w-none sm:flex sm:justify-center">
                   <div className="space-y-4 sm:space-y-0 sm:mx-auto sm:inline-grid sm:grid-cols-2 sm:gap-5">
@@ -130,75 +133,90 @@ export default function HomePage() {
         </div>
 
         {/* How It Works Section */}
-      <section className="py-16 bg-gray-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-extrabold text-gray-900 text-center mb-12">
-            How It Works
-          </h2>
-          <p className="text-center text-lg text-gray-600 mb-10 max-w-2xl mx-auto">
-            Follow the journey of a Kusaidia project from idea to impact, powered by transparency and blockchain technology.
-          </p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
-            {/* Step 1: Draft */}
-            <div className="bg-white rounded-lg shadow-md p-6 text-center transform transition hover:scale-105">
-              <div className="w-12 h-12 bg-indigo-600 text-white rounded-full flex items-center justify-center mx-auto mb-4">
-                1
+        <section className="py-16 bg-gray-100">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 className="text-3xl font-extrabold text-gray-900 text-center mb-12">
+              How It Works
+            </h2>
+            <p className="text-center text-lg text-gray-600 mb-10 max-w-2xl mx-auto">
+              Follow the journey of a Kusaidia project from idea to impact,
+              powered by transparency and blockchain technology.
+            </p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+              {/* Step 1: Draft */}
+              <div className="bg-white rounded-lg shadow-md p-6 text-center transform transition hover:scale-105">
+                <div className="w-12 h-12 bg-indigo-600 text-white rounded-full flex items-center justify-center mx-auto mb-4">
+                  1
+                </div>
+                <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                  Draft
+                </h3>
+                <p className="text-gray-600">
+                  An organization creates a project proposal with clear goals
+                  and needs.
+                </p>
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">Draft</h3>
-              <p className="text-gray-600">
-                An organization creates a project proposal with clear goals and needs.
-              </p>
-            </div>
 
-            {/* Step 2: Pending Review */}
-            <div className="bg-white rounded-lg shadow-md p-6 text-center transform transition hover:scale-105">
-              <div className="w-12 h-12 bg-indigo-600 text-white rounded-full flex items-center justify-center mx-auto mb-4">
-                2
+              {/* Step 2: Pending Review */}
+              <div className="bg-white rounded-lg shadow-md p-6 text-center transform transition hover:scale-105">
+                <div className="w-12 h-12 bg-indigo-600 text-white rounded-full flex items-center justify-center mx-auto mb-4">
+                  2
+                </div>
+                <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                  Pending Review
+                </h3>
+                <p className="text-gray-600">
+                  Admins review the project for legitimacy and feasibility.
+                </p>
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">Pending Review</h3>
-              <p className="text-gray-600">
-                Admins review the project for legitimacy and feasibility.
-              </p>
-            </div>
 
-            {/* Step 3: Approved */}
-            <div className="bg-white rounded-lg shadow-md p-6 text-center transform transition hover:scale-105">
-              <div className="w-12 h-12 bg-indigo-600 text-white rounded-full flex items-center justify-center mx-auto mb-4">
-                3
+              {/* Step 3: Approved */}
+              <div className="bg-white rounded-lg shadow-md p-6 text-center transform transition hover:scale-105">
+                <div className="w-12 h-12 bg-indigo-600 text-white rounded-full flex items-center justify-center mx-auto mb-4">
+                  3
+                </div>
+                <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                  Approved
+                </h3>
+                <p className="text-gray-600">
+                  Project is validated, listed for funding, and added to the
+                  blockchain.
+                </p>
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">Approved</h3>
-              <p className="text-gray-600">
-                Project is validated, listed for funding, and added to the blockchain.
-              </p>
-            </div>
 
-            {/* Step 4: Active */}
-            <div className="bg-white rounded-lg shadow-md p-6 text-center transform transition hover:scale-105">
-              <div className="w-12 h-12 bg-indigo-600 text-white rounded-full flex items-center justify-center mx-auto mb-4">
-                4
+              {/* Step 4: Active */}
+              <div className="bg-white rounded-lg shadow-md p-6 text-center transform transition hover:scale-105">
+                <div className="w-12 h-12 bg-indigo-600 text-white rounded-full flex items-center justify-center mx-auto mb-4">
+                  4
+                </div>
+                <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                  Active
+                </h3>
+                <p className="text-gray-600">
+                  Fully funded, the project kicks off with funds sent to
+                  vendors.
+                </p>
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">Active</h3>
-              <p className="text-gray-600">
-                Fully funded, the project kicks off with funds sent to vendors.
-              </p>
-            </div>
 
-            {/* Step 5: Completed */}
-            <div className="bg-white rounded-lg shadow-md p-6 text-center transform transition hover:scale-105">
-              <div className="w-12 h-12 bg-indigo-600 text-white rounded-full flex items-center justify-center mx-auto mb-4">
-                5
+              {/* Step 5: Completed */}
+              <div className="bg-white rounded-lg shadow-md p-6 text-center transform transition hover:scale-105">
+                <div className="w-12 h-12 bg-indigo-600 text-white rounded-full flex items-center justify-center mx-auto mb-4">
+                  5
+                </div>
+                <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                  Completed
+                </h3>
+                <p className="text-gray-600">
+                  Goals are met, impact is verified, and the project wraps up
+                  successfully.
+                </p>
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">Completed</h3>
-              <p className="text-gray-600">
-                Goals are met, impact is verified, and the project wraps up successfully.
-              </p>
             </div>
+            <p className="text-center text-sm text-gray-500 mt-8">
+              *Projects may be cancelled if they fail review or funding stages.
+            </p>
           </div>
-          <p className="text-center text-sm text-gray-500 mt-8">
-            *Projects may be cancelled if they fail review or funding stages.
-          </p>
-        </div>
-      </section>
+        </section>
 
         {/* Impact Highlights */}
         <div className="py-16 bg-gray-50 overflow-hidden">
@@ -211,7 +229,8 @@ export default function HomePage() {
                 Your Support, Their Future
               </p>
               <p className="max-w-xl mt-5 mx-auto text-xl text-gray-500">
-                We cut the clutter so every dollar you give builds a better tomorrow—tracked from your wallet to their hands.
+                We cut the clutter so every dollar you give builds a better
+                tomorrow—tracked from your wallet to their hands.
               </p>
             </div>
 
@@ -240,7 +259,8 @@ export default function HomePage() {
                         See Every Step
                       </h3>
                       <p className="mt-5 text-base text-gray-500">
-                        Blockchain locks in every move—watch your impact unfold in real time.
+                        Blockchain locks in every move—watch your impact unfold
+                        in real time.
                       </p>
                     </div>
                   </div>
@@ -268,7 +288,8 @@ export default function HomePage() {
                         Quick and Direct
                       </h3>
                       <p className="mt-5 text-base text-gray-500">
-                        Your support goes straight to vendors, delivering fast—days, not months—with no waste.
+                        Your support goes straight to vendors, delivering
+                        fast—days, not months—with no waste.
                       </p>
                     </div>
                   </div>
@@ -296,7 +317,8 @@ export default function HomePage() {
                         Trust Built In
                       </h3>
                       <p className="mt-5 text-base text-gray-500">
-                        Every project is checked and proven, so you know your generosity counts.
+                        Every project is checked and proven, so you know your
+                        generosity counts.
                       </p>
                     </div>
                   </div>
@@ -314,13 +336,15 @@ export default function HomePage() {
                 Real Change, Real Stories
               </h2>
               <p className="mt-4 text-lg text-gray-500">
-                See how your support can transform lives—straight from the source.
+                See how your support can transform lives—straight from the
+                source.
               </p>
             </div>
             <div className="mt-12 flex justify-center">
               <div className="max-w-lg bg-gray-50 rounded-lg p-6 shadow-md">
                 <p className="text-gray-600 italic">
-                  "With KUSAIDIA, we built a school in 3 months—every step was clear, every dollar mattered."
+                  "With KUSAIDIA, we built a school in 3 months—every step was
+                  clear, every dollar mattered."
                 </p>
                 <p className="mt-4 text-indigo-600 font-medium">
                   — Amina, Community Leader, Kenya (Coming Soon)
@@ -338,13 +362,32 @@ export default function HomePage() {
               <span className="block">Your Impact Starts Here</span>
             </h2>
             <p className="mt-4 text-lg leading-6 text-indigo-100">
-              Join us to empower Africa with support that's fast, fair, and fully yours to track.
+              Join us to empower Africa with support that's fast, fair, and
+              fully yours to track.
             </p>
             <div className="mt-8 flex flex-col items-center">
-              <div className="bg-white/10 backdrop-blur-sm rounded-lg py-4 px-6 mb-6">
-                <p className="text-xl text-white">
-                  Join <span className="text-3xl font-bold text-yellow-300 animate-pulse">{visitorCount.toLocaleString()}</span> visitors making an impact with KUSAIDIA
-                </p>
+              <div className="bg-white/15 backdrop-blur-sm rounded-lg py-5 px-8 mb-6 shadow-lg transform hover:scale-105 transition-all duration-300 border border-white/20">
+                <div className="flex flex-col items-center space-y-2">
+                  <div className="text-base uppercase tracking-wider text-indigo-200 font-medium">
+                    Community Impact
+                  </div>
+                  <div className="text-xl text-white">
+                    Join{" "}
+                    <VisitorCounter
+                      pageName="home"
+                      className="text-3xl font-bold text-yellow-300 inline-flex items-center"
+                    />{" "}
+                    <span className="relative inline-block">
+                      visitors
+                      <span className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-yellow-300/0 via-yellow-300 to-yellow-300/0"></span>
+                    </span>{" "}
+                    making an impact with
+                  </div>
+                  <div className="text-2xl font-extrabold text-white">
+                    KUSAIDIA
+                    <span className="ml-1 text-yellow-300">✦</span>
+                  </div>
+                </div>
               </div>
               <Link
                 href="/projects"
@@ -361,10 +404,16 @@ export default function HomePage() {
       <footer className="bg-white">
         <div className="max-w-7xl mx-auto py-12 px-4 overflow-hidden sm:px-6 lg:px-8">
           <div className="flex justify-center space-x-6">
-            <a href="https://twitter.com/kusaidiaafrica" className="text-gray-400 hover:text-indigo-600">
+            <a
+              href="https://twitter.com/kusaidiaafrica"
+              className="text-gray-400 hover:text-indigo-600"
+            >
               X
             </a>
-            <a href="mailto:kusaidia75@gmail.com" className="text-gray-400 hover:text-indigo-600">
+            <a
+              href="mailto:kusaidia75@gmail.com"
+              className="text-gray-400 hover:text-indigo-600"
+            >
               Contact Us
             </a>
           </div>
