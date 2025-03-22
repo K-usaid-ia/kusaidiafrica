@@ -869,66 +869,83 @@ const slides = [
   },
 
   // Slide 10: Team
-  {
-    id: "team",
-    title: "The Minds Behind It",
-    content: (
-      <div className="flex flex-col items-center justify-center h-full w-full text-center px-4">
-        <h3 className="text-2xl sm:text-4xl md:text-5xl font-extrabold text-gray-900 mb-6 sm:mb-10">
-          Our Team
-        </h3>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 w-full max-w-5xl mx-auto">
-          {[
-            {
-              name: "Maku P. Mazakpe",
-              role: "Tech Lead",
-              icon: <FaRocket size={20} className="sm:text-xl" />,
-              image: "/images/moi.png", // Adjust to match your file
-            },
-            {
-              name: "Nana Abokoma Sika Antwi",
-              role: "Communication Lead",
-              icon: <FaLightbulb size={20} className="sm:text-xl" />,
-              image: "/images/sika.png", // Adjust to match your file
-            },
-            {
-              name: "Andy",
-              role: "Partnerships",
-              icon: <FaHandshake size={20} className="sm:text-xl" />,
-              image: "/images/andy.jpeg", // Adjust to match your file
-            },
-          ].map((member, idx) => (
-            <div
-              key={idx}
-              className="bg-white rounded-xl shadow-lg overflow-hidden group transform transition hover:scale-105"
-            >
-              <div className="h-32 sm:h-48 overflow-hidden">
-                <img
-                  src={member.image}
-                  alt={member.name}
-                  className="w-full h-full object-cover transition group-hover:scale-110"
-                />
-              </div>
-              <div className="p-4 sm:p-6">
-                <h4 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-800">
-                  {member.name}
-                </h4>
-                <p className="text-blue-600 font-semibold mb-3 sm:mb-4 text-xs sm:text-sm md:text-base">
+  //  // Slide 10: Team
+{
+  id: "team",
+  title: "The Minds Behind It",
+  content: (
+    <div className="flex flex-col items-center justify-center h-full w-full text-center px-4 py-12">
+      <h3 className="text-2xl sm:text-4xl md:text-5xl font-extrabold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-6 sm:mb-10">
+        Our Team
+      </h3>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 sm:gap-10 w-full max-w-6xl mx-auto">
+        {[
+          {
+            name: "Maku P. Mazakpe",
+            role: "Tech Lead",
+            bio: "Building software solutions for startups",
+            linkedin: "https://linkedin.com/in/maku-mazakpe",
+            icon: <FaRocket size={24} className="text-blue-500" />,
+            image: "/images/moi.png",
+          },
+          {
+            name: "Nana Abokoma Sika Antwi",
+            role: "Communication Lead",
+            bio: "Bridging technology and communities through effective communication",
+            linkedin: "https://linkedin.com/in/nana-sika-antwi",
+            icon: <FaLightbulb size={24} className="text-amber-500" />,
+            image: "/images/sika.png",
+          },
+          {
+            name: "Andy",
+            role: "Partnerships",
+            bio: "Connecting organizations to create impactful collaborations",
+            linkedin: "https://www.linkedin.com/in/andy-sedzifa-a1794619b/",
+            icon: <FaHandshake size={24} className="text-green-500" />,
+            image: "/images/andy.jpeg",
+          },
+        ].map((member, idx) => (
+          <div
+            key={idx}
+            className="bg-white rounded-2xl shadow-xl overflow-hidden group transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 border border-gray-100"
+          >
+            <div className="h-44 sm:h-56 overflow-hidden relative">
+              <img
+                src={member.image}
+                alt={member.name}
+                className="w-full h-full object-cover transition duration-500 group-hover:scale-110"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            </div>
+            <div className="p-6 sm:p-8">
+              <h4 className="text-xl sm:text-2xl font-bold text-gray-800 mb-1">
+                {member.name}
+              </h4>
+              <div className="flex items-center justify-center gap-2 mb-3">
+                <span className="text-blue-600">{member.icon}</span>
+                <p className="text-blue-600 font-semibold text-sm sm:text-base">
                   {member.role}
                 </p>
-                <div className="flex justify-center">
-                  <div className="bg-blue-100 p-2 sm:p-3 rounded-full">
-                    <span className="text-blue-600">{member.icon}</span>
-                  </div>
-                </div>
               </div>
+              <p className="text-gray-600 text-sm mb-4 line-clamp-2">{member.bio}</p>
+              
+              <a
+                href={member.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 hover:bg-blue-100 text-blue-600 font-medium transition-colors duration-200"
+              >
+                <FaLinkedin size={16} />
+                <span>Connect</span>
+              </a>
             </div>
-          ))}
-        </div>
+          </div>
+        ))}
       </div>
-    ),
-    bgColor: "bg-white",
-  },
+    </div>
+  ),
+  bgColor: "bg-gradient-to-br from-slate-50 to-blue-50",
+},
 
   // Closing
   {
