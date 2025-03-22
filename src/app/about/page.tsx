@@ -883,16 +883,19 @@ const slides = [
               name: "Maku P. Mazakpe",
               role: "Tech Lead",
               icon: <FaRocket size={20} className="sm:text-xl" />,
+              image: "/images/moi.png", // Adjust to match your file
             },
             {
               name: "Nana Abokoma Sika Antwi",
               role: "Communication Lead",
               icon: <FaLightbulb size={20} className="sm:text-xl" />,
+              image: "/images/sika.png", // Adjust to match your file
             },
             {
               name: "Andy",
               role: "Partnerships",
               icon: <FaHandshake size={20} className="sm:text-xl" />,
+              image: "/images/andy.jpeg", // Adjust to match your file
             },
           ].map((member, idx) => (
             <div
@@ -901,7 +904,7 @@ const slides = [
             >
               <div className="h-32 sm:h-48 overflow-hidden">
                 <img
-                  src="/api/placeholder/300/200"
+                  src={member.image}
                   alt={member.name}
                   className="w-full h-full object-cover transition group-hover:scale-110"
                 />
