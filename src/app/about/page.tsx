@@ -2039,13 +2039,6 @@ export default function AboutPage() {
                   real help you can see and trust.
                 </p>
               </div>
-              <div className="mt-10 lg:mt-0">
-                <img
-                  className="w-full rounded-lg shadow-md"
-                  src="/images/vendor-delivery.jpg"
-                  alt="Vendor delivering supplies to a community"
-                />
-              </div>
             </div>
           </div>
         </div>
