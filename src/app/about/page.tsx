@@ -787,81 +787,120 @@ const slides = [
   },
 
   // Financials & Funding Ask
-  {
-    id: "financials",
-    title: "Prize Money & Impact",
-    content: (
-      <div className="flex flex-col items-center justify-center h-full w-full text-center px-4">
-        <h3 className="text-2xl sm:text-4xl md:text-5xl font-extrabold text-gray-900 mb-6 sm:mb-10">
-          The <span className="text-blue-600">Plan</span>
-        </h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 w-full max-w-5xl mx-auto">
-          <div className="bg-white p-4 sm:p-6 rounded-xl shadow-lg">
-            <h4 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-800 mb-4">
-              Prize Allocation
-            </h4>
-            <p className="text-blue-600 text-2xl sm:text-3xl font-bold">$10K</p>
-            <div className="text-gray-600 text-sm sm:text-base mt-2 space-y-2">
-              <p>$2K (20%) - Build MVP (8 months)</p>
-              <p>$8K (80%) - Team Split (3 members, ~$2.67K each)</p>
-            </div>
-          </div>
-          <div className="bg-blue-600 p-4 sm:p-6 rounded-xl shadow-lg text-white">
-            <h4 className="text-lg sm:text-xl md:text-2xl font-bold mb-4">
-              Next Steps
-            </h4>
-            <p className="text-2xl sm:text-3xl font-bold">Pilot Ready</p>
-            <p className="text-blue-100 text-sm sm:text-base">
-              5 Deliveries in 8 Months
-            </p>
-            <p className="text-blue-200 text-xs sm:text-sm mt-2">
-              Scales with More Funding
-            </p>
-          </div>
-        </div>
-        <div className="mt-6 text-gray-500 text-xs sm:text-sm">
-          Lean budget powers our 8-month roadmap from hackathon to real impact.
-        </div>
-      </div>
-    ),
-    bgColor: "bg-gradient-to-br from-blue-50 to-white",
-  },
+  // {
+  //   id: "financials",
+  //   title: "Prize Money & Impact",
+  //   content: (
+  //     <div className="flex flex-col items-center justify-center h-full w-full text-center px-4">
+  //       <h3 className="text-2xl sm:text-4xl md:text-5xl font-extrabold text-gray-900 mb-6 sm:mb-10">
+  //         The <span className="text-blue-600">Plan</span>
+  //       </h3>
+  //       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 w-full max-w-5xl mx-auto">
+  //         <div className="bg-white p-4 sm:p-6 rounded-xl shadow-lg">
+  //           <h4 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-800 mb-4">
+  //             Prize Allocation
+  //           </h4>
+  //           <p className="text-blue-600 text-2xl sm:text-3xl font-bold">$10K</p>
+  //           <div className="text-gray-600 text-sm sm:text-base mt-2 space-y-2">
+  //             <p>$2K (20%) - Build MVP (8 months)</p>
+  //             <p>$8K (80%) - Team Split (3 members, ~$2.67K each)</p>
+  //           </div>
+  //         </div>
+  //         <div className="bg-blue-600 p-4 sm:p-6 rounded-xl shadow-lg text-white">
+  //           <h4 className="text-lg sm:text-xl md:text-2xl font-bold mb-4">
+  //             Next Steps
+  //           </h4>
+  //           <p className="text-2xl sm:text-3xl font-bold">Pilot Ready</p>
+  //           <p className="text-blue-100 text-sm sm:text-base">
+  //             5 Deliveries in 8 Months
+  //           </p>
+  //           <p className="text-blue-200 text-xs sm:text-sm mt-2">
+  //             Scales with More Funding
+  //           </p>
+  //         </div>
+  //       </div>
+  //       <div className="mt-6 text-gray-500 text-xs sm:text-sm">
+  //         Lean budget powers our 8-month roadmap from hackathon to real impact.
+  //       </div>
+  //     </div>
+  //   ),
+  //   bgColor: "bg-gradient-to-br from-blue-50 to-white",
+  // },
+
+  // {
+  //   id: "financials",
+  //   title: "Prize Money & Impact",
+  //   content: (
+  //     <div className="flex flex-col items-center justify-center h-full w-full text-center px-4">
+  //       <h3 className="text-2xl sm:text-4xl md:text-5xl font-extrabold text-gray-900 mb-6 sm:mb-10">
+  //         The <span className="text-blue-600">Plan</span>
+  //       </h3>
+  //       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 w-full max-w-5xl mx-auto">
+  //         <div className="bg-white p-4 sm:p-6 rounded-xl shadow-lg">
+  //           <h4 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-800 mb-4">
+  //             Prize Allocation
+  //           </h4>
+  //           <p className="text-blue-600 text-2xl sm:text-3xl font-bold">$10K</p>
+  //           <div className="text-gray-600 text-sm sm:text-base mt-2 space-y-2">
+  //             <p>$7K (70%) - MVP + Pilot (8 months)</p>
+  //             <p>$3K (30%) - Team Split (3 members, ~$1K each)</p>
+  //           </div>
+  //         </div>
+  //         <div className="bg-blue-600 p-4 sm:p-6 rounded-xl shadow-lg text-white">
+  //           <h4 className="text-lg sm:text-xl md:text-2xl font-bold mb-4">
+  //             Next Steps
+  //           </h4>
+  //           <p className="text-2xl sm:text-3xl font-bold">10 Deliveries</p>
+  //           <p className="text-blue-100 text-sm sm:text-base">
+  //             Live Pilot by Dec 2025
+  //           </p>
+  //           <p className="text-blue-200 text-xs sm:text-sm mt-2">
+  //             Proof for Bigger Funding
+  //           </p>
+  //         </div>
+  //       </div>
+  //       <div className="mt-6 text-gray-500 text-xs sm:text-sm">
+  //         $7K builds a blockchain-tracked MVP, $3K fuels our team—impact starts
+  //         now.
+  //       </div>
+  //     </div>
+  //   ),
+  //   bgColor: "bg-gradient-to-br from-blue-50 to-white",
+  // },
 
   {
     id: "financials",
-    title: "Prize Money & Impact",
+    title: "Funding Ask & Financials",
     content: (
       <div className="flex flex-col items-center justify-center h-full w-full text-center px-4">
         <h3 className="text-2xl sm:text-4xl md:text-5xl font-extrabold text-gray-900 mb-6 sm:mb-10">
-          The <span className="text-blue-600">Plan</span>
+          The <span className="text-blue-600">Numbers</span>
         </h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 w-full max-w-5xl mx-auto">
           <div className="bg-white p-4 sm:p-6 rounded-xl shadow-lg">
             <h4 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-800 mb-4">
-              Prize Allocation
+              Funding Ask
             </h4>
-            <p className="text-blue-600 text-2xl sm:text-3xl font-bold">$10K</p>
-            <div className="text-gray-600 text-sm sm:text-base mt-2 space-y-2">
-              <p>$7K (70%) - MVP + Pilot (8 months)</p>
-              <p>$3K (30%) - Team Split (3 members, ~$1K each)</p>
-            </div>
+            <p className="text-blue-600 text-2xl sm:text-3xl font-bold">
+              $150K
+            </p>
+            <p className="text-gray-600 text-sm sm:text-base">
+              $50K MVP + $100K Year 1
+            </p>
+            <p className="text-gray-500 text-xs sm:text-sm mt-2">x% Equity</p>
           </div>
           <div className="bg-blue-600 p-4 sm:p-6 rounded-xl shadow-lg text-white">
             <h4 className="text-lg sm:text-xl md:text-2xl font-bold mb-4">
-              Next Steps
+              Year 1 Revenue
             </h4>
-            <p className="text-2xl sm:text-3xl font-bold">10 Deliveries</p>
+            <p className="text-2xl sm:text-3xl font-bold">$25K</p>
             <p className="text-blue-100 text-sm sm:text-base">
-              Live Pilot by Dec 2025
+              5% of $500K Aid Moved
             </p>
             <p className="text-blue-200 text-xs sm:text-sm mt-2">
-              Proof for Bigger Funding
+              Scales to Billions
             </p>
           </div>
-        </div>
-        <div className="mt-6 text-gray-500 text-xs sm:text-sm">
-          $7K builds a blockchain-tracked MVP, $3K fuels our team—impact starts
-          now.
         </div>
       </div>
     ),
@@ -1431,44 +1470,6 @@ const slides = [
     bgColor: "bg-gray-50",
   },
 
-  {
-    id: "financials",
-    title: "Funding Ask & Financials",
-    content: (
-      <div className="flex flex-col items-center justify-center h-full w-full text-center px-4">
-        <h3 className="text-2xl sm:text-4xl md:text-5xl font-extrabold text-gray-900 mb-6 sm:mb-10">
-          The <span className="text-blue-600">Numbers</span>
-        </h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 w-full max-w-5xl mx-auto">
-          <div className="bg-white p-4 sm:p-6 rounded-xl shadow-lg">
-            <h4 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-800 mb-4">
-              Funding Ask
-            </h4>
-            <p className="text-blue-600 text-2xl sm:text-3xl font-bold">
-              $150K
-            </p>
-            <p className="text-gray-600 text-sm sm:text-base">
-              $50K MVP + $100K Year 1
-            </p>
-            <p className="text-gray-500 text-xs sm:text-sm mt-2">10% Equity</p>
-          </div>
-          <div className="bg-blue-600 p-4 sm:p-6 rounded-xl shadow-lg text-white">
-            <h4 className="text-lg sm:text-xl md:text-2xl font-bold mb-4">
-              Year 1 Revenue
-            </h4>
-            <p className="text-2xl sm:text-3xl font-bold">$25K</p>
-            <p className="text-blue-100 text-sm sm:text-base">
-              5% of $500K Aid Moved
-            </p>
-            <p className="text-blue-200 text-xs sm:text-sm mt-2">
-              Scales to Billions
-            </p>
-          </div>
-        </div>
-      </div>
-    ),
-    bgColor: "bg-gradient-to-br from-blue-50 to-white",
-  },
   {
     id: "closing",
     title: "Rewrite the Future of Aid",
