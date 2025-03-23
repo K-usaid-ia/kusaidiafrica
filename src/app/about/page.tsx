@@ -893,7 +893,7 @@ const slides = [
             <h4 className="text-lg sm:text-xl md:text-2xl font-bold mb-4">
               Year 1 Revenue
             </h4>
-            <p className="text-2xl sm:text-3xl font-bold">$25K</p>
+            <p className="text-2xl sm:text-3xl font-bold">$xK</p>
             <p className="text-blue-100 text-sm sm:text-base">
               5% of $500K Aid Moved
             </p>
