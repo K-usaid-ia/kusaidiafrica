@@ -1015,102 +1015,92 @@ const slides = [
     bgColor: "bg-gradient-to-br from-blue-600 to-blue-800",
   },
 
-  // Slide 13: Contact
-  {
-    id: "contact",
-    title: "Get In Touch",
-    content: (
-      <div className="flex flex-col items-center justify-start min-h-full w-full text-center px-4 py-8 sm:py-12 bg-gradient-to-r from-blue-50 to-gray-100">
-        {/* Horizontal Scrollable Container */}
-        <div className="w-full max-w-6xl mx-auto h-[60vh] sm:h-[70vh] overflow-x-auto overflow-y-hidden scrollbar-thin scrollbar-thumb-blue-500 scrollbar-track-gray-100 flex space-x-4 sm:space-x-6 px-3 sm:px-4 snap-x snap-mandatory">
-          {/* Combined Contact Card */}
-          <div className="bg-white rounded-2xl sm:rounded-3xl shadow-lg p-4 sm:p-8 min-w-[280px] sm:min-w-[320px] max-w-[320px] sm:max-w-[400px] flex-shrink-0 transform transition-all hover:shadow-xl hover:-translate-y-2 duration-300 snap-center">
-            <h4 className="text-xl sm:text-3xl font-extrabold text-gray-900 mb-4 sm:mb-6 flex items-center justify-center">
-              <FaInfoCircle className="text-blue-600 mr-2" />{" "}
-              <span className="text-blue-600">Let's Connect</span>
-            </h4>
-            <div className="space-y-4 sm:space-y-6 text-left">
+ // Slide 13: Contact
+{
+  id: "contact",
+  title: "Get In Touch",
+  content: (
+    <div className="flex flex-col items-center justify-center min-h-full w-full text-center px-2 py-3 bg-gradient-to-r from-blue-50 to-gray-100">
+      {/* Horizontal Scrollable Container */}
+      <div className="w-full max-w-4xl mx-auto h-[40vh] overflow-x-auto overflow-y-hidden scrollbar-thin scrollbar-thumb-blue-500 scrollbar-track-gray-100 flex space-x-2 px-1 snap-x snap-mandatory">
+        {/* Combined Contact Card */}
+        <div className="bg-white rounded-lg shadow-md p-2 min-w-[220px] max-w-[240px] flex-shrink-0 transition-all hover:shadow-lg hover:-translate-y-1 duration-300 snap-center">
+          <h4 className="text-sm font-extrabold text-gray-900 mb-1 flex items-center justify-center">
+            <FaInfoCircle className="text-blue-600 mr-1" />
+            <span className="text-blue-600">Let's Connect</span>
+          </h4>
+          <div className="space-y-1 text-left">
+            {[
+              {
+                icon: <FaMapMarkerAlt className="text-blue-600 text-sm" />,
+                title: "Location",
+                details: ["Nairobi, Kenya", "Kilimani X Center, 3rd Floor"],
+              },
+              {
+                icon: <FaPhone className="text-blue-600 text-sm" />,
+                title: "Phone",
+                details: ["+254 700 000 000"],
+              },
+              {
+                icon: <FaEnvelope className="text-blue-600 text-sm" />,
+                title: "Email",
+                details: ["kusaidia75@gmail.com"],
+              },
+            ].map((item, idx) => (
+              <div key={idx} className="flex items-start">
+                <div className="p-1 rounded-full bg-blue-100 mr-1">
+                  {item.icon}
+                </div>
+                <div>
+                  <p className="font-semibold text-gray-800 text-[10px]">
+                    {item.title}
+                  </p>
+                  {item.details.map((detail, i) => (
+                    <p key={i} className="text-gray-600 text-[9px] leading-tight">
+                      {detail}
+                    </p>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Combined Form & Social Card */}
+        <div className="bg-white rounded-lg shadow-md p-2 min-w-[220px] max-w-[240px] flex-shrink-0 transition-all hover:shadow-lg hover:-translate-y-1 duration-300 snap-center">
+          <ContactForm />
+          {/* Social Section */}
+          <div className="mt-1 pt-1 border-t border-gray-200">
+            <h5 className="text-[10px] font-bold text-gray-800 mb-1 flex items-center justify-center">
+              <FaShareAlt className="text-blue-600 mr-1" /> Stay Connected
+            </h5>
+            <div className="flex justify-center gap-1">
               {[
                 {
-                  icon: (
-                    <FaMapMarkerAlt className="text-blue-600 text-lg sm:text-2xl" />
-                  ),
-                  title: "Location",
-                  details: ["Nairobi, Kenya", "Kilimani X Center, 3rd Floor"],
+                  icon: <FaTwitter />,
+                  label: "X",
+                  link: "https://twitter.com/Kusaidia",
                 },
-                {
-                  icon: (
-                    <FaPhone className="text-blue-600 text-lg sm:text-2xl" />
-                  ),
-                  title: "Phone",
-                  details: ["+254 700 000 000"],
-                },
-                {
-                  icon: (
-                    <FaEnvelope className="text-blue-600 text-lg sm:text-2xl" />
-                  ),
-                  title: "Email",
-                  details: ["kusaidia75@gmail.com"],
-                },
-              ].map((item, idx) => (
-                <div key={idx} className="flex items-start">
-                  <div className="p-2 sm:p-3 rounded-full bg-blue-100 mr-3 sm:mr-4">
-                    {item.icon}
-                  </div>
-                  <div>
-                    <p className="font-semibold text-gray-800 text-base sm:text-lg">
-                      {item.title}
-                    </p>
-                    {item.details.map((detail, i) => (
-                      <p key={i} className="text-gray-600 text-xs sm:text-sm">
-                        {detail}
-                      </p>
-                    ))}
-                  </div>
-                </div>
+                { icon: <FaLinkedin />, label: "LinkedIn", link: "#" },
+                { icon: <FaFacebook />, label: "Facebook", link: "#" },
+                { icon: <FaInstagram />, label: "Instagram", link: "#" },
+              ].map((social, idx) => (
+                <a
+                  key={idx}
+                  href={social.link}
+                  className="flex items-center justify-center w-5 h-5 rounded-full bg-blue-100 text-blue-600 hover:bg-blue-600 hover:text-white transition duration-300 transform hover:scale-105"
+                >
+                  {social.icon}
+                </a>
               ))}
-            </div>
-          </div>
-
-          {/* Combined Form & Social Card */}
-          <div className="bg-white rounded-2xl sm:rounded-3xl shadow-lg p-4 sm:p-8 min-w-[280px] sm:min-w-[320px] max-w-[320px] sm:max-w-[400px] flex-shrink-0 transform transition-all hover:shadow-xl hover:-translate-y-2 duration-300 snap-center">
-            <h4 className="text-lg sm:text-2xl font-bold text-gray-800 mb-4 sm:mb-6 flex items-center justify-center">
-              <FaPaperPlane className="text-blue-600 mr-2" /> Send a Message
-            </h4>
-            <ContactForm />
-
-            {/* Social Section */}
-            <div className="mt-4 sm:mt-6 pt-4 sm:pt-6 border-t border-gray-200">
-              <h5 className="text-base sm:text-xl font-bold text-gray-800 mb-3 sm:mb-4 flex items-center justify-center">
-                <FaShareAlt className="text-blue-600 mr-2" /> Stay Connected
-              </h5>
-              <div className="flex flex-wrap justify-center gap-2 sm:gap-3">
-                {[
-                  {
-                    icon: <FaTwitter />,
-                    label: "X",
-                    link: "https://twitter.com/Kusaidia",
-                  },
-                  { icon: <FaLinkedin />, label: "LinkedIn", link: "#" },
-                  { icon: <FaFacebook />, label: "Facebook", link: "#" },
-                  { icon: <FaInstagram />, label: "Instagram", link: "#" },
-                ].map((social, idx) => (
-                  <a
-                    key={idx}
-                    href={social.link}
-                    className="flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-blue-100 text-blue-600 hover:bg-blue-600 hover:text-white transition duration-300 transform hover:scale-110"
-                  >
-                    {social.icon}
-                  </a>
-                ))}
-              </div>
             </div>
           </div>
         </div>
       </div>
-    ),
-    bgColor: "bg-gradient-to-r from-blue-50 to-gray-100",
-  },
+    </div>
+  ),
+  bgColor: "bg-gradient-to-r from-blue-50 to-gray-100",
+},
 
   // Slide 9: Tech Stack
   {
