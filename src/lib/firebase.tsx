@@ -27,9 +27,13 @@ if (typeof window !== 'undefined') {
 }
 
 // Initialize Realtime Database
-const database: Database = getDatabase(app);
+let database: Database | null = null;
+if (typeof process !== 'undefined' && process.env.NEXT_PUBLIC_FIREBASE_DATABASE_URL) {
+  database = getDatabase(app);
+}
 
 // Track a page visit and update counter
+// Update the functions to handle potential null database
 export const trackVisitor = async (pageName: string): Promise<number> => {
   try {
     // Log page view to Analytics
@@ -41,24 +45,29 @@ export const trackVisitor = async (pageName: string): Promise<number> => {
     }
 
     // Update visitor count in Realtime Database
-    const countRef = ref(database, 'visitorCount');
-    const snapshot = await get(countRef);
-    const currentCount = snapshot.val() || 0;
-    const newCount = currentCount + 1;
-    await set(countRef, newCount);
-    return newCount;
+    if (database) {
+      const countRef = ref(database, 'visitorCount');
+      const snapshot = await get(countRef);
+      const currentCount = snapshot.val() || 0;
+      const newCount = currentCount + 1;
+      await set(countRef, newCount);
+      return newCount;
+    }
+    return 0;
   } catch (error) {
     console.error('Error tracking visitor:', error);
     return 0;
   }
 };
 
-// Get the current visitor count without incrementing
 export const getVisitorCount = async (): Promise<number> => {
   try {
-    const countRef = ref(database, 'visitorCount');
-    const snapshot = await get(countRef);
-    return snapshot.val() || 0;
+    if (database) {
+      const countRef = ref(database, 'visitorCount');
+      const snapshot = await get(countRef);
+      return snapshot.val() || 0;
+    }
+    return 0;
   } catch (error) {
     console.error('Error getting visitor count:', error);
     return 0;
