@@ -118,7 +118,7 @@ const { visitorCount, loading, error } = useVisitorAnalytics('about');
                   5 min to share your frustrations.
                 </p>
                 <Link
-                  href="YOUR_DONOR_SURVEY_LINK_HERE"
+                  href="https://docs.google.com/forms/d/e/1FAIpQLSdA30ihH0FxX6DJweh-0Y9hRQHai_zr3OwUgaXFRU_AesWJRg/viewform?usp=header"
                   className="mt-4 inline-block text-indigo-600 hover:text-indigo-800 font-medium"
                 >
                   Take Survey →
@@ -132,7 +132,7 @@ const { visitorCount, loading, error } = useVisitorAnalytics('about');
                   Tell us what slows you down.
                 </p>
                 <Link
-                  href="YOUR_NGO_SURVEY_LINK_HERE"
+                  href="https://docs.google.com/forms/d/e/1FAIpQLSd0-MxxlH65gKea4tW8VdtPYfU8ZE5Hp8W9WiE4Mi_7-1if7Q/viewform?usp=header"
                   className="mt-4 inline-block text-indigo-600 hover:text-indigo-800 font-medium"
                 >
                   Take Survey →
@@ -146,7 +146,7 @@ const { visitorCount, loading, error } = useVisitorAnalytics('about');
                   Help us cut delays.
                 </p>
                 <Link
-                  href="YOUR_VENDOR_SURVEY_LINK_HERE"
+                  href="https://docs.google.com/forms/d/e/1FAIpQLSd-WeiJ-B-lv-Q1XdeYdGJmxkSZJ_R1R4tDhutxxaENsq8RUQ/viewform?usp=header"
                   className="mt-4 inline-block text-indigo-600 hover:text-indigo-800 font-medium"
                 >
                   Take Survey →
