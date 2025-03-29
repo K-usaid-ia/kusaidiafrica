@@ -103,67 +103,22 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* Action Section */}
+        {/* Contact Form Section (replaces Help Us Fix Aid) */}
         <section className="py-16 bg-indigo-50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="text-3xl font-extrabold text-gray-900">
-              Help Us Fix Aid
-            </h2>
+            <h2 className="text-3xl font-extrabold text-gray-900">Help Us Fix Aid</h2>
             <p className="mt-4 max-w-2xl mx-auto text-lg text-gray-600">
-              We’re researching aid’s problems—your input matters. Who are you?
+              We’re researching until May 2025—share your challenges to shape Kusaidia. Surveys available on request!
             </p>
-            <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-3 max-w-3xl mx-auto">
-              <div className="bg-white p-6 rounded-lg shadow-md">
-                <h3 className="text-lg font-medium text-indigo-600">
-                  I’m a Donor
-                </h3>
-                <p className="mt-2 text-base text-gray-500">
-                  Share your trust issues in 5 min.
-                </p>
-                <Link
-                  href="https://docs.google.com/forms/d/e/1FAIpQLSdA30ihH0FxX6DJweh-0Y9hRQHai_zr3OwUgaXFRU_AesWJRg/viewform?usp=header"
-                  className="mt-4 inline-block text-indigo-600 hover:text-indigo-800 font-medium"
-                >
-                  Take Survey →
-                </Link>
-              </div>
-              <div className="bg-white p-6 rounded-lg shadow-md">
-                <h3 className="text-lg font-medium text-indigo-600">
-                  I’m an NGO
-                </h3>
-                <p className="mt-2 text-base text-gray-500">
-                  Tell us about inefficiencies.
-                </p>
-                <Link
-                  href="https://docs.google.com/forms/d/e/1FAIpQLSd0-MxxlH65gKea4tW8VdtPYfU8ZE5Hp8W9WiE4Mi_7-1if7Q/viewform?usp=header"
-                  className="mt-4 inline-block text-indigo-600 hover:text-indigo-800 font-medium"
-                >
-                  Take Survey →
-                </Link>
-              </div>
-              <div className="bg-white p-6 rounded-lg shadow-md">
-                <h3 className="text-lg font-medium text-indigo-600">
-                  I’m a Vendor
-                </h3>
-                <p className="mt-2 text-base text-gray-500">
-                  Help us speed up delivery.
-                </p>
-                <Link
-                  href="https://docs.google.com/forms/d/e/1FAIpQLSd-WeiJ-B-lv-Q1XdeYdGJmxkSZJ_R1R4tDhutxxaENsq8RUQ/viewform?usp=header"
-                  className="mt-4 inline-block text-indigo-600 hover:text-indigo-800 font-medium"
-                >
-                  Take Survey →
-                </Link>
-              </div>
+            <div className="mt-10 max-w-md mx-auto">
+              <ContactForm />
             </div>
           </div>
         </section>
 
-        {/* CTA Section */}
+        {/* Be Part of the Fix (form removed) */}
         <div className="bg-indigo-700 py-16">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 gap-8">
-          {/* Left Column */}
-          <div className="text-center md:text-left">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 className="text-3xl font-extrabold text-white">
               <span className="block">Be Part of the Fix</span>
               <span className="block">
@@ -174,20 +129,13 @@ export default function HomePage() {
               Help us build a better way to deliver aid—fast, direct, and real.
             </p>
             <Link
-              href="/about"
+              href="/contact"
               className="mt-8 inline-flex items-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-indigo-600 bg-white hover:bg-indigo-50"
             >
-              Learn More
+              Get Involved
             </Link>
           </div>
-          {/* Right Column */}
-          <div className="flex items-center justify-center max-w-md w-full">
-            <div className="bg-white p-6 rounded-lg shadow-md w-full">
-              <ContactForm />
-            </div>
-          </div>
         </div>
-      </div>
       </main>
 
       {/* Footer */}
