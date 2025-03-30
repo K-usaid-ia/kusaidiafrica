@@ -8,9 +8,9 @@ export default function ContactForm() {
     error: null,
   });
 
-  const formRef = useRef(null); // No TS typing
+  const formRef = useRef<HTMLFormElement>(null);
 
-  const handleSubmit = async (e) => { // No event typing
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setStatus({ submitting: true, success: false, error: null });
 
@@ -44,7 +44,8 @@ export default function ContactForm() {
           <p className="mt-2 text-base">We’ll reply soon.</p>
           <button
             onClick={resetForm}
-            className="mt-4 text-indigo-600 font-semibold text-base hover:text-indigo-800 transition duration-200"
+            className="mt-4 text-bice_blue font-semibold text-base hover:text-bice_blue-700 transition duration-200"
+            style={{ color: '#0A678E', '--tw-text-opacity-hover': 1, '--tw-text-color-hover': '#37b9f1' } as React.CSSProperties}
           >
             Send another
           </button>
@@ -85,7 +86,8 @@ export default function ContactForm() {
               <input
                 type={field.type}
                 name={field.name}
-                className="w-full px-4 py-3 rounded-xl border border-gray-300 bg-white text-gray-800 text-base focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition duration-200 placeholder-gray-400"
+                className="w-full px-4 py-3 rounded-xl border border-gray-300 bg-white text-gray-800 text-base focus:outline-none focus:ring-2 focus:ring-picton_blue focus:border-picton_blue transition duration-200 placeholder-gray-400"
+                style={{ '--tw-ring-color': '#0AA3E1', '--tw-border-color': '#0AA3E1' } as React.CSSProperties}
                 placeholder={field.placeholder}
                 required
               />
@@ -97,7 +99,8 @@ export default function ContactForm() {
             </label>
             <textarea
               name="message"
-              className="w-full px-4 py-3 rounded-xl border border-gray-300 bg-white text-gray-800 text-base focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 h-32 transition duration-200 placeholder-gray-400"
+              className="w-full px-4 py-3 rounded-xl border border-gray-300 bg-white text-gray-800 text-base focus:outline-none focus:ring-2 focus:ring-picton_blue focus:border-picton_blue h-32 transition duration-200 placeholder-gray-400"
+              style={{ '--tw-ring-color': '#0AA3E1', '--tw-border-color': '#0AA3E1' } as React.CSSProperties}
               placeholder="What’s one challenge you face with aid (e.g., trust, waste, delays)?"
               required
             ></textarea>
@@ -112,7 +115,8 @@ export default function ContactForm() {
           <button
             type="submit"
             disabled={status.submitting}
-            className="w-full bg-indigo-600 text-white px-6 py-3 rounded-xl font-semibold text-lg hover:bg-indigo-700 focus:ring-2 focus:ring-indigo-400 transition duration-300 disabled:bg-indigo-400 flex items-center justify-center gap-2"
+            className="w-full bg-bice_blue text-white px-6 py-3 rounded-xl font-semibold text-lg hover:bg-bice_blue-700 focus:ring-2 focus:ring-bice_blue-400 transition duration-300 disabled:bg-bice_blue-400 flex items-center justify-center gap-2"
+            style={{ backgroundColor: '#0A678E', '--tw-bg-opacity-hover': 1, '--tw-bg-color-hover': '#37b9f1', '--tw-ring-color': '#79d0f6', '--tw-bg-color-disabled': '#79d0f6' } as React.CSSProperties}
           >
             {status.submitting ? (
               "Sending..."
