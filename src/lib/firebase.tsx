@@ -33,7 +33,6 @@ if (typeof process !== 'undefined' && process.env.NEXT_PUBLIC_FIREBASE_DATABASE_
 }
 
 // Track a page visit and update counter
-// Update the functions to handle potential null database
 export const trackVisitor = async (pageName: string): Promise<number> => {
   try {
     // Log page view to Analytics
@@ -60,6 +59,33 @@ export const trackVisitor = async (pageName: string): Promise<number> => {
   }
 };
 
+// Track page view without incrementing visitor count
+export const trackPageView = async (pageName: string): Promise<number> => {
+  try {
+    // Log page view to Analytics
+    if (analytics) {
+      logEvent(analytics, 'page_view', {
+        page_path: window.location.pathname,
+        page_title: pageName,
+      });
+    }
+    
+    // Track page views in database
+    if (database) {
+      const pageViewsRef = ref(database, 'pageViews');
+      const snapshot = await get(pageViewsRef);
+      const currentViews = snapshot.val() || 0;
+      const newViews = currentViews + 1;
+      await set(pageViewsRef, newViews);
+      return newViews;
+    }
+    return 0;
+  } catch (error) {
+    console.error('Error tracking page view:', error);
+    return 0;
+  }
+};
+
 export const getVisitorCount = async (): Promise<number> => {
   try {
     if (database) {
@@ -70,6 +96,20 @@ export const getVisitorCount = async (): Promise<number> => {
     return 0;
   } catch (error) {
     console.error('Error getting visitor count:', error);
+    return 0;
+  }
+};
+
+export const getPageViewsCount = async (): Promise<number> => {
+  try {
+    if (database) {
+      const pageViewsRef = ref(database, 'pageViews');
+      const snapshot = await get(pageViewsRef);
+      return snapshot.val() || 0;
+    }
+    return 0;
+  } catch (error) {
+    console.error('Error getting page views count:', error);
     return 0;
   }
 };
